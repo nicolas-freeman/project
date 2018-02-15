@@ -1,0 +1,132 @@
+
+/* BOUTON DE CONNEXION GOOGLE
+-------------------------------------------------- */
+
+#customBtn {
+    display: inline-block;
+    background:  #00C29A;
+    color: #ffffff;
+    width: 100%;
+    border: thin solid #888;
+    box-shadow: 1px 1px 1px grey;
+    white-space: nowrap;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#customBtn:hover {
+    cursor: pointer;
+    background-color: rgb(12, 97, 33);
+}
+
+span.label {
+    font-family: serif;
+    font-weight: normal;
+    
+}
+
+.icon {
+    background: url('../images/g-logo.png') transparent 5px 50% no-repeat;
+    background-size: 32px;
+    background-color: white;
+    display: block;
+    vertical-align: middle;
+    width: 42px;
+    margin: 1px 1px 1px 1px;
+    height: 42px;
+    border-radius: 2px;
+}
+
+.buttonText {
+    display: inline-block;
+    margin-top: 11px;
+    vertical-align: middle;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 14px;
+    font-weight: bold;
+    /* Use the Roboto font that is loaded in the <head> */
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+
+/*
+ * Specific styles of signin component
+ */
+/*
+ * General styles
+ */
+ body, html {
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+}
+
+.card-container.card {
+    min-width: 420px;
+    max-width: 470px;
+    padding: 40px 40px;
+}
+
+
+/*
+ * Card component
+ */
+.card {
+    background-color: #F7F7F7;
+    /* just in case there no content*/
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+/*
+ * Form styles
+ */
+.profile-name-card {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+}
+
+
+.form-signin .form-control:focus {
+    border-color: rgb(104, 145, 162);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+}
+
+.btn.btn-signin:hover,
+.btn.btn-signin:active,
+.btn.btn-signin:focus {
+
+}

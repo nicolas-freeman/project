@@ -129,3 +129,24 @@ window.onload = function () {
         document.getElementById('nav-profile-img').src = user.photoURL; // On remplace l'image de profil de la barre de navigation
     }
 }
+
+// REPAIR BROKEN IMAGES
+
+function imgError(image) {
+    image.onerror = "";
+    image.src = "./images/noimage.png";
+    return true;
+}
+
+// RECHERCHE 
+
+$(document).ready(function () {
+    $("#myInput").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        console.log("Recherche : "+value);
+        $(".card").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
+

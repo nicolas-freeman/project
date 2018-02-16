@@ -95,3 +95,52 @@ body {
         margin-top: 7rem;
     }
 }
+
+/* PAGE ENTREPRISES
+-------------------------------------------------- */
+
+.card-top{
+margin: 20px 20px 0px 20px;
+vertical-align: middle;
+}
+
+.card-img-top{
+    width: 90px;
+    height: 90px;
+    border: solid 1px#ececec;
+}
+
+.card-title{
+    display: inline-block;
+    margin: 0px 0px 0px 10px;
+}
+
+.card-text{
+    height: 48px;
+}
+.card-columns{
+    margin-top: 15px;
+}
+.card-footer{
+    padding: 6px 20px 6px 20px;
+    margin: 0px 0px 0px 0px;
+    border-top: solid 1px#ececec;
+    background-color: white;
+}
+.card-columns{
+    height: auto;
+}
+
+#entreprises{
+    overflow:hidden;
+}
+
+.card{
+    display:inline-block;
+    width: 240px;
+    margin : 15px 0px 0px 15px;
+}
+
+#filters{
+    margin-top: 15px;
+}

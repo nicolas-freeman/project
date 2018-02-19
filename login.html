@@ -37,17 +37,16 @@
                     <a style="white-space: nowrap;" class="nav-link" href="./a-propos.html">A propos</a>
                 </li>
             </ul>
-            <form class="form-inline my-1"></form>
-            <a id="log" role="button" class="btn btn-outline-secondary my-1 mr-2" href="./login.html">Connexion</a>
-            <!--Connexion ou Déconnexion en barre de navigation selon le statut de l'utilisateur-->
-            <script></script>
-            </form>
             <form class="form-inline my-1 flex-nowrap">
                 <input class="form-control mr-2" type="search" aria-label="Rechercher">
                 <button class="btn btn-outline-success my-2" type="submit">Rechercher</button>
-                <a href="./login.html">
-                    <img class="rounded-circle ml-2 nav-profile-img" src="./images/profile.png" width="40" height="40">
-                </a>
+            </form>
+            <form class="form-inline my-1 ml-1"></form>
+            <a id="log" role="button" class="btn btn-outline-secondary my-1 mx-1" href="./login.html">Connexion</a>
+            <!--Connexion ou Déconnexion en barre de navigation selon le statut de l'utilisateur-->
+            <a href="./login.html">
+                <img class="rounded-circle ml-1 nav-profile-img" src="./images/profile.png" width="40" height="40">
+            </a>
             </form>
         </div>
     </nav>
@@ -60,7 +59,10 @@
     <!-- In the callback, you would hide the gSignInWrapper element on a
   successful sign in -->
     <div class="container">
-        <div class="alert alert-success alert-dismissable">
+        <div id="notESSECAlert" class="alert alert-danger collapse">
+            Merci de vous connecter avec un compte ESSEC !
+        </div>
+        <div id="loggedOutAlert" class="alert alert-success alert-dismissable collapse">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
             Déconnecté avec succès
         </div>
@@ -83,6 +85,7 @@
                     </div>
                 </div>
             </div>
+            <a id="logoutButton" role="button" class="btn btn-outline-secondary my-1 mr-2 collapse" href="#" onclick="signOut();">Déconnexion</a>
         </div>
         <!-- /card-container -->
     </div>

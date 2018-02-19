@@ -22,9 +22,11 @@
     vertical-align: middle;
 }
 
+
 #customBtn:hover {
     cursor: pointer;
     background-color: rgb(12, 97, 33);
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 span.label {
@@ -129,4 +131,12 @@ span.label {
 .btn.btn-signin:active,
 .btn.btn-signin:focus {
 
+}
+
+
+/* Alerte de déconnexion */
+
+.alert{
+    text-align: center;
+    margin-top: 20px
 }

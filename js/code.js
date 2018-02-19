@@ -102,8 +102,15 @@ function checkIfLoggedIn() {
     if (sessionStorage.getItem('user') == null && window.location.href.indexOf('login.html') < 0) { // Si non connecté et pas sur la page de connexion
         // Redirection vers la page de connexion
         window.location.href = 'login.html';
-    } else { // Si connecté ou sur la page de connexion
-        user = JSON.parse(sessionStorage.getItem('user'));
+    } else if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() == "essec.edu") { // Si connecté avec un compte ESSEC
+        // On ne fait rien
+    } else if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() !== "essec.edu") { // Si connecté avec un compte non ESSEC
+        console.log("Merci de vous connecter avec un compte ESSEC");
+        // Redirection vers la page de connexion
+        window.location.href = 'login.html';
+    }
+    else { // Sinon
+        
     }
 }
 
@@ -129,3 +136,24 @@ window.onload = function () {
         document.getElementById('nav-profile-img').src = user.photoURL; // On remplace l'image de profil de la barre de navigation
     }
 }
+
+// REPAIR BROKEN IMAGES
+
+function imgError(image) {
+    image.onerror = "";
+    image.src = "./images/noimage.png";
+    return true;
+}
+
+// RECHERCHE 
+
+$(document).ready(function () {
+    $("#myInput").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        console.log("Recherche : "+value);
+        $(".card").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
+

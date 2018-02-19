@@ -9,11 +9,23 @@ body {
     color: #5a5a5a;
     min-width:500px;
     width:auto;
-  }
+}
 
-  .bordure {
+.bordure {
     border: black 2px solid;
     background-color: lightblue;
+}
+
+img {
+    image-rendering: -moz-crisp-edges;         /* Firefox */
+    image-rendering:   -o-crisp-edges;         /* Opera */
+    image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+}
+
+.nav-profile-img:hover{
+    box-shadow:0 0 5px 2px #00C29A;
 }
   
 /* CUSTOMIZE THE CAROUSEL
@@ -94,4 +106,53 @@ body {
     .featurette-heading {
         margin-top: 7rem;
     }
+}
+
+/* PAGE ENTREPRISES
+-------------------------------------------------- */
+
+.card-top{
+margin: 20px 20px 0px 20px;
+vertical-align: middle;
+}
+
+.card-img-top{
+    width: 90px;
+    height: 90px;
+    border: solid 1px#ececec;
+}
+
+.card-title{
+    display: inline-block;
+    margin: 0px 0px 0px 10px;
+}
+
+.card-text{
+    height: 48px;
+}
+.card-columns{
+    margin-top: 15px;
+}
+.card-footer{
+    padding: 6px 20px 6px 20px;
+    margin: 0px 0px 0px 0px;
+    border-top: solid 1px#ececec;
+    background-color: white;
+}
+.card-columns{
+    height: auto;
+}
+
+#entreprises{
+    overflow:hidden;
+}
+
+.company{
+    display:inline-block;
+    width: 240px;
+    margin : 15px 0px 0px 15px;
+}
+
+#filters{
+    margin-top: 15px;
 }

@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="google-signin-client_id" content="86515575791-2qr4ukigk6qrjcotvqp5u04l60k67k4b.apps.googleusercontent.com">
     <title>Sans langue de boîte</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/code.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:light,regular,medium,thin,italic,mediumitalic,bold" rel="stylesheet"
         type="text/css">
@@ -44,7 +45,9 @@
             <form class="form-inline my-1 flex-nowrap">
                 <input class="form-control mr-2" type="search" aria-label="Rechercher">
                 <button class="btn btn-outline-success my-2" type="submit">Rechercher</button>
-                <a href="./login.html"><img id="nav-profile-img" class="rounded-circle ml-2" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" width="40" height="40"></a>
+                <a href="./login.html">
+                    <img class="rounded-circle ml-2 nav-profile-img" src="./images/profile.png" width="40" height="40">
+                </a>
             </form>
         </div>
     </nav>
@@ -52,40 +55,45 @@
 
     <!--Contenu de la page-->
 
-    <div class="container">
-        <!-- In the callback, you would hide the gSignInWrapper element on a
+
+
+    <!-- In the callback, you would hide the gSignInWrapper element on a
   successful sign in -->
-        <div class="container">
-            <div class="card card-container">
-                <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-                <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-                <p id="profile-name" class="profile-name-card"></p>
-                <!--<div id="name"></div>-->
-                    <div id="gSignInWrapper">
-                        <div id="customBtn" class="customGPlusSignIn">
-                            <div class="container">
-                                <div class="row flex-nowrap">
-                                    <div class="col-fixed-42">
-                                        <span class="icon"></span>
-                                    </div>
-                                    <div class="col">
-                                        <span id="name" class="buttonText">Connexion avec un compte ESSEC</span>
-                                    </div>
-                                </div>
+    <div class="container">
+        <div class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            Déconnecté avec succès
+        </div>
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="./images/profile.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <!--<div id="name"></div>-->
+            <div id="gSignInWrapper">
+                <div id="customBtn" class="customGPlusSignIn">
+                    <div class="container">
+                        <div class="row flex-nowrap">
+                            <div class="col-fixed-42">
+                                <span class="icon"></span>
+                            </div>
+                            <div class="col">
+                                <span id="name" class="buttonText">Connexion avec un compte ESSEC</span>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
-            <!-- /card-container -->
         </div>
-        <!-- /container -->
-        <script>startApp();</script>
-        <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <!-- /card-container -->
+    </div>
+    <!-- /container -->
+    <script>startApp();</script>
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

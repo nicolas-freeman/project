@@ -5,18 +5,23 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
-    <meta name="Sans langue de boîte">
+    <meta name="google-signin-client_id" content="86515575791-2qr4ukigk6qrjcotvqp5u04l60k67k4b.apps.googleusercontent.com">
     <title>Sans langue de boîte</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/masonry.min.js"></script>
-    <script type="text/javascript" src="js/code.js"></script>
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto:light,regular,medium,thin,italic,mediumitalic,bold" rel="stylesheet"
+        type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
 </head>
 
 <body>
 
-    <!--Vérification de connexion-->
-    <script>checkIfLoggedIn();</script>
+    <!--Vérification de connexion
+    <script>checkIfLoggedIn();</script>-->
 
     <!--Barre de navigation-->
 
@@ -45,10 +50,30 @@
             <form class="form-inline my-1 ml-1"></form>
             <a id="log" role="button" class="btn btn-outline-secondary my-1 mx-1" href="./login.html">Connexion</a>
             <!--Connexion ou Déconnexion en barre de navigation selon le statut de l'utilisateur-->
-            <a href="./login.html">
-                <img class="rounded-circle ml-1 nav-profile-img" src="./images/profile.png" width="40" height="40">
-            </a>
-            </form>
+            <!--C<a href="./login.html"></a>-->
+            <img class="rounded-circle ml-1" id="nav-profile-img" src="./images/profile.png" width="40" height="40">
+            <!--C</a>-->
+            <div class="card card-container invisible" id="navLoginCard">
+                <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+                <img id="profile-img" class="profile-img-card" src="./images/profile.png" />
+                <p id="profile-name" class="profile-name-card"></p>
+                <!--<div id="name"></div>-->
+                <div id="gSignInWrapper">
+                    <div id="customBtn" class="customGPlusSignIn">
+                        <div class="container">
+                            <div class="row flex-nowrap">
+                                <div class="col-fixed-42">
+                                    <span class="icon"></span>
+                                </div>
+                                <div class="col">
+                                    <span id="name" class="buttonText">Connexion avec un compte ESSEC</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a id="logoutButton" role="button" class="btn btn-outline-secondary my-1 mr-2 collapse" href="#" onclick="signOut();">Déconnexion</a>
+            </div>
         </div>
     </nav>
 
@@ -143,11 +168,9 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+    <script type="text/javascript" src="js/code.js"></script>
+    <script>startApp();</script>
 </body>
 
 </html>

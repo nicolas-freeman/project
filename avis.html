@@ -1,26 +1,21 @@
 <!DOCTYPE HTML>
 <html>
-
-<head>
+   
+   <head>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <meta name="google-signin-client_id" content="86515575791-2qr4ukigk6qrjcotvqp5u04l60k67k4b.apps.googleusercontent.com">
-    <title>Secteurs</title>
+    <title>Déposer un avis</title>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:light,regular,medium,thin,italic,mediumitalic,bold" rel="stylesheet"
-        type="text/css">
-    <script src="https://apis.google.com/js/api:client.js"></script>
-</head>
+    </head>
 
-<body>
-
-    <!--Vérification de connexion
+        <!--Vérification de connexion
     <script>checkIfLoggedIn();</script>-->
 
     <!--Barre de navigation-->
@@ -36,7 +31,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="./entreprises.html">Entreprises</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="./secteurs.html">Secteurs</a>
                 </li>
                 <li class="nav-item">
@@ -80,36 +75,54 @@
         </div>
     </nav>
 
-    <!--Contenu de la page-->
+     <!--Contenu de la page-->
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm bordure">
-                Col 1
-            </div>
-            <div class="col-sm bordure">
-                Col 2
-            </div>
-            <div class="col-sm bordure">
-                Col 3
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm bordure">
-                Col 1
-            </div>
-            <div class="col-sm bordure">
-                Col 2
-            </div>
-            <div class="col-sm bordure">
-                Col 3
-            </div>
-        </div>
-    </div>
+     <form action="/action_page.php">
+        <div class="form-group">
+            <label for="name">Nom :</label>
+            <input type="name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="name">Prénom :</label>
+            <input type="name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="company">Entreprise :</label>
+            <input type="company" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="company">Secteur :</label>
+            <input type="company" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="company">Fonction :</label>
+            <input type="company" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="company">Commentaire :</label>
+            <input type="company" class="form-control">
+          </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+     
+     <hr class="featurette-divider">
 
-    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-    <script type="text/javascript" src="js/code.js"></script>
-    <script>startApp();</script>
+      <!-- FOOTER -->
+      <footer>
+        <p class="float-right">
+            <a href="#">Back to top</a>
+        </p>
+        <p>&copy; 2017 Company, Inc. &middot;
+            <a href="#">Privacy</a> &middot;
+            <a href="#">Terms</a>
+        </p>
+    </footer>
+
+</div>
+<!-- /.container -->
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+<script type="text/javascript" src="js/code.js"></script>
+<script>startApp();</script>
 </body>
 
 </html>

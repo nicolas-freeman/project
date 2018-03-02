@@ -15,14 +15,14 @@ function checkIfLoggedIn() {
         window.location.href = 'login.html';
     } else if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() == "essec.edu") { // Si connecté avec un compte ESSEC
         // On ne fait rien
+    } else if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() !== "essec.edu" && window.location.href.indexOf('login.html') < 0) { // Si connecté avec un compte non ESSEC et pas sur la page de connexion
+        // Redirection vers la page de connexion
+        window.location.href = 'login.html';
     } else if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() !== "essec.edu") { // Si connecté avec un compte non ESSEC
         $("#notESSECAlert").addClass("collapse.show"); // On affiche l'alerte demandant la connexion avec un compte ESSEC
         $("#notESSECAlert").removeClass("collapse"); // On affiche l'alerte demandant la connexion avec un compte ESSEC
-        // Redirection vers la page de connexion
-        window.location.href = 'login.html';
     }
     else { // Sinon
-
     }
 }
 
@@ -42,13 +42,13 @@ function init() {
 // BARRE DE NAVIGATION
 
 // Si on clique en dehors du navLoginCard, on cache le navLoginCard
-$("html").click(function(e) {
-    if(e.target.id != "navLoginCard" && e.target.id != "nav-profile-img") {
-         console.log("You clicked outside navLoginCard and navProfileImg");
+$("html").click(function (e) {
+    if (e.target.id != "navLoginCard" && e.target.id != "nav-profile-img") {
+        console.log("You clicked outside navLoginCard and navProfileImg");
         $("#navLoginCard").toggle(false);
-         console.log(e.target.id);
+        console.log(e.target.id);
     } else {
-         console.log('You clicked inside navLoginCard');
+        console.log('You clicked inside navLoginCard');
     }
 });
 

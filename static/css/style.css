@@ -375,3 +375,32 @@ span.label {
     background: #4CAF50;
     cursor: pointer;
 }
+
+#row1 {
+    border-bottom: 1px solid grey;
+}
+
+.nmbr {
+    background: #00C29A;
+    padding: 7px 14px;
+    color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.slidecontainer {
+    width: 300px; /* Width of the outside container */
+   
+    
+}
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%; 
+    height: 25px;
+    background: #d3d3d3; 
+    outline: none; 
+    opacity: 0.7; 
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    display: inline-block;
+}

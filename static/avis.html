@@ -78,36 +78,83 @@
 
 <!--Contenu de la page-->
 <div class="container mt-4">
-    <form action="/action_page.php">
-        <div class="form-group">
-            <label for="name">Nom :</label>
-            <input type="name" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="name">Prénom :</label>
-            <input type="name" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="company">Entreprise :</label>
-            <input type="company" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="company">Secteur :</label>
-            <input type="company" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="company">Fonction :</label>
-            <input type="company" class="form-control">
-        </div>
-        <div class="slidecontainer">
-            <input type="range" min="0" max="20" value="10" class="slider" id="myRange">
-        </div>
-        <div class="form-group">
-            <label for="company">Commentaire :</label>
-            <input type="company" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-outline-success">Soumettre l'avis</button>
-    </form>
+    <div class="row" id="row1">
+        <h2>EVALUEZ VOTRE STAGE</h2>
+    </div>
+    <div class="row">
+            <div class="col-md-8"><br>
+               <p> <span class="nmbr">1</span>  <b>Informations de base</b></p>
+               <form>
+                    <div class="form-group row">
+                            <label for="Entreprise" class="col-sm-2 col-form-label">Entreprise</label>
+                            <div class="col-sm-10">
+                              <input type="test" class="form-control" placeholder="Exemple : BNP Paribas Real Estate">
+                            </div>
+                    </div>
+               </form>              
+                <label for="industryx">Secteur d’activité</label>
+                <select name="industryx" class="required" id="industry">
+                        <option value="">Choisissez votre secteur en cliquant ici !</option>
+                            <option value="1">Acier</option><option value="9">Aéronautique / Aviation</option><option value="2">Affaires publiques / Administration</option><option value="4">Agroalimentaire/ Agriculture</option><option value="5">Architecture / Design / Art</option><option value="7">Automobile / Pneumatique</option><option value="8">Autre</option><option value="6">Banque / Finance / Assurance</option><option value="11">Cabinets d'avocats</option><option value="18">Chimie</option><option value="19">Cinéma</option><option value="21">Comptabilité / Audit</option><option value="22">Conseil</option><option value="23">Construction / Ciment / Immobilier</option><option value="24">Défense </option><option value="65">Ecologie</option><option value="25">Edition</option><option value="26">Electronique / Matériel électrique</option><option value="27">Enseignement</option><option value="29">Fitness</option><option value="64">Hotellerie / Restauration / Tourisme</option><option value="31">Informatique / Web / Jeux vidéos / Nouvelles Technologies</option><option value="32">Ingénierie</option><option value="33">Medias / Journalisme</option><option value="34">Médical / Secteur pharmaceutique</option><option value="35">Mode / Luxe / Cosmétique</option><option value="36">Musique</option><option value="40">ONG</option><option value="41">Optique</option><option value="42">Pétrole / Gaz / Energie</option><option value="43">Poste / Logitstique</option><option value="44">Publicité / Communication / RP</option><option value="45">Recherche Scientifique</option><option value="47">Recrutement</option><option value="52">Sécurité</option><option value="55">Services Collectifs</option><option value="56">Spiritueux</option><option value="57">Sport</option><option value="59">Télécom</option><option value="61">Transport</option><option value="63">Vente en détail / Distribution</option>									
+                    </select>
+                    <form>
+                            <div class="form-group row">
+                                    <label for="Poste" class="col-sm-2 col-form-label">Poste</label>
+                                    <div class="col-sm-10">
+                                      <input type="test" class="form-control" placeholder="Exemple : Actrice dans un film pour adultes">
+                                    </div>
+                            </div>
+                     </form>
+                     <label for="city">Département</label>
+                     <select name="city" class="ltext required lstbox" id="city">
+							<option value="%" selected="selected">Où le stage a-t-il eu lieu ?</option><option value="Ain">Ain</option><option value="Aisne">Aisne</option><option value="Allier">Allier</option><option value="Alpes-de-Haute-Provence">Alpes-de-Haute-Provence</option><option value="Alpes-Maritimes">Alpes-Maritimes</option><option value="Ardèche">Ardèche</option><option value="Ardennes">Ardennes</option><option value="Ariège">Ariège</option><option value="Aube">Aube</option><option value="Aude">Aude</option><option value="Aveyron">Aveyron</option><option value="Bas-Rhin">Bas-Rhin</option><option value="Bouches-du-Rhône">Bouches-du-Rhône</option><option value="Calvados">Calvados</option><option value="Cantal">Cantal</option><option value="Charente">Charente</option><option value="Charente-Maritime">Charente-Maritime</option><option value="Cher">Cher</option><option value="Corrèze">Corrèze</option><option value="Corse-du-Sud">Corse-du-Sud</option><option value="Côte-d" or'="">Côte-d'Or</option><option value="Côtes-d" armor'="">Côtes-d'Armor</option><option value="Creuse">Creuse</option><option value="Deux-Sèvres">Deux-Sèvres</option><option value="Dordogne">Dordogne</option><option value="Doubs">Doubs</option><option value="Drôme">Drôme</option><option value="Essonne">Essonne</option><option value="Etranger - Afrique">Etranger - Afrique</option><option value="Etranger - Amerique">Etranger - Amerique</option><option value="Etranger - Asie">Etranger - Asie</option><option value="Etranger - Europe">Etranger - Europe</option><option value="Etranger - Moyen-Orient">Etranger - Moyen-Orient</option><option value="Eure">Eure</option><option value="Eure-et-Loir">Eure-et-Loir</option><option value="Finistère">Finistère</option><option value="Gard">Gard</option><option value="Gers">Gers</option><option value="Gironde">Gironde</option><option value="Guadeloupe">Guadeloupe</option><option value="Guyane">Guyane</option><option value="Haut-Rhin">Haut-Rhin</option><option value="Haute-Corse">Haute-Corse</option><option value="Haute-Garonne">Haute-Garonne</option><option value="Haute-Loire">Haute-Loire</option><option value="Haute-Marne">Haute-Marne</option><option value="Haute-Saône">Haute-Saône</option><option value="Haute-Savoie">Haute-Savoie</option><option value="Haute-Vienne">Haute-Vienne</option><option value="Hautes-Alpes">Hautes-Alpes</option><option value="Hautes-Pyrénées">Hautes-Pyrénées</option><option value="Hauts-de-Seine">Hauts-de-Seine</option><option value="Hérault">Hérault</option><option value="Ille-et-Vilaine">Ille-et-Vilaine</option><option value="Indre">Indre</option><option value="Indre-et-Loire">Indre-et-Loire</option><option value="Isère">Isère</option><option value="Jura">Jura</option><option value="La Réunion">La Réunion</option><option value="Landes">Landes</option><option value="Loir-et-Cher">Loir-et-Cher</option><option value="Loire">Loire</option><option value="Loire-Atlantique">Loire-Atlantique</option><option value="Loiret">Loiret</option><option value="Lot">Lot</option><option value="Lot-et-Garonne">Lot-et-Garonne</option><option value="Lozère">Lozère</option><option value="Maine-et-Loire">Maine-et-Loire</option><option value="Manche">Manche</option><option value="Marne">Marne</option><option value="Martinique">Martinique</option><option value="Mayenne">Mayenne</option><option value="Mayotte">Mayotte</option><option value="Meurthe-et-Moselle">Meurthe-et-Moselle</option><option value="Meuse">Meuse</option><option value="Morbihan">Morbihan</option><option value="Moselle">Moselle</option><option value="Nièvre">Nièvre</option><option value="Nord">Nord</option><option value="Oise">Oise</option><option value="Orne">Orne</option><option value="Paris">Paris</option><option value="Pas-de-Calais">Pas-de-Calais</option><option value="Puy-de-Dôme">Puy-de-Dôme</option><option value="Pyrénées-Atlantiques">Pyrénées-Atlantiques</option><option value="Pyrénées-Orientales">Pyrénées-Orientales</option><option value="Rhône">Rhône</option><option value="Saône-et-Loire">Saône-et-Loire</option><option value="Sarthe">Sarthe</option><option value="Savoie">Savoie</option><option value="Seine-et-Marne">Seine-et-Marne</option><option value="Seine-Maritime">Seine-Maritime</option><option value="Seine-Saint-Denis">Seine-Saint-Denis</option><option value="Somme">Somme</option><option value="Tarn">Tarn</option><option value="Tarn-et-Garonne">Tarn-et-Garonne</option><option value="Territoire de Belfort">Territoire de Belfort</option><option value="Val-d" oise'="">Val-d'Oise</option><option value="Val-de-Marne">Val-de-Marne</option><option value="Var">Var</option><option value="Vaucluse">Vaucluse</option><option value="Vendée">Vendée</option><option value="Vienne">Vienne</option><option value="Vosges">Vosges</option><option value="Yonne">Yonne</option><option value="Yvelines">Yvelines</option>							
+                            </select>
+                            <br>
+                            <label for="internshiplength">Durée du stage </label>
+                            <select name="internshiplength" class="required">
+                                    <option value="">Combien de temps avez-vous souffert ?</option>
+                                        <option value="1 mois">1 Mois</option><option value="2 mois">2 Mois</option><option value="3 mois">3 Mois</option><option value="4 mois">4 Mois</option><option value="5 mois">5 Mois</option><option value="6 mois">6 Mois</option><option value="7 mois">7 Mois</option><option value="8 mois">8 Mois</option><option value="9 mois">9 Mois</option><option value="10 mois">10 Mois</option><option value="11 mois">11 Mois</option><option value="12 mois">12 Mois</option><option value="Plus d’un an">Plus d’un an</option>							</select>
+            <br>
+            <br>
+            <br>
+            <p> <span class="nmbr">2</span>  <b>Votre expérience</b></p>
+            <br>
+            <label for="pros">Points positifs <br><span style="font-size:0.8em;color:#999;font-style:italic">(100 caractères minimum)</span></label>
+            <textarea name="pros" class="required" maxlength="1000" placeholder="Décrivez les points positifs de votre stage"></textarea>
+            <br>
+            <label for="cons">Points négatifs  <br><span style="font-size:0.8em;color:#999;font-style:italic">(100 caractères minimum)</span></label>
+            <textarea name="cons" class="required" maxlength="1000" placeholder="Décrivez les points négatifs de votre stage"></textarea>
+            <br>
+            <label for="salary">Indemnité mensuelle brute </label>
+            <input type="text" name="salary" class="number required" value="" maxlength="5" style="background:url('images/euro.png') 80px 6px no-repeat; padding-right:30px;width:70px">
+            <br>
+            
+
+
+            <table>
+                    <tr>
+                        <td>Intérêt du stage</td>
+                        <td><div class="slidecontainer">
+                                <input type="range" min="1" max="20" value="10" class="slider" id="myRange">         
+                              </div> </td>
+                        <td><p><span id="demo"></span> sur 20</p></td>
+                    </tr>
+                 
+                    <tr>
+                        <td>Possibilités d’embauche à la suite du stage</td>
+                        <td><input type="range" min="1" max="20" value="10" class="slider" id="myRange"></td>
+                        <td><span id="demo"></span></td>
+                    </tr>
+                    <tr>
+                        <td>à remplir</td>
+                        <td>à remplir</td>
+                        <td>à remplir</td>
+                    </tr>
+                 </table>
+
+            </div>
+            <div class="col-md-4"><br>Votre évaluation est anonyme ! Balancez tout ce que vous avez sur le coeur ! Si votre employeur est une ordure, dites-le et ne mâchez pas vos mots.</div>
+            </div>
 </div>
 <hr class="featurette-divider">
 

@@ -30,8 +30,7 @@ img {
 }
 
 #logo{
-    border-radius:50%;
-    height: 50px;
+    height: 40px;
     margin-right: 16px;
 }
   
@@ -60,7 +59,7 @@ img {
     min-width: 100%;
     height: 32rem;
     opacity: 50%;
-    height: 100vh
+    height: 100vh;
 }
   
   
@@ -173,9 +172,11 @@ vertical-align: middle;
 }
 
 
-/* PAGE DE CONNEXION */
+/* PAGE DE CONNEXION
+-------------------------------------------------- */
 
-/* NAV LOGINCARD */
+/* NAV LOGINCARD
+-------------------------------------------------- */
 
 #navLoginCard{
     position: absolute;
@@ -411,3 +412,10 @@ span.label {
     display: inline-block;
 }
 
+/* PAGE A PROPOS
+-------------------------------------------------- */
+
+.team-picture{
+    width: 140px;
+    height: 140px;
+}

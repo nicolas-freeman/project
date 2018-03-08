@@ -28,6 +28,12 @@ img {
     box-shadow:0 0 5px 2px #00C29A;
     cursor: pointer;
 }
+
+#logo{
+    border-radius:50%;
+    height: 50px;
+    margin-right: 16px;
+}
   
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -364,7 +370,7 @@ span.label {
     width: 25px;
     height: 25px;
     border-radius: 50%; 
-    background: #4CAF50;
+    background: #00C29A;
     cursor: pointer;
 }
 
@@ -372,7 +378,7 @@ span.label {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #4CAF50;
+    background: #00C29A;
     cursor: pointer;
 }
 
@@ -404,3 +410,4 @@ span.label {
     transition: opacity .2s;
     display: inline-block;
 }
+

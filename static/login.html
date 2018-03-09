@@ -5,6 +5,7 @@
     <link rel="icon" href="favicon.png" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="css/login.css">
     <meta charset="UTF-8">
     <meta name="google-signin-client_id" content="86515575791-2qr4ukigk6qrjcotvqp5u04l60k67k4b.apps.googleusercontent.com">
@@ -42,8 +43,8 @@
                 </li>
             </ul>
             <form class="form-inline my-1 flex-nowrap">
-                <input class="form-control mr-2" type="search" aria-label="Rechercher">
-                <button class="btn btn-outline-success my-2" type="submit">Rechercher</button>
+                <input id ="navBarInput" class="form-control mr-2" type="search" aria-label="Rechercher">
+                <button id ="navBarSearchButton" class="btn btn-outline-success my-2" type="button" onclick="navBarSearch();">Rechercher</button>
             </form>
             <form class="form-inline my-1 ml-1"></form>
             <a id="log" role="button" class="btn btn-outline-secondary my-1 mx-1" href="./login.html">Connexion</a>

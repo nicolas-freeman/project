@@ -5,6 +5,7 @@
     <link rel="icon" href="favicon.png" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="google-signin-client_id" content="86515575791-2qr4ukigk6qrjcotvqp5u04l60k67k4b.apps.googleusercontent.com">
     <title>Déposer un avis</title>
@@ -36,15 +37,15 @@
                 <a class="nav-link" href="./secteurs.html">Secteurs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./avis.html">Déposer un avis</a>
+                <a class="nav-link active" href="./avis.html">Déposer un avis</a>
             </li>
             <li class="nav-item">
                 <a style="white-space: nowrap;" class="nav-link" href="./a-propos.html">A propos</a>
             </li>
         </ul>
         <form class="form-inline my-1 flex-nowrap">
-            <input class="form-control mr-2" type="search" aria-label="Rechercher">
-            <button class="btn btn-outline-success my-2" type="submit">Rechercher</button>
+            <input id ="navBarInput" class="form-control mr-2" type="search" aria-label="Rechercher">
+            <button id ="navBarSearchButton" class="btn btn-outline-success my-2" type="button" onclick="navBarSearch();">Rechercher</button>
         </form>
         <form class="form-inline my-1 ml-1"></form>
         <a id="log" role="button" class="btn btn-outline-secondary my-1 mx-1" href="./login.html">Connexion</a>
@@ -77,7 +78,8 @@
 </nav>
 
 <!--Contenu de la page-->
-<div class="container mt-4">
+<div class="page">
+<div class="container pt-4">
     <div class="row" id="row1">
         <h2>EVALUEZ VOTRE STAGE</h2>
     </div>
@@ -171,6 +173,7 @@
 
 </div>
 <!-- /.container -->
+
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script type="text/javascript" src="js/code.js"></script>
 <script>startApp();</script>

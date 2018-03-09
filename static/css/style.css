@@ -3,10 +3,15 @@
 -------------------------------------------------- */
 
 /* Padding below the footer and lighter body text */
+.page{
+
+}
+
 body {
     padding-top: 0rem;
     padding-bottom: 3rem;
     color: #5a5a5a;
+    background-color: #fafafa;
     min-width:500px;
     width:auto;
 }
@@ -32,6 +37,16 @@ img {
 #logo{
     height: 40px;
     margin-right: 16px;
+}
+
+.navbar{
+    box-shadow: 0 4px 9px 0 rgba(0,0,0,0.1);
+    z-index: 99;
+}
+
+h2{
+    font-family: "Open sans", 'Josefin Sans', sans-serif;
+    font-size: 18px;
 }
   
 /* CUSTOMIZE THE CAROUSEL
@@ -154,12 +169,14 @@ vertical-align: middle;
 #entreprises{
     overflow:hidden;
     padding-bottom: 40px;
+    justify-content: flex-start;
 }
 
 .company{
     display:inline-block;
     width: 240px;
     margin : 15px 0px 0 15px;
+    max-height: 270px;
 }
 
 .company:hover{
@@ -168,7 +185,9 @@ vertical-align: middle;
 }
 
 #filters{
-    margin-top: 15px;
+    margin: 15px 0px 0px 0px;
+    padding: 20px 20px 20px 20px;
+    box-shadow: 0 4px 9px 0 rgba(0,0,0,0.1);
 }
 
 

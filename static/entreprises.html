@@ -5,6 +5,7 @@
     <link rel="icon" href="favicon.png" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="google-signin-client_id" content="86515575791-2qr4ukigk6qrjcotvqp5u04l60k67k4b.apps.googleusercontent.com">
     <title>Entreprises</title>
@@ -27,7 +28,8 @@
     <!--Barre de navigation-->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html"><img id ="logo" src="./images/tongueOnly.png"/>Sans langue de boîte</a>
+        <a class="navbar-brand" href="index.html">
+            <img id="logo" src="./images/tongueOnly.png" />Sans langue de boîte</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -48,8 +50,8 @@
                 </li>
             </ul>
             <form class="form-inline my-1 flex-nowrap">
-                <input class="form-control mr-2" type="search" aria-label="Rechercher">
-                <button class="btn btn-outline-success my-2" type="submit">Rechercher</button>
+                <input id ="navBarInput" class="form-control mr-2" type="search" aria-label="Rechercher">
+                <button id ="navBarSearchButton" class="btn btn-outline-success my-2" type="button" onclick="navBarSearch();">Rechercher</button>
             </form>
             <form class="form-inline my-1 ml-1"></form>
             <a id="log" role="button" class="btn btn-outline-secondary my-1 mx-1" href="./login.html">Connexion</a>
@@ -83,95 +85,940 @@
 
     <!--Contenu de la page-->
 
-    <div class="container-fluid">
-        <div class="row">
-            <div id="filters" class="col-sm-3">
-                <input id="myInput" class="form-control mr-2" type="search" aria-label="Rechercher" placeholder="Rechercher une entreprise...">
-                <h4>Secteur</h1>
-                    <div class="filter-group overflow bottom" data-type="company-category">
-                        <div class="filter ">
-                            <div class="filter-label">
-                                <span>Audit / Conseil / Juridique</span>
+    <div class="page">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2 class="mt-3">Critères de recherche</h2>
+                    <div id="filters" class="card">
+                        <input id="myInput" class="form-control mr-2" type="search" aria-label="Rechercher" placeholder="Rechercher une entreprise...">
+
+                        <div class="side-search-field">
+                            <label class="side-search-label" for="contract_term">Contrat</label>
+                            <select name="contract[]" id="contract" data-js-component-opts="{&quot;name&quot;:&quot;Multiselect&quot;,&quot;opts&quot;:{}}"
+                                multiple="multiple" class=" form-control" style="display: none;">
+                                <option value="internship">Stage</option>
+                                <option value="alternating">Alternance</option>
+                                <option value="vie">VIE</option>
+                                <option value="job">Emploi</option>
+                                <option value="thesis">Thèse</option>
+                                <option value="graduate_program">Graduate Program</option>
+                            </select>
+                            <div class="multiselect-wrapper">
+                                <button type="button" class="multiselect dropdown-toggle multiselect-toggle" data-toggle="dropdown" title="Aucune sélection">
+                                    <span class="multiselect-selected-text">Aucune sélection</span>
+                                    <b class="caret"></b>
+                                </button>
+                                <ul class="multiselect-container dropdown-menu">
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="internship"> Stage</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="alternating"> Alternance</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="vie"> VIE</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="job"> Emploi</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="thesis"> Thèse</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="graduate_program"> Graduate Program</label>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="arrow"></div>
+                        </div>
+                        <div class="side-search-field">
+                            <label class="side-search-label" for="position_category_term">Fonction</label>
+                            <select name="position_category_term[]" id="position_category_term" data-js-component-opts="{&quot;name&quot;:&quot;PositionCategoriesMultiselect&quot;,&quot;opts&quot;:{&quot;blacklist&quot;:[]}}"
+                                multiple="multiple" class=" form-control" style="display: none;">
+                                <optgroup label="Business &amp; Management">
+                                    <option value="achats">Achats</option>
+                                    <option value="commercial-business-development">Commercial &amp; Business Development</option>
+                                    <option value="communication-rp-evenementiel">Communication, RP &amp; Evénementiel</option>
+                                    <option value="management-conseil-strategie">Management, Conseil &amp; Stratégie</option>
+                                    <option value="marketing-webmarketing">Marketing &amp; Webmarketing</option>
+                                    <option value="service-relation-clients">Service &amp; Relation clients</option>
+                                </optgroup>
+                                <optgroup label="Finance">
+                                    <option value="actuariat">Actuariat</option>
+                                    <option value="audit">Audit</option>
+                                    <option value="controle-de-gestion-comptabilite">Contrôle de Gestion &amp; Comptabilité</option>
+                                    <option value="economie">Economie</option>
+                                    <option value="finance-d-entreprise">Finance d'entreprise</option>
+                                    <option value="finance-de-marche">Finance de marché</option>
+                                    <option value="gestion-d-actifs">Gestion d'actifs</option>
+                                </optgroup>
+                                <optgroup label="Admin, RH &amp; Juridique">
+                                    <option value="administratif">Administratif</option>
+                                    <option value="droit-des-affaires">Droit des affaires</option>
+                                    <option value="droit-social">Droit social</option>
+                                    <option value="fiscalite">Fiscalité</option>
+                                    <option value="ressources-humaines">Ressources Humaines</option>
+                                </optgroup>
+                                <optgroup label="IT &amp; Digital">
+                                    <option value="developpement-informatique">Développement Informatique</option>
+                                    <option value="electronique-traitement-du-signal">Electronique &amp; Traitement du signal</option>
+                                    <option value="gestion-de-projet-it-product">Gestion de projet IT &amp; Product</option>
+                                    <option value="infra-reseaux-telecoms">Infra, Réseaux &amp; Télécoms</option>
+                                    <option value="webdesign-ergonomie">Webdesign &amp; Ergonomie</option>
+                                </optgroup>
+                                <optgroup label="Sciences, Ingénierie &amp; R&amp;D">
+                                    <option value="agronomie-biologie">Agronomie &amp; Biologie</option>
+                                    <option value="architecture-urbanisme">Architecture &amp; Urbanisme</option>
+                                    <option value="chimie-procedes">Chimie &amp; Procédés</option>
+                                    <option value="energie-materiaux-mecanique">Energie, Matériaux &amp; Mécanique</option>
+                                    <option value="environnement">Environnement</option>
+                                    <option value="genie-civil-structures">Génie Civil &amp; Structures</option>
+                                    <option value="genie-industriel-conception">Génie Industriel &amp; Conception</option>
+                                    <option value="statistiques-data-math-app">Statistiques, Data &amp; Math App</option>
+                                </optgroup>
+                                <optgroup label="Production &amp; Logistique">
+                                    <option value="logistique-supply-chain">Logistique &amp; Supply Chain</option>
+                                    <option value="production-exploitation">Production &amp; Exploitation</option>
+                                    <option value="qualite-maintenance">Qualité &amp; Maintenance</option>
+                                    <option value="travaux-chantier">Travaux &amp; Chantier</option>
+                                </optgroup>
+                                <optgroup label="Création &amp; Sciences Humaines">
+                                    <option value="audiovisuel">Audiovisuel</option>
+                                    <option value="design-creation">Design &amp; Création</option>
+                                    <option value="journalisme-edition">Journalisme &amp; Édition</option>
+                                </optgroup>
+                            </select>
+                            <div class="multiselect-wrapper">
+                                <button type="button" class="multiselect dropdown-toggle multiselect-toggle form-control" data-toggle="dropdown" title="Aucune sélection">
+                                    <span class="multiselect-selected-text">Aucune sélection</span>
+                                    <b class="caret"></b>
+                                </button>
+                                <ul class="multiselect-container dropdown-menu">
+                                    <li class="multiselect-item multiselect-group --parent">
+                                        <label>Business &amp; Management</label>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="achats"> Achats</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="commercial-business-development"> Commercial &amp; Business Development</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="communication-rp-evenementiel"> Communication, RP &amp; Evénementiel</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="management-conseil-strategie"> Management, Conseil &amp; Stratégie</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="marketing-webmarketing"> Marketing &amp; Webmarketing</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="service-relation-clients"> Service &amp; Relation clients</label>
+                                        </a>
+                                    </li>
+                                    <li class="multiselect-item multiselect-group --parent">
+                                        <label>Finance</label>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="actuariat"> Actuariat</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="audit"> Audit</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="controle-de-gestion-comptabilite"> Contrôle de Gestion &amp; Comptabilité</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="economie"> Economie</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="finance-d-entreprise"> Finance d'entreprise</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="finance-de-marche"> Finance de marché</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="gestion-d-actifs"> Gestion d'actifs</label>
+                                        </a>
+                                    </li>
+                                    <li class="multiselect-item multiselect-group --parent">
+                                        <label>Admin, RH &amp; Juridique</label>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="administratif"> Administratif</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="droit-des-affaires"> Droit des affaires</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="droit-social"> Droit social</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="fiscalite"> Fiscalité</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="ressources-humaines"> Ressources Humaines</label>
+                                        </a>
+                                    </li>
+                                    <li class="multiselect-item multiselect-group --parent">
+                                        <label>IT &amp; Digital</label>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="developpement-informatique"> Développement Informatique</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="electronique-traitement-du-signal"> Electronique &amp; Traitement du signal</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="gestion-de-projet-it-product"> Gestion de projet IT &amp; Product</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="infra-reseaux-telecoms"> Infra, Réseaux &amp; Télécoms</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="webdesign-ergonomie"> Webdesign &amp; Ergonomie</label>
+                                        </a>
+                                    </li>
+                                    <li class="multiselect-item multiselect-group --parent">
+                                        <label>Sciences, Ingénierie &amp; R&amp;D</label>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="agronomie-biologie"> Agronomie &amp; Biologie</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="architecture-urbanisme"> Architecture &amp; Urbanisme</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="chimie-procedes"> Chimie &amp; Procédés</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="energie-materiaux-mecanique"> Energie, Matériaux &amp; Mécanique</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="environnement"> Environnement</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="genie-civil-structures"> Génie Civil &amp; Structures</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="genie-industriel-conception"> Génie Industriel &amp; Conception</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="statistiques-data-math-app"> Statistiques, Data &amp; Math App</label>
+                                        </a>
+                                    </li>
+                                    <li class="multiselect-item multiselect-group --parent">
+                                        <label>Production &amp; Logistique</label>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="logistique-supply-chain"> Logistique &amp; Supply Chain</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="production-exploitation"> Production &amp; Exploitation</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="qualite-maintenance"> Qualité &amp; Maintenance</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="travaux-chantier"> Travaux &amp; Chantier</label>
+                                        </a>
+                                    </li>
+                                    <li class="multiselect-item multiselect-group --parent">
+                                        <label>Création &amp; Sciences Humaines</label>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="audiovisuel"> Audiovisuel</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="design-creation"> Design &amp; Création</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="journalisme-edition"> Journalisme &amp; Édition</label>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="side-search-field">
+                            <label class="side-search-label" for="query">Mots-clés</label>
+                            <input type="text" name="query" id="query" placeholder="Compétences, poste ..." class="form-control">
+                        </div>
+                        <div class="side-search-field">
+                            <label class="side-search-label" for="location">Où</label>
+                            <div class="bootstrap-tagsinput location_tags">
+                                <input type="text" placeholder="Pays, région, ville..." class="form-control" style="" autocomplete="off">
+                            </div>
+                            <input type="text" name="loc" id="gmaps-input-city" data-js-component-opts="{&quot;name&quot;:&quot;GmapsAutocomplete&quot;,&quot;opts&quot;:{&quot;field_name&quot;:&quot;locations&quot;,&quot;value&quot;:null}}"
+                                placeholder="Pays, région, ville..." class="form-control" style="display: none;">
+                            <div style="display:none;"></div>
+                        </div>
+                        <div class="side-search-field inline-checkbox">
+                            <label for="abroad">
+                                <input type="checkbox" name="abroad" id="abroad" value="1">Uniquement les offres à l'étranger</label>
+                        </div>
+                        <div class="side-search-field">
+                            <label class="side-search-label" for="business_type">Type d'entreprise</label>
+                            <select name="business_type[]" id="business_type" data-js-component-opts="{&quot;name&quot;:&quot;Multiselect&quot;,&quot;opts&quot;:{}}"
+                                multiple="multiple" class="form-control" style="display: none;">
+                                <option value="0">Grande entreprise</option>
+                                <option value="2">PME</option>
+                                <option value="1">Start-up</option>
+                                <option value="3">Association / Institution publique / Laboratoire</option>
+                            </select>
+                            <div class="multiselect-wrapper">
+                                <button type="button" class="multiselect dropdown-toggle multiselect-toggle" data-toggle="dropdown" title="Aucune sélection">
+                                    <span class="multiselect-selected-text">Aucune sélection</span>
+                                    <b class="caret"></b>
+                                </button>
+                                <ul class="multiselect-container dropdown-menu">
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="0"> Grande entreprise</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="2"> PME</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="1"> Start-up</label>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a tabindex="0">
+                                            <label class="checkbox">
+                                                <input type="checkbox" value="3"> Association / Institution publique / Laboratoire</label>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="advanced-search">
+                            <div class="side-search-field">
+                                <label class="side-search-label" for="contract_duration">Durée</label>
+                                <div data-react-class="DoubleSliderInput" data-react-props="{&quot;name_min&quot;:&quot;contract_duration_min&quot;,&quot;name_max&quot;:&quot;contract_duration_max&quot;,&quot;value_min&quot;:null,&quot;value_max&quot;:null,&quot;values&quot;:[1,2,3,4,5,6,9,12,18,24,30,36],&quot;include_blanks&quot;:true,&quot;i18n&quot;:{&quot;all&quot;:&quot;Tout&quot;,&quot;at_least&quot;:&quot;Au moins %{min} mois&quot;,&quot;between&quot;:&quot;De %{min} à %{max} mois&quot;,&quot;exactly&quot;:&quot;%{val} mois&quot;,&quot;up_to&quot;:&quot;Jusqu'à %{max} mois&quot;}}">
+                                    <div data-reactroot="" data-reactid="1" data-react-checksum="722439097">
+                                        <div class="slider slider-horizontal" data-reactid="2">
+                                            <div class="slider-track" data-reactid="3">
+                                                <div class="slider-track-low" style="left:0px;width:0%;" data-reactid="4"></div>
+                                                <div class="slider-selection" style="left:0%;width:100%;" data-reactid="5"></div>
+                                                <div class="slider-track-high" style="right:0px;width:0%;" data-reactid="6"></div>
+                                                <div class="slider-track-low slider-forbidden" style="left:0px;width:0%;" data-reactid="7"></div>
+                                                <div class="slider-track-high slider-forbidden" style="right:0px;width:0%;" data-reactid="8"></div>
+                                                <div class="slider-handles-container" data-reactid="9">
+                                                    <div class="slider-handle min-slider-handle round" style="left:0%;" data-reactid="10"></div>
+                                                    <div class="slider-handle max-slider-handle round" style="left:100%;" data-reactid="11"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br data-reactid="12">
+                                        <div class="text-muted" data-reactid="13">Tout</div>
+                                        <input type="hidden" name="contract_duration_min" value="" data-reactid="14">
+                                        <input type="hidden" name="contract_duration_max" value="" data-reactid="15">
+                                        <span style="display:none;" id="double-slider-input-port" data-reactid="16"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="side-search-field">
+                                <label class="side-search-label" for="start_date">Début</label>
+                                <select name="start_date" id="start_date" class="form-control">
+                                    <option value=""></option>
+                                    <option value="asap">Dès que possible</option>
+                                    <option value="2018-04-01">Avril 2018</option>
+                                    <option value="2018-05-01">Mai 2018</option>
+                                    <option value="2018-06-01">juin 2018</option>
+                                    <option value="2018-07-01">Juillet 2018</option>
+                                    <option value="2018-08-01">Août 2018</option>
+                                    <option value="2018-09-01">Septembre 2018</option>
+                                    <option value="2018-10-01">Octobre 2018</option>
+                                    <option value="2018-11-01">Novembre 2018</option>
+                                    <option value="2018-12-01">Décembre 2018</option>
+                                    <option value="2019-01-01">Janvier 2019</option>
+                                    <option value="2019-02-01">Février 2019</option>
+                                    <option value="2019-03-01">Mars 2019</option>
+                                    <option value="2019-04-01">Avril 2019</option>
+                                    <option value="2019-05-01">Mai 2019</option>
+                                    <option value="2019-06-01">juin 2019</option>
+                                </select>
+                            </div>
+                            <div class="side-search-field">
+                                <label class="side-search-label" for="company_category">Secteurs</label>
+                                <select name="company_category[]" id="company_category" data-js-component-opts="{&quot;name&quot;:&quot;Multiselect&quot;,&quot;opts&quot;:{}}"
+                                    multiple="multiple" class=" form-control" style="display: none;">
+                                    <optgroup label="Audit / Conseil / Juridique">
+                                        <option value="15">Audit</option>
+                                        <option value="17">Cabinets d'avocats</option>
+                                        <option value="16">Conseil</option>
+                                        <option value="51">Conseil en strategie</option>
+                                    </optgroup>
+                                    <optgroup label="BTP / Immobilier / Urbanisme">
+                                        <option value="54">Architecture</option>
+                                        <option value="21">BTP / Urbanisme</option>
+                                        <option value="20">Immobilier</option>
+                                    </optgroup>
+                                    <optgroup label="Banque / Finance / Assurance">
+                                        <option value="19">Assurance</option>
+                                        <option value="18">Banque / Finance</option>
+                                    </optgroup>
+                                    <optgroup label="Distribution / Grande conso / Luxe">
+                                        <option value="23">Distribution</option>
+                                        <option value="24">Grande conso</option>
+                                        <option value="22">Luxe</option>
+                                    </optgroup>
+                                    <optgroup label="Energie / Environnement / Utilities">
+                                        <option value="25">Energie / Utilities</option>
+                                        <option value="26">Environnement</option>
+                                    </optgroup>
+                                    <optgroup label="Industrie / Agro / Chimie">
+                                        <option value="52">Agriculture</option>
+                                        <option value="27">Agroalimentaire</option>
+                                        <option value="29">Automobile</option>
+                                        <option value="34">Autres industries</option>
+                                        <option value="28">Aéronautique</option>
+                                        <option value="30">Chimie</option>
+                                        <option value="31">Défense</option>
+                                        <option value="32">Electronique</option>
+                                        <option value="55">Maritime</option>
+                                        <option value="33">Matériaux</option>
+                                    </optgroup>
+                                    <optgroup label="Informatique / Télécoms">
+                                        <option value="35">SSII / Informatique</option>
+                                        <option value="36">Télécoms</option>
+                                    </optgroup>
+                                    <optgroup label="Ingénierie / Bureau d'études">
+                                        <option value="37">Bureau d'études</option>
+                                        <option value="38">Ingénierie</option>
+                                    </optgroup>
+                                    <optgroup label="Media / Web / Edition">
+                                        <option value="41">Communication / Publicité</option>
+                                        <option value="40">Media / Edition</option>
+                                        <option value="39">Web / E-commerce</option>
+                                    </optgroup>
+                                    <optgroup label="Médecine / Pharma / Santé / Cosmétique">
+                                        <option value="42">Cosmétique</option>
+                                        <option value="43">Médecine / Pharmacie / Santé</option>
+                                    </optgroup>
+                                    <optgroup label="Public / Social / ONG / Education">
+                                        <option value="44">Public / Education</option>
+                                        <option value="53">Social / ONG</option>
+                                    </optgroup>
+                                    <optgroup label="Services / Transport">
+                                        <option value="48">Autres services aux entreprises et aux particuliers</option>
+                                        <option value="45">Recrutement / Formation</option>
+                                        <option value="46">Restauration collective</option>
+                                        <option value="47">Transport / Logistique</option>
+                                    </optgroup>
+                                    <optgroup label="Tourisme / Loisir / Culture">
+                                        <option value="50">Loisirs / Culture / Sports</option>
+                                        <option value="49">Tourisme / Hotellerie</option>
+                                    </optgroup>
+                                </select>
+                                <div class="multiselect-wrapper">
+                                    <button type="button" class="multiselect dropdown-toggle multiselect-toggle" data-toggle="dropdown" title="Aucune sélection">
+                                        <span class="multiselect-selected-text">Aucune sélection</span>
+                                        <b class="caret"></b>
+                                    </button>
+                                    <ul class="multiselect-container dropdown-menu">
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>Audit / Conseil / Juridique</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="15"> Audit</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="17"> Cabinets d'avocats</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="16"> Conseil</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="51"> Conseil en strategie</label>
+                                            </a>
+                                        </li>
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>BTP / Immobilier / Urbanisme</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="54"> Architecture</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="21"> BTP / Urbanisme</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="20"> Immobilier</label>
+                                            </a>
+                                        </li>
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>Banque / Finance / Assurance</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="19"> Assurance</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="18"> Banque / Finance</label>
+                                            </a>
+                                        </li>
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>Distribution / Grande conso / Luxe</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="23"> Distribution</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="24"> Grande conso</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="22"> Luxe</label>
+                                            </a>
+                                        </li>
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>Energie / Environnement / Utilities</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="25"> Energie / Utilities</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="26"> Environnement</label>
+                                            </a>
+                                        </li>
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>Industrie / Agro / Chimie</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="52"> Agriculture</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="27"> Agroalimentaire</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="29"> Automobile</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="34"> Autres industries</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="28"> Aéronautique</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="30"> Chimie</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="31"> Défense</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="32"> Electronique</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="55"> Maritime</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="33"> Matériaux</label>
+                                            </a>
+                                        </li>
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>Informatique / Télécoms</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="35"> SSII / Informatique</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="36"> Télécoms</label>
+                                            </a>
+                                        </li>
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>Ingénierie / Bureau d'études</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="37"> Bureau d'études</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="38"> Ingénierie</label>
+                                            </a>
+                                        </li>
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>Media / Web / Edition</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="41"> Communication / Publicité</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="40"> Media / Edition</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="39"> Web / E-commerce</label>
+                                            </a>
+                                        </li>
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>Médecine / Pharma / Santé / Cosmétique</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="42"> Cosmétique</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="43"> Médecine / Pharmacie / Santé</label>
+                                            </a>
+                                        </li>
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>Public / Social / ONG / Education</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="44"> Public / Education</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="53"> Social / ONG</label>
+                                            </a>
+                                        </li>
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>Services / Transport</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="48"> Autres services aux entreprises et aux particuliers</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="45"> Recrutement / Formation</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="46"> Restauration collective</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="47"> Transport / Logistique</label>
+                                            </a>
+                                        </li>
+                                        <li class="multiselect-item multiselect-group">
+                                            <label>Tourisme / Loisir / Culture</label>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="50"> Loisirs / Culture / Sports</label>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a tabindex="0">
+                                                <label class="checkbox">
+                                                    <input type="checkbox" value="49"> Tourisme / Hotellerie</label>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="side-search-field">
+                            <label class="side-search-label" for="company_name">Entreprise</label>
+                            <input type="text" name="company_name" id="company_name" class="form-control">
                         </div>
                     </div>
-                    <div>
-                        <h4>Type d'entreprise</h1>
-
+                    <footer class="txt-color side-search-footer" id="toggle-advanced-search">
+                        <i class="fa fa-angle-down"></i>
+                        <div class="detailed-search">Recherche détaillée</div>
+                        <div class="simple-search">Recherche simple</div>
+                    </footer>
+                    <div class="submit-field">
+                        <input type="submit" value="Rechercher" class="btn btn-secondary">
                     </div>
-                    <div>
-                        <h4>Fonction</h1>
-
-                    </div>
-            </div>
-            <div id="entreprises" class="col-sm-9 d-flex flex-wrap">
-                <!-- <div class="card-columns"> -->
-                <div class="card company">
-                    <div class="card-top text-nowrap">
-                        <img class="card-img-top" src="//logo.clearbit.com/starbucks.ca" alt="Card image cap" onerror="imgError(this);">
-                        <h5 class="card-title">Starbucks</h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">Chaîne de cafés</p>
-                    </div>
-                    <p class="card-footer">
-                        <small class="text-muted">2 avis</small>
-                    </p>
                 </div>
-                <div class="card company">
-                    <div class="card-top text-nowrap">
-                        <img class="card-img-top" src="//logo.clearbit.com/facebook.com" alt="Card image cap" onerror="imgError(this);">
-                        <h5 class="card-title">Facebook</h5>
+                <div id="entreprises" class="col-sm-9 flex-wrap">
+                    <!-- <div class="card-columns"> -->
+                    <div class="card company">
+                        <div class="card-top text-nowrap">
+                            <img class="card-img-top" src="//logo.clearbit.com/starbucks.ca" alt="Card image cap" onerror="imgError(this);">
+                            <h5 class="card-title">Starbucks</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Chaîne de cafés</p>
+                        </div>
+                        <p class="card-footer">
+                            <small class="text-muted">2 avis</small>
+                        </p>
                     </div>
-                    <div class="card-body">
-                        <p class="card-text">Réseau social</p>
+                    <div class="card company">
+                        <div class="card-top text-nowrap">
+                            <img class="card-img-top" src="//logo.clearbit.com/facebook.com" alt="Card image cap" onerror="imgError(this);">
+                            <h5 class="card-title">Facebook</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Réseau social</p>
+                        </div>
+                        <p class="card-footer">
+                            <small class="text-muted">1 avis</small>
+                        </p>
                     </div>
-                    <p class="card-footer">
-                        <small class="text-muted">1 avis</small>
-                    </p>
+                    <div class="card company">
+                        <div class="card-top text-nowrap">
+                            <img class="card-img-top" src="//logo.clearbit.com/linkedin.com" alt="Card image cap" onerror="imgError(this);">
+                            <h5 class="card-title">LinkedIn</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Réseau social</p>
+                        </div>
+                        <p class="card-footer">
+                            <small class="text-muted">2 avis</small>
+                        </p>
+                    </div>
+                    <div class="card company">
+                        <div class="card-top text-nowrap">
+                            <img class="card-img-top" src="//logo.clearbit.com/carrefour.com" alt="Card image cap" onerror="imgError(this);">
+                            <h5 class="card-title">Carrefour</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Chaîne de supermarchés</p>
+                        </div>
+                        <p class="card-footer">
+                            <small class="text-muted">1 avis</small>
+                        </p>
+                    </div>
+                    <div class="card company">
+                        <div class="card-top text-nowrap">
+                            <img class="card-img-top" src="//logo.clearbit.com/danone.fr" alt="Card image cap" onerror="imgError(this);">
+                            <h5 class="card-title">Danone</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Agroalimentaire</p>
+                        </div>
+                        <p class="card-footer">
+                            <small class="text-muted">3 avis</small>
+                        </p>
+                    </div>
+                    <!--  </div>-->
                 </div>
-                <div class="card company">
-                    <div class="card-top text-nowrap">
-                        <img class="card-img-top" src="//logo.clearbit.com/linkedin.com" alt="Card image cap" onerror="imgError(this);">
-                        <h5 class="card-title">LinkedIn</h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">Réseau social</p>
-                    </div>
-                    <p class="card-footer">
-                        <small class="text-muted">2 avis</small>
-                    </p>
-                </div>
-                <div class="card company">
-                    <div class="card-top text-nowrap">
-                        <img class="card-img-top" src="//logo.clearbit.com/carrefour.com" alt="Card image cap" onerror="imgError(this);">
-                        <h5 class="card-title">Carrefour</h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">Chaîne de supermarchés</p>
-                    </div>
-                    <p class="card-footer">
-                        <small class="text-muted">1 avis</small>
-                    </p>
-                </div>
-                <div class="card company">
-                    <div class="card-top text-nowrap">
-                        <img class="card-img-top" src="//logo.clearbit.com/danone.fr" alt="Card image cap" onerror="imgError(this);">
-                        <h5 class="card-title">Danone</h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">Agroalimentaire</p>
-                    </div>
-                    <p class="card-footer">
-                        <small class="text-muted">3 avis</small>
-                    </p>
-                </div>
-                <!--  </div>-->
             </div>
         </div>
     </div>
-
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script>startApp();</script>

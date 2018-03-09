@@ -5,6 +5,8 @@ if (sessionStorage.getItem('user') == null) { // Si non connecté
 } else { // Si connecté
     user = JSON.parse(sessionStorage.getItem('user'));
 }
+var slider = 0;
+var output = 0;
 
 $("#navLoginCard").toggle();
 $("#navLoginCard").removeClass("invisible");
@@ -39,16 +41,34 @@ function init() {
     });
 }
 
+// Lancement de la recherche si on est sur la page entreprises et qu'il y a une recherche à lancer...
+function initSearch() {
+    console.log("initSearch executed");
+    if (sessionStorage.getItem('searchValue') !== null) {
+        searchValue = sessionStorage.getItem('searchValue');
+        document.getElementById("myInput").value = searchValue;
+        console.log("myInput value set!");
+        sessionStorage.removeItem('searchValue');
+        console.log("Recherche : " + searchValue);
+        $(".company").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(searchValue) > -1)
+        });
+    }
+}
+if (window.location.href.indexOf('entreprises.html') > 0){
+    initSearch();
+}
+
 // BARRE DE NAVIGATION
 
 // Si on clique en dehors du navLoginCard, on cache le navLoginCard
 $("html").click(function (e) {
     if (e.target.id != "navLoginCard" && e.target.id != "nav-profile-img") {
-        console.log("You clicked outside navLoginCard and navProfileImg");
+        //console.log("You clicked outside navLoginCard and navProfileImg");
         $("#navLoginCard").toggle(false);
         console.log(e.target.id);
     } else {
-        console.log('You clicked inside navLoginCard');
+        //console.log('You clicked inside navLoginCard');
     }
 });
 
@@ -187,13 +207,27 @@ $(document).ready(function () {
     });
 });
 
+// Navbar search
+var navBarSearchButton = document.getElementById("navBarSearchButton")
+function navBarSearch() {
+    var itemToSearch= document.getElementById("navBarInput").value;
+    console.log("itemToSearch= "+ itemToSearch);
+    sessionStorage.setItem("searchValue", itemToSearch);
+    console.log("sessionStorage.searchValue= "+ sessionStorage.searchValue);
+    console.log("About to redirect...")
+    window.location.href = "entreprises.html";
+}
+
 // SLIDERS
 
-var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value; // Display the default slider value
 
-// Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-    output.innerHTML = this.value;
+if (window.location.href.indexOf('avis.html') > 0) { // Si on est sur la page du formulaire d'avis
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value; // Display the default slider value
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
 }
+// Update the current slider value (each time you drag the slider handle)
+

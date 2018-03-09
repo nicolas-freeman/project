@@ -28,6 +28,12 @@ function checkIfLoggedIn() {
     }
 }
 
+if (window.location.href.search("recherche=") > 0){
+    sessionStorage.setItem("searchValue", window.location.href.substr(window.location.href.search("recherche=")+10,window.location.href.length)) // Tout ce qui est après "?recherche=" est enregistré dans searchValue 
+    window.location.href = 'entreprises.html';  //Redirection vers la page entreprises
+}
+
+
 checkIfLoggedIn();
 
 function init() {
@@ -55,7 +61,7 @@ function initSearch() {
         });
     }
 }
-if (window.location.href.indexOf('entreprises.html') > 0){
+if (window.location.href.indexOf('entreprises.html') > 0) {
     initSearch();
 }
 
@@ -208,12 +214,13 @@ $(document).ready(function () {
 });
 
 // Navbar search
+
 var navBarSearchButton = document.getElementById("navBarSearchButton")
 function navBarSearch() {
-    var itemToSearch= document.getElementById("navBarInput").value;
-    console.log("itemToSearch= "+ itemToSearch);
+    var itemToSearch = document.getElementById("navBarInput").value;
+    console.log("itemToSearch= " + itemToSearch);
     sessionStorage.setItem("searchValue", itemToSearch);
-    console.log("sessionStorage.searchValue= "+ sessionStorage.searchValue);
+    console.log("sessionStorage.searchValue= " + sessionStorage.searchValue);
     console.log("About to redirect...")
     window.location.href = "entreprises.html";
 }
@@ -231,3 +238,27 @@ if (window.location.href.indexOf('avis.html') > 0) { // Si on est sur la page du
 }
 // Update the current slider value (each time you drag the slider handle)
 
+// REQUÊTES
+
+//Requête de la liste des entreprises
+function request() {
+    // Ici, la requête sera émise de façon synchrone.
+    const req = new XMLHttpRequest();
+    req.open('GET', './companiesList', false);
+    req.send(null);
+    if (req.status === 200) {
+        console.log("Réponse reçue: %s", req.responseText);
+//       sessionStorage.setItem("entreprises", req.responseText);
+       var parsed = JSON.parse(req.responseText);
+       console.log("parsed = "+parsed);
+       console.log("parsed1 = "+parsed[0]);
+       console.log("parsedName = "+parsed.nom);
+       parsed.forEach(entreprise => {
+           console.log("element :"+entreprise);
+           console.log("Code HTML de l'élément : "+ "<div class='card company'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/"+ entreprise.nom.toLowerCase() +".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>"+entreprise.nom+"</h5></div><div class='card-body'><p class='card-text'>"+entreprise.secteur+"</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>");
+           document.getElementById("reponse").innerHTML=document.getElementById("reponse").innerHTML+"<div class='card company'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/"+ entreprise.nom.toLowerCase() +".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>"+entreprise.nom+"</h5></div><div class='card-body'><p class='card-text'>"+entreprise.secteur+"</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>"
+       });
+    } else {
+        console.log("Statut de la réponse: %d (%s)", req.status, req.statusText);
+    }
+}

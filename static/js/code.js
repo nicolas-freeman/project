@@ -241,7 +241,7 @@ if (window.location.href.indexOf('avis.html') > 0) { // Si on est sur la page du
 // REQUÊTES
 
 //Requête de la liste des entreprises
-function request() {
+function requestCompanies() {
     // Ici, la requête sera émise de façon synchrone.
     const req = new XMLHttpRequest();
     req.open('GET', './companiesList', false);
@@ -253,12 +253,17 @@ function request() {
        console.log("parsed = "+parsed);
        console.log("parsed1 = "+parsed[0]);
        console.log("parsedName = "+parsed.nom);
+       var totalToAdd;
        parsed.forEach(entreprise => {
            console.log("element :"+entreprise);
-           console.log("Code HTML de l'élément : "+ "<div class='card company'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/"+ entreprise.nom.toLowerCase() +".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>"+entreprise.nom+"</h5></div><div class='card-body'><p class='card-text'>"+entreprise.secteur+"</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>");
-           document.getElementById("reponse").innerHTML=document.getElementById("reponse").innerHTML+"<div class='card company'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/"+ entreprise.nom.toLowerCase() +".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>"+entreprise.nom+"</h5></div><div class='card-body'><p class='card-text'>"+entreprise.secteur+"</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>"
-       });
+           var elementToAdd = "<div class='card company'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/"+ entreprise.nom.toLowerCase() +".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>"+entreprise.nom+"</h5></div><div class='card-body'><p class='card-text'>"+entreprise.secteur+"</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>"
+           console.log ("elementToAdd =" + elementToAdd);
+            totalToAdd= (totalToAdd==undefined) ? elementToAdd : totalToAdd + elementToAdd; 
+           console.log ("totalToAdd =" + totalToAdd);
+        });
+       document.getElementById("entreprises").innerHTML=totalToAdd;
     } else {
         console.log("Statut de la réponse: %d (%s)", req.status, req.statusText);
+        document.getElementById("reponse").innerHTML="";
     }
 }

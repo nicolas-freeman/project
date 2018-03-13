@@ -48,6 +48,11 @@ h2{
     font-family: "Open sans", 'Josefin Sans', sans-serif;
     font-size: 18px;
 }
+
+input, select, textarea{
+    margin-bottom:5px;
+    margin-top:5px;
+}
   
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -390,6 +395,12 @@ span.label {
     margin-top: 20px
 }
 
+/* PAGE AVIS */
+
+.titreAvis{
+    margin-top: 25px;
+}
+
 /* Slider */
 
 .slider {
@@ -452,16 +463,11 @@ span.label {
 }
 
 .bodyforms { 
-width: 80%;
-padding-top: 8px;
+width: 100%;
 }
 
 label {
 width: 200px;
-}
-
-.required {
-    width: 380px
 }
 
 td{
@@ -476,3 +482,4 @@ td{
     height: 140px;
     margin-bottom: 10px;
 }
+

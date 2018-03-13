@@ -24,7 +24,9 @@ app.get('/companiesList', function (req, res) {
   console.log("J'ai reçu une requête !");
 
   MongoClient.connect(url, function (err, client) {
-    if (err) throw err;
+    if (err) {
+      return res.status(500).send(err);
+    }
     console.log("Connecté à la base de données située à l'adresse " + url);
     var db = client.db('sanslanguedeboite');
 

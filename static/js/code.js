@@ -264,6 +264,6 @@ function requestCompanies() {
        document.getElementById("entreprises").innerHTML=totalToAdd;
     } else {
         console.log("Statut de la réponse: %d (%s)", req.status, req.statusText);
-        document.getElementById("entreprises").innerHTML="<div class='alert alert-danger'> Erreur lors de la connexion à la base de données !</div>";
+        document.getElementById("entreprises").innerHTML="<div class='alert alert-danger'> Erreur lors de la connexion à la base de données !<br><a id='dbErrorLink' onclick='requestCompanies();'>Cliquez ici pour réessayer</a></div>";
     }
 }

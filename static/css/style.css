@@ -53,6 +53,14 @@ input, select, textarea{
     margin-bottom:5px;
     margin-top:5px;
 }
+
+a:hover{
+    cursor: pointer;
+}
+
+#dbErrorLink{
+    text-decoration: underline;
+}
   
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */

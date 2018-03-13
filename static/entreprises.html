@@ -50,8 +50,8 @@
                 </li>
             </ul>
             <form class="form-inline my-1 flex-nowrap">
-                <input id ="navBarInput" class="form-control mr-2" type="search" aria-label="Rechercher" name="recherche">
-                <button id ="navBarSearchButton" class="btn btn-outline-success my-2" type="submit" onclick="navBarSearch();">Rechercher</button>
+                <input id="navBarInput" class="form-control mr-2" type="search" aria-label="Rechercher" name="recherche">
+                <button id="navBarSearchButton" class="btn btn-outline-success my-2" type="submit" onclick="navBarSearch();">Rechercher</button>
             </form>
             <form class="form-inline my-1 ml-1"></form>
             <a id="log" role="button" class="btn btn-outline-secondary my-1 mx-1" href="./login.html">Connexion</a>
@@ -148,6 +148,7 @@
                                     </li>
                                 </ul>
                             </div>
+
                         </div>
                         <div class="side-search-field">
                             <label class="side-search-label" for="position_category_term">Fonction</label>
@@ -942,18 +943,19 @@
                             <label class="side-search-label" for="company_name">Entreprise</label>
                             <input type="text" name="company_name" id="company_name" class="form-control">
                         </div>
-                    </div>
-                    <footer class="txt-color side-search-footer" id="toggle-advanced-search">
-                        <i class="fa fa-angle-down"></i>
-                        <div class="detailed-search">Recherche détaillée</div>
-                        <div class="simple-search">Recherche simple</div>
-                    </footer>
-                    <div class="submit-field">
-                        <input type="submit" value="Rechercher" class="btn btn-secondary">
+
+                        <footer class="txt-color side-search-footer" id="toggle-advanced-search">
+                            <i class="fa fa-angle-down"></i>
+                            <div class="detailed-search">Recherche détaillée</div>
+                            <div class="simple-search">Recherche simple</div>
+                        </footer>
+                        <div class="submit-field">
+                            <input type="submit" value="Rechercher" class="btn btn-secondary">
+                        </div>
                     </div>
                 </div>
                 <div id="entreprises" class="col-sm-9 flex-wrap">
-                        <div class="loader"></div>
+                    <div class='loader'></div>
                 </div>
             </div>
         </div>

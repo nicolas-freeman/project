@@ -86,10 +86,10 @@
     <div class="row">
             <div class="col-md-8"><br>
                <p> <span class="nmbr">1</span>  <b>Informations de base</b></p>
-               <form>
+               <form class="bodyforms">
                     <div class="form-group row">
-                            <label for="Entreprise" class="col-sm-2 col-form-label">Entreprise</label>
-                            <div class="col-sm-10">
+                            <label for="Entreprise" class="col-sm-4 col-form-label">Entreprise</label>
+                            <div class="col-sm-8">
                               <input type="test" class="form-control" placeholder="Exemple : BNP Paribas Real Estate">
                             </div>
                     </div>
@@ -99,10 +99,10 @@
                         <option value="">Choisissez votre secteur en cliquant ici !</option>
                             <option value="1">Acier</option><option value="9">Aéronautique / Aviation</option><option value="2">Affaires publiques / Administration</option><option value="4">Agroalimentaire/ Agriculture</option><option value="5">Architecture / Design / Art</option><option value="7">Automobile / Pneumatique</option><option value="8">Autre</option><option value="6">Banque / Finance / Assurance</option><option value="11">Cabinets d'avocats</option><option value="18">Chimie</option><option value="19">Cinéma</option><option value="21">Comptabilité / Audit</option><option value="22">Conseil</option><option value="23">Construction / Ciment / Immobilier</option><option value="24">Défense </option><option value="65">Ecologie</option><option value="25">Edition</option><option value="26">Electronique / Matériel électrique</option><option value="27">Enseignement</option><option value="29">Fitness</option><option value="64">Hotellerie / Restauration / Tourisme</option><option value="31">Informatique / Web / Jeux vidéos / Nouvelles Technologies</option><option value="32">Ingénierie</option><option value="33">Medias / Journalisme</option><option value="34">Médical / Secteur pharmaceutique</option><option value="35">Mode / Luxe / Cosmétique</option><option value="36">Musique</option><option value="40">ONG</option><option value="41">Optique</option><option value="42">Pétrole / Gaz / Energie</option><option value="43">Poste / Logitstique</option><option value="44">Publicité / Communication / RP</option><option value="45">Recherche Scientifique</option><option value="47">Recrutement</option><option value="52">Sécurité</option><option value="55">Services Collectifs</option><option value="56">Spiritueux</option><option value="57">Sport</option><option value="59">Télécom</option><option value="61">Transport</option><option value="63">Vente en détail / Distribution</option>									
                     </select>
-                    <form>
+                    <form class="bodyforms">
                             <div class="form-group row">
-                                    <label for="Poste" class="col-sm-2 col-form-label">Poste</label>
-                                    <div class="col-sm-10">
+                                    <label for="Poste" class="col-sm-4 col-form-label">Poste</label>
+                                    <div class="col-sm-8">
                                       <input type="test" class="form-control" placeholder="Exemple : Actrice dans un film pour adultes">
                                     </div>
                             </div>
@@ -115,7 +115,13 @@
                             <label for="internshiplength">Durée du stage </label>
                             <select name="internshiplength" class="required">
                                     <option value="">Combien de temps avez-vous souffert ?</option>
-                                        <option value="1 mois">1 Mois</option><option value="2 mois">2 Mois</option><option value="3 mois">3 Mois</option><option value="4 mois">4 Mois</option><option value="5 mois">5 Mois</option><option value="6 mois">6 Mois</option><option value="7 mois">7 Mois</option><option value="8 mois">8 Mois</option><option value="9 mois">9 Mois</option><option value="10 mois">10 Mois</option><option value="11 mois">11 Mois</option><option value="12 mois">12 Mois</option><option value="Plus d’un an">Plus d’un an</option>							</select>
+                                        <option value="1 mois">1 Mois</option><option value="2 mois">2 Mois</option><option value="3 mois">3 Mois</option><option value="4 mois">4 Mois</option><option value="5 mois">5 Mois</option><option value="6 mois">6 Mois</option><option value="7 mois">7 Mois</option><option value="8 mois">8 Mois</option><option value="9 mois">9 Mois</option><option value="10 mois">10 Mois</option><option value="11 mois">11 Mois</option><option value="12 mois">12 Mois</option><option value="Plus d’un an">Plus d’un an</option>							
+                                    </select>
+                                    <label for="yearofinternship">Année du stage</label>
+                                    <select name="yearofinternship" class="required">
+                                        <option value="">Année du calvaire</option>
+                                            <option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option>
+                                    </select>
             <br>
             <br>
             <br>
@@ -128,31 +134,42 @@
             <textarea name="cons" class="required" maxlength="1000" placeholder="Décrivez les points négatifs de votre stage"></textarea>
             <br>
             <label for="salary">Indemnité mensuelle brute </label>
-            <input type="text" name="salary" class="number required " value="" maxlength="5" style="background:url('images/euro.png') 80px 6px no-repeat; padding-right:30px;width:70px">
+            <input type="text" name="salary" class="number" value="" maxlength="5">
             <br>
             
-
-
-            <table>
-                    <tr>
-                        <td>Intérêt du stage</td>
-                        <td><div class="slidecontainer">
-                                <input type="range" min="1" max="20" value="10" class="slider" id="myRange">         
-                              </div> </td>
-                        <td><p><span id="demo"></span> sur 20</p></td>
-                    </tr>
-                 
-                    <tr>
-                        <td>Possibilités d’embauche à la suite du stage</td>
-                        <td><input type="range" min="1" max="20" value="10" class="slider" id="myRange"></td>
-                        <td><span id="demo"></span></td>
-                    </tr>
-                    <tr>
-                        <td>à remplir</td>
-                        <td>à remplir</td>
-                        <td>à remplir</td>
-                    </tr>
-                 </table>
+            <label for="dailyhrs">Durée moyenne d'une journée de travail</label>
+            <select name="dailyhrs" class="required">
+                <option value="">Nombre d'heures</option>
+                    <option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15 </option><option value="16">16</option><option value="17+">17+</option>							</select>
+                    
+                    <table style="width:100%">
+                        <tr>
+                            <td>Intérêt des missions proposées</td>
+                            <td>Smith</td> 
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>Perspectives de CDI suite à l'expérience</td>
+                            <td>Smith</td> 
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                          <td>Équilibre entre vie privée et vie professionnelle</td>
+                          <td>Jackson</td> 
+                          <td>94</td>
+                        </tr>
+                        <tr>
+                            <td>Locaux</td>
+                            <td>Note générale</td> 
+                            <td>94</td>
+                          </tr>
+                          <tr>
+                            <td>Eve</td>
+                            <td>Jackson</td> 
+                            <td>94</td>
+                          </tr>
+                      </table>
+            
 
             </div>
             <div class="col-md-4"><br>Votre évaluation est anonyme ! Balancez tout ce que vous avez sur le coeur ! Si votre employeur est une ordure, dites-le et ne mâchez pas vos mots.</div>

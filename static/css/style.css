@@ -431,6 +431,23 @@ span.label {
     display: inline-block;
 }
 
+.bodyforms { 
+width: 80%;
+padding-top: 8px;
+}
+
+label {
+width: 200px;
+}
+
+.required {
+    width: 380px
+}
+
+td{
+    width: 150px;
+}
+
 /* PAGE A PROPOS
 -------------------------------------------------- */
 

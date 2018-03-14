@@ -228,14 +228,47 @@ function navBarSearch() {
 // SLIDERS
 
 
-if (window.location.href.indexOf('avis.html') > 0) { // Si on est sur la page du formulaire d'avis
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value; // Display the default slider value
+if (window.location.href.indexOf('avis.html') > 0) {
+    var slider = document.getElementById("P");
+    var output = document.getElementById("DP");
+    output.innerHTML = slider.value;
     slider.oninput = function () {
-        output.innerHTML = this.value;
+        output.innerHTML= this.value;
     }
 }
+if (window.location.href.indexOf('avis.html') > 0) {
+    var sliderd = document.getElementById("D");
+    var outputd = document.getElementById("DD");
+    outputd.innerHTML = sliderd.value;
+    sliderd.oninput = function () {
+        outputd.innerHTML= this.value;
+    }
+}
+if (window.location.href.indexOf('avis.html') > 0) {
+    var slidert = document.getElementById("T");
+    var outputt = document.getElementById("DT");
+    outputt.innerHTML = slidert.value;
+    slidert.oninput = function () {
+        outputt.innerHTML= this.value;
+    }
+}
+if (window.location.href.indexOf('avis.html') > 0) {
+    var sliderq = document.getElementById("Q");
+    var outputq = document.getElementById("DQ");
+    outputq.innerHTML = sliderq.value;
+    sliderq.oninput = function () {
+        outputq.innerHTML= this.value;
+    }
+}
+if (window.location.href.indexOf('avis.html') > 0) {
+    var sliderc = document.getElementById("C");
+    var outputc = document.getElementById("DC");
+    outputc.innerHTML = sliderq.value;
+    sliderc.oninput = function () {
+        outputc.innerHTML= this.value;
+    }
+}
+
 // Update the current slider value (each time you drag the slider handle)
 
 // REQUÊTES

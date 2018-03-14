@@ -416,7 +416,7 @@ span.label {
     width: 100%;
     height: 15px;
     border-radius: 5px;   
-    background: #d3d3d3;
+    background: grey;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
@@ -437,8 +437,38 @@ span.label {
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    background: #00C29A;
+    background:#00C29A;
     cursor: pointer;
+}
+
+.slidertext{
+    color: #00C29A;
+    font-weight: bold;
+}
+/* TABLE */
+
+table {
+    width: 100%;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    vertical-align: middle;
+}
+
+.tdone {
+    width: 190px;
+}
+
+.tdtwo {
+    width: 190px;
+}
+.tdthree {
+ padding-top: 12px;
+ padding-left: 50px;
 }
 
 #row1 {
@@ -451,25 +481,7 @@ span.label {
     color: #FFFFFF;
     border-radius: 10px;
 }
-
-.slidecontainer {
-    width: 300px; /* Width of the outside container */
    
-    
-}
-.slider {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%; 
-    height: 25px;
-    background: #d3d3d3; 
-    outline: none; 
-    opacity: 0.7; 
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-    display: inline-block;
-}
-
 .bodyforms { 
 width: 100%;
 }
@@ -481,6 +493,21 @@ width: 200px;
 td{
     width: 150px;
 }
+
+/* BOUTON SOUMETTRE */
+
+#submitbutton {
+    padding-left: 220px;
+}
+
+#customizebutton {
+    background-color: #00C29A;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
 
 /* PAGE A PROPOS
 -------------------------------------------------- */

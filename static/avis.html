@@ -293,7 +293,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <textarea name="pros" class="form-control" maxlength="1000" placeholder="Décrivez les points positifs de votre stage"></textarea>
+                        <textarea name="pros" class="form-control" minlength="100" placeholder="Décrivez les points positifs de votre stage"></textarea>
                     </div>
                 </div>
 
@@ -304,7 +304,7 @@
                         </label>
                     </div>
                     <div class="col-sm-8">
-                        <textarea name="cons" class="form-control" maxlength="1000" placeholder="Décrivez les points négatifs de votre stage"></textarea>
+                        <textarea name="cons" class="form-control" minlength="100" placeholder="Décrivez les points négatifs de votre stage"></textarea>
                     </div>
                 </div>
 
@@ -345,34 +345,59 @@
                     </div>
                 </div>
 
-                <table style="width:100%">
+                <table>
                     <tr>
-                        <td>Intérêt des missions proposées</td>
-                        <td>Smith</td>
-                        <td>50</td>
+                        <td class="tdone">Intérêt des missions proposées</td>
+                        <td><input type="range" min="1" max="20" value="10" class="slider" id="P"></td>
+                        <td class="tdthree"><p class="slidertext"><span id="DP"></span> sur 20</p></td>
                     </tr>
                     <tr>
-                        <td>Perspectives de CDI suite à l'expérience</td>
-                        <td>Smith</td>
-                        <td>50</td>
+                        <td class="tdone">Perspectives de CDI suite à l'expérience</td>
+                        <td class="tdtwo"><input type="range" min="1" max="20" value="10" class="slider" id="D"></td>
+                        <td class="tdthree"><p class="slidertext"><span id="DD"></span> sur 20</p></td>
                     </tr>
                     <tr>
-                        <td>Équilibre entre vie privée et vie professionnelle</td>
-                        <td>Jackson</td>
-                        <td>94</td>
+                        <td class="tdone">Équilibre entre vie privée et vie professionnelle</td>
+                        <td class="tdtwo"><input type="range" min="1" max="20" value="10" class="slider" id="T"></td>
+                        <td class="tdthree"><p class="slidertext"><span id="DT"></span> sur 20</p></td>
                     </tr>
                     <tr>
-                        <td>Locaux</td>
-                        <td>Note générale</td>
-                        <td>94</td>
+                        <td class="tdone">Locaux</td>
+                        <td class="tdtwo"><input type="range" min="1" max="20" value="10" class="slider" id="Q"></td>
+                        <td class="tdthree"><p class="slidertext"><span id="DQ"></span> sur 20</p></td>
                     </tr>
                     <tr>
-                        <td>Eve</td>
-                        <td>Jackson</td>
-                        <td>94</td>
+                        <td class="tdone">Note générale</td>
+                        <td class="tdtwo"><input type="range" min="1" max="20" value="10" class="slider" id="C"></td>
+                        <td class="tdthree"><p class="slidertext"><span id="DC"></span> sur 20</p></td>
                     </tr>
                 </table>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label for="interview">Comment se déroule l'entretien d'embauche ?<br>
+                            <span style="font-size:0.8em;color:#999;font-style:italic">(100 caractères minimum)</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <textarea name="pros" class="form-control" minlength="100"></textarea>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <label for="recommandation">Recommanderiez-vous l'entreprise à un autre ESSEC ?<br>
+                            <span style="font-size:0.8em;color:#999;font-style:italic">(100 caractères minimum)</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-8">
+                        <textarea name="cons" class="form-control" minlength="100" placeholder="Quelques justifications bon sang !"></textarea>
+                    </div>
+                </div>
+                <div id="submitbutton">
+                    <input type="submit" value="Soumettre mon avis !" id="customizebutton">
+                </div>
             </div>
+            
             <div class="col-md-1">
 
             </div>

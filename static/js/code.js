@@ -28,8 +28,8 @@ function checkIfLoggedIn() {
     }
 }
 
-if (window.location.href.search("recherche=") > 0){
-    sessionStorage.setItem("searchValue", window.location.href.substr(window.location.href.search("recherche=")+10,window.location.href.length)) // Tout ce qui est après "?recherche=" est enregistré dans searchValue 
+if (window.location.href.search("recherche=") > 0) {
+    sessionStorage.setItem("searchValue", window.location.href.substr(window.location.href.search("recherche=") + 10, window.location.href.length)) // Tout ce qui est après "?recherche=" est enregistré dans searchValue 
     window.location.href = 'entreprises.html';  //Redirection vers la page entreprises
 }
 
@@ -84,6 +84,7 @@ $("#nav-profile-img").click(function () {
 
 // Une fois la page chargée...
 window.onload = function () {
+
     if (sessionStorage.getItem('user') == null) { // Si non connecté
         var log = document.getElementById("log");
         log.innerHTML = log.innerHTML.replace("Déconnexion", "Connexion"); // On modifie le texte du bouton 
@@ -233,15 +234,7 @@ if (window.location.href.indexOf('avis.html') > 0) {
     var output = document.getElementById("DP");
     output.innerHTML = slider.value;
     slider.oninput = function () {
-        output.innerHTML= this.value;
-    }
-}
-if (window.location.href.indexOf('avis.html') > 0) {
-    var sliderd = document.getElementById("D");
-    var outputd = document.getElementById("DD");
-    outputd.innerHTML = sliderd.value;
-    sliderd.oninput = function () {
-        outputd.innerHTML= this.value;
+        output.innerHTML = this.value;
     }
 }
 if (window.location.href.indexOf('avis.html') > 0) {
@@ -249,7 +242,7 @@ if (window.location.href.indexOf('avis.html') > 0) {
     var outputt = document.getElementById("DT");
     outputt.innerHTML = slidert.value;
     slidert.oninput = function () {
-        outputt.innerHTML= this.value;
+        outputt.innerHTML = this.value;
     }
 }
 if (window.location.href.indexOf('avis.html') > 0) {
@@ -257,7 +250,7 @@ if (window.location.href.indexOf('avis.html') > 0) {
     var outputq = document.getElementById("DQ");
     outputq.innerHTML = sliderq.value;
     sliderq.oninput = function () {
-        outputq.innerHTML= this.value;
+        outputq.innerHTML = this.value;
     }
 }
 if (window.location.href.indexOf('avis.html') > 0) {
@@ -265,7 +258,7 @@ if (window.location.href.indexOf('avis.html') > 0) {
     var outputc = document.getElementById("DC");
     outputc.innerHTML = sliderq.value;
     sliderc.oninput = function () {
-        outputc.innerHTML= this.value;
+        outputc.innerHTML = this.value;
     }
 }
 
@@ -276,27 +269,70 @@ if (window.location.href.indexOf('avis.html') > 0) {
 //Requête de la liste des entreprises
 function requestCompanies() {
     // Ici, la requête sera émise de façon synchrone.
+    console.log("sending request...");
     const req = new XMLHttpRequest();
     req.open('GET', './companiesList', false);
     req.send(null);
     if (req.status === 200) {
         console.log("Réponse reçue: %s", req.responseText);
-//       sessionStorage.setItem("entreprises", req.responseText);
-       var parsed = JSON.parse(req.responseText);
-       console.log("parsed = "+parsed);
-       console.log("parsed1 = "+parsed[0]);
-       console.log("parsedName = "+parsed.nom);
-       var totalToAdd;
-       parsed.forEach(entreprise => {
-           console.log("element :"+entreprise);
-           var elementToAdd = "<div class='card company'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/"+ entreprise.nom.toLowerCase() +".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>"+entreprise.nom+"</h5></div><div class='card-body'><p class='card-text'>"+entreprise.secteur+"</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>"
-           console.log ("elementToAdd =" + elementToAdd);
-            totalToAdd= (totalToAdd==undefined) ? elementToAdd : totalToAdd + elementToAdd; 
-           console.log ("totalToAdd =" + totalToAdd);
+        //       sessionStorage.setItem("entreprises", req.responseText);
+        var parsed = JSON.parse(req.responseText);
+        console.log("parsed = " + parsed);
+        console.log("parsed1 = " + parsed[0]);
+        console.log("parsedName = " + parsed.nom);
+        var totalToAdd;
+        parsed.forEach(entreprise => {
+            console.log("element :" + entreprise);
+            var elementToAdd = "<div class='card company' id='" + entreprise.nom + "'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/" + entreprise.nom.toLowerCase() + ".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>" + entreprise.nom + "</h5></div><div class='card-body'><p class='card-text'>" + entreprise.secteur + "</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>";
+            console.log("elementToAdd =" + elementToAdd);
+            totalToAdd = (totalToAdd == undefined) ? elementToAdd : totalToAdd + elementToAdd;
+            console.log("totalToAdd =" + totalToAdd);
         });
-       document.getElementById("entreprises").innerHTML=totalToAdd;
+        document.getElementById("entreprises").innerHTML = totalToAdd;
+        // Ajout du listener sur chaque entreprise, qui demande le détail lors du clic
+        $(".company").click(function (e) {
+            console.log("Requested detail for " + e.currentTarget.id);
+            // Ici, la requête sera émise de façon synchrone.
+            const req = new XMLHttpRequest();
+            req.open('GET', '/companyDetail/'+e.currentTarget.id , false);
+            req.send(null);
+            if (req.status === 200) {
+                console.log("Réponse reçue: %s", req.responseText);
+            } else {
+                console.log("Statut de la réponse: %d (%s)", req.status, req.statusText);
+                document.getElementById("entreprises").innerHTML = "<div class='alert alert-danger'> Erreur lors de la connexion à la base de données !<br><a id='dbErrorLink' onclick='requestCompanies();'>Cliquez ici pour réessayer</a></div>";
+            }
+        });
     } else {
         console.log("Statut de la réponse: %d (%s)", req.status, req.statusText);
-        document.getElementById("entreprises").innerHTML="<div class='alert alert-danger'> Erreur lors de la connexion à la base de données !<br><a id='dbErrorLink' onclick='requestCompanies();'>Cliquez ici pour réessayer</a></div>";
+        document.getElementById("entreprises").innerHTML = "<div class='alert alert-danger'> Erreur lors de la connexion à la base de données !<br><a id='dbErrorLink' onclick='requestCompanies();'>Cliquez ici pour réessayer</a></div>";
     }
 }
+
+/* function requestDetail(){
+     // Ici, la requête sera émise de façon synchrone.
+     const req = new XMLHttpRequest();
+     req.open('GET', './companyDetail', false);
+     req.send(this.id);
+     console.log ("this.id ="+this.id);
+     if (req.status === 200) {
+         console.log("Réponse reçue: %s", req.responseText);
+ //       sessionStorage.setItem("entreprises", req.responseText);
+        var parsed = JSON.parse(req.responseText);
+        console.log("parsed = "+parsed);
+        console.log("parsed1 = "+parsed[0]);
+        console.log("parsedName = "+parsed.nom);
+        var totalToAdd;
+        parsed.forEach(entreprise => {
+            console.log("element :"+entreprise);
+            var elementToAdd = "<div class='card company'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/"+ entreprise.nom.toLowerCase() +".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>"+entreprise.nom+"</h5></div><div class='card-body'><p class='card-text'>"+entreprise.secteur+"</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>"
+            console.log ("elementToAdd =" + elementToAdd);
+             totalToAdd= (totalToAdd==undefined) ? elementToAdd : totalToAdd + elementToAdd; 
+            console.log ("totalToAdd =" + totalToAdd);
+         });
+        document.getElementById("entreprises").innerHTML=totalToAdd;
+     } else {
+         console.log("Statut de la réponse: %d (%s)", req.status, req.statusText);
+         document.getElementById("entreprises").innerHTML="<div class='alert alert-danger'> Erreur lors de la connexion à la base de données !<br><a id='dbErrorLink' onclick='requestCompanies();'>Cliquez ici pour réessayer</a></div>";
+     }
+} */

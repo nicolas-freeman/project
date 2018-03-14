@@ -21,7 +21,7 @@ app.listen(3000, function () {
 
 // Requête de la liste des entreprises
 app.get('/companiesList', function (req, res) {
-  console.log("J'ai reçu une requête !");
+  console.log("J'ai reçu une requête de liste des entreprises !");
 
   MongoClient.connect(url, function (err, client) {
     if (err) {
@@ -35,6 +35,26 @@ app.get('/companiesList', function (req, res) {
       if (findErr) throw findErr;
       client.close();
       console.log("Voici la liste des entreprises...");
+      res.send(result);
+    });
+
+  });
+});
+
+// Requête du détail d'une entreprise
+app.get('/companyDetail/:company', function (req, res) {
+  console.log("J'ai reçu une requête de détail pour l'entreprise " + req.params.company);
+  MongoClient.connect(url, function (err, client) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    console.log("Connecté à la base de données située à l'adresse " + url);
+    var db = client.db('sanslanguedeboite');
+
+    db.collection('entreprises').find({nom: req.params.company}).toArray(function (findErr, result) {
+      if (findErr) throw findErr;
+      client.close();
+      console.log("Voici le détail pour l'entreprise "+req.params.company);
       res.send(result);
     });
 

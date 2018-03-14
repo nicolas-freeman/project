@@ -213,8 +213,15 @@ vertical-align: middle;
     margin: 5px 5px 0px 0px;
 }
 
+.progress-bar{
+    background-color: orange;
+}
+
 .grade-col{
     height:30px;
+}
+
+.col-sm-6.grade-col{
 }
 
 /* LOADER

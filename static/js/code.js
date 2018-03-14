@@ -271,66 +271,92 @@ function requestCompanies() {
     // Ici, la requête sera émise de façon synchrone.
     console.log("sending request...");
     const req = new XMLHttpRequest();
+
+    req.onreadystatechange = function (event) {
+        // XMLHttpRequest.DONE === 4
+        if (this.readyState === XMLHttpRequest.DONE) {
+            if (req.status === 200) {
+                console.log("Réponse reçue: %s", req.responseText);
+                //       sessionStorage.setItem("entreprises", req.responseText);
+                var parsed = JSON.parse(req.responseText);
+                console.log("parsed = " + parsed);
+                console.log("parsed1 = " + parsed[0]);
+                console.log("parsedName = " + parsed.nom);
+                var totalToAdd;
+                parsed.forEach(entreprise => {
+                    console.log("element :" + entreprise);
+                    window[entreprise.nom] = entreprise;
+                    var elementToAdd = "<div class='card company' id='" + entreprise.nom + "'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/" + entreprise.nom.toLowerCase() + ".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>" + entreprise.nom + "</h5></div><div class='card-body'><p class='card-text'>" + entreprise.secteur + "</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>";
+                    console.log("elementToAdd =" + elementToAdd);
+                    totalToAdd = (totalToAdd == undefined) ? elementToAdd : totalToAdd + elementToAdd;
+                    console.log("totalToAdd =" + totalToAdd);
+                });
+                document.getElementById("entreprises").innerHTML = totalToAdd;
+                // Ajout du listener sur chaque entreprise, qui demande le détail lors du clic
+                $(".company").click(function (e) {
+                    if ($("#" + e.currentTarget.id).css("margin-right") == "15px") { // Si la card est déjà agrandie, on la remet dans son état initial (petit)
+                        $("#" + e.currentTarget.id).css("margin-right", "0px");
+                        $("#" + e.currentTarget.id).css("width", "240px");
+                        e.currentTarget.innerHTML = "<div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/" + window[e.currentTarget.id].nom.toLowerCase() + ".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>" + window[e.currentTarget.id].nom + "</h5></div><div class='card-body'><p class='card-text'>" + window[e.currentTarget.id].secteur + "</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p>";
+                    } else { // Si la card n'est pas agrandie, on fait une requête pour avoir les infos sur l'entreprise puis on agrandit la card
+                        console.log("User clicked on " + e.currentTarget.id);
+                        $("#" + window[e.currentTarget.id].nom).css("margin-right", "15px");
+                        $("#" + window[e.currentTarget.id].nom).css("width", "99%");
+                        setTimeout(function () {
+                            e.currentTarget.innerHTML = "<div class='row'> <div class='col-sm-3'> <div class='card-top text-nowrap'> <img class='card-img-top' src='//logo.clearbit.com/" + window[e.currentTarget.id].nom.toLowerCase() + ".com' alt='Card image cap' onerror='imgError(this);'> <h5 class='card-title'>" + window[e.currentTarget.id].nom + "</h5> </div> <div class='card-body'> <p class='card-text'>" + window[e.currentTarget.id].secteur + "</p> </div> </div> <div class='col-sm-9' style='margin:10px 0px 10px 0px;'> <div class='row'> <div class='col-sm-6 grade-col'> <p>Indemnité mensuelle brute :</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-sm-2 grade-col'></div> </div> <div class='row'> <div class='col-sm-6 grade-col'> <p>Durée moyenne d'une journée de travail :</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-sm-2 grade-col'></div> </div> <div class='row'> <div class='col-sm-6 grade-col'> <p>Intérêt des missions proposées :</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 00%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-sm-2 grade-col interest-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-sm-6 grade-col'> <p>Ambiance :</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-sm-2 grade-col atmosphere-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-sm-6 grade-col'> <p>Locaux :</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-sm-2 grade-col premises-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-sm-6 grade-col'> <p>Note générale :</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar global-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-sm-2 grade-col global-grade'><span>0/20</span></div> </div> </div> </div> </div> <p class='card-footer'> <small class='text-muted'>2 avis</small> </p>"
+                            $("#"+e.currentTarget.id).find(".salary-bar").css("width", "50%");
+                            $("#"+e.currentTarget.id).find(".time-bar").css("width", "50%");
+
+                            $("#"+e.currentTarget.id).find(".interest-bar").css("width", window[e.currentTarget.id].interet * 5 + "%");
+                            $("#"+e.currentTarget.id).find(".interest-grade").text(window[e.currentTarget.id].interet+"/20");
+                            if (window[e.currentTarget.id].interet <7) {
+                                $("#"+e.currentTarget.id).find(".interest-bar").css("background-color", "red");
+                            } else if (window[e.currentTarget.id].interet >14) {
+                                $("#"+e.currentTarget.id).find(".interest-bar").css("background-color", "green");
+                            } else {
+                                $("#"+e.currentTarget.id).find(".interest-bar").css("background-color", "orange");
+                            }
+                            $("#"+e.currentTarget.id).find(".atmosphere-bar").css("width", window[e.currentTarget.id].ambiance * 5 + "%");
+                            $("#"+e.currentTarget.id).find(".atmosphere-grade").text(window[e.currentTarget.id].ambiance+"/20");
+                            if (window[e.currentTarget.id].ambiance <7) {
+                                $("#"+e.currentTarget.id).find(".atmosphere-bar").css("background-color", "red");
+                            } else if (window[e.currentTarget.id].ambiance >14) {
+                                $("#"+e.currentTarget.id).find(".atmosphere-bar").css("background-color", "green");
+                            } else {
+                                $("#"+e.currentTarget.id).find(".atmosphere-bar").css("background-color", "orange");
+                            }
+
+                            $("#"+e.currentTarget.id).find(".premises-bar").css("width", window[e.currentTarget.id].locaux * 5 + "%");
+                            $("#"+e.currentTarget.id).find(".premises-grade").text(window[e.currentTarget.id].locaux+"/20");
+                            if (window[e.currentTarget.id].locaux <7) {
+                                $("#"+e.currentTarget.id).find(".premises-bar").css("background-color", "red");
+                            } else if (window[e.currentTarget.id].locaux >14) {
+                                $("#"+e.currentTarget.id).find(".premises-bar").css("background-color", "green");
+                            } else {
+                                $("#"+e.currentTarget.id).find(".premises-bar").css("background-color", "orange");
+                            }
+
+                            $("#"+e.currentTarget.id).find(".global-bar").css("width", window[e.currentTarget.id].total * 5 + "%");
+                            $("#"+e.currentTarget.id).find(".global-grade").text(window[e.currentTarget.id].total+"/20");
+                            if (window[e.currentTarget.id].total <7) {
+                                $("#"+e.currentTarget.id).find(".global-bar").css("background-color", "red");
+                            } else if (window[e.currentTarget.id].total >14) {
+                                $("#"+e.currentTarget.id).find(".global-bar").css("background-color", "green");
+                            } else {
+                                $("#"+e.currentTarget.id).find(".global-bar").css("background-color", "orange");
+                            }
+
+                        }, 200);
+                    }
+                });
+            } else {
+                console.log("Statut de la réponse: %d (%s)", req.status, req.statusText);
+                document.getElementById("entreprises").innerHTML = "<div class='alert alert-danger'> Erreur lors de la connexion à la base de données !<br><a id='dbErrorLink' onclick='requestCompanies();'>Cliquez ici pour réessayer</a></div>";
+            }
+        }
+    };
     req.open('GET', './companiesList', false);
     req.send(null);
-    if (req.status === 200) {
-        console.log("Réponse reçue: %s", req.responseText);
-        //       sessionStorage.setItem("entreprises", req.responseText);
-        var parsed = JSON.parse(req.responseText);
-        console.log("parsed = " + parsed);
-        console.log("parsed1 = " + parsed[0]);
-        console.log("parsedName = " + parsed.nom);
-        var totalToAdd;
-        parsed.forEach(entreprise => {
-            console.log("element :" + entreprise);
-            var elementToAdd = "<div class='card company' id='" + entreprise.nom + "'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/" + entreprise.nom.toLowerCase() + ".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>" + entreprise.nom + "</h5></div><div class='card-body'><p class='card-text'>" + entreprise.secteur + "</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>";
-            console.log("elementToAdd =" + elementToAdd);
-            totalToAdd = (totalToAdd == undefined) ? elementToAdd : totalToAdd + elementToAdd;
-            console.log("totalToAdd =" + totalToAdd);
-        });
-        document.getElementById("entreprises").innerHTML = totalToAdd;
-        // Ajout du listener sur chaque entreprise, qui demande le détail lors du clic
-        $(".company").click(function (e) {
-            if ($("#" + e.currentTarget.id).css("margin-right") == "15px") { // Si la card est déjà agrandie, on la remet dans son état initial (petit)
-                $("#" + e.currentTarget.id).css("margin-right", "0px");
-                $("#" + e.currentTarget.id).css("width", "240px");
-                e.currentTarget.innerHTML = window[e.currentTarget.id + "Inner"];
-            } else { // Si la card n'est pas agrandie, on fait une requête pour avoir les infos sur l'entreprise puis on agrandit la card
-                console.log("Requested detail for " + e.currentTarget.id);
-                // Ici, la requête sera émise de façon synchrone.
-                const req = new XMLHttpRequest();
-                req.open('GET', '/companyDetail/' + e.currentTarget.id, false);
-                req.send(null);
-                if (req.status === 200) {
-                    console.log("Réponse reçue: %s", req.responseText);
-                    var parsed = JSON.parse(req.responseText);
-                    parsed.forEach(entreprise => {
-                        console.log("entreprise.nom =" + entreprise.nom);
-                        window[entreprise.nom + "Inner"] = e.currentTarget.innerHTML; // On stocke le innerHTML pour l'entreprise x dans une variable nommée xInner
-                        $("#" + entreprise.nom).css("margin-right", "15px");
-                        $("#" + entreprise.nom).css("width", "99%");
-                        setTimeout(function () {
-                            e.currentTarget.innerHTML = "<div class='row'> <div class='col-sm-3'> <div class='card-top text-nowrap'> <img class='card-img-top' src='//logo.clearbit.com/" + entreprise.nom.toLowerCase() + ".com' alt='Card image cap' onerror='imgError(this);'> <h5 class='card-title'>" + entreprise.nom + "</h5> </div> <div class='card-body'> <p class='card-text'>" + entreprise.secteur + "</p> </div> </div> <div class='col-sm-9' style='margin:10px 0px 10px 0px;'> <div class='row'> <div class='col-sm-6 grade-col'> <p>Indemnité mensuelle brute :</p> </div> <div class='col-sm-6 grade-col'> <div class='progress'> <div class='progress-bar' id='salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width:0px'> <span class='sr-only'>70% Complete</span> </div> </div> </div> <div class='col-sm-6 grade-col'> <p>Durée moyenne d'une journée de travail :</p> </div> <div class='col-sm-6 grade-col'> <div class='progress'> <div class='progress-bar' id='time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width:0px'> <span class='sr-only'>70% Complete</span> </div> </div> </div> <div class='col-sm-6 grade-col'> <p>Intérêt des missions proposées :</p> </div> <div class='col-sm-6 grade-col'> <div class='progress'> <div class='progress-bar' id='interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width:0px'> <span class='sr-only'>70% Complete</span> </div> </div> </div> <div class='col-sm-6 grade-col'> <p>Ambiance :</p> </div> <div class='col-sm-6 grade-col'> <div class='progress'> <div class='progress-bar' id='atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width:0px'> <span class='sr-only'>70% Complete</span> </div> </div> </div> <div class='col-sm-6 grade-col'> <p>Locaux :</p> </div> <div class='col-sm-6 grade-col'> <div class='progress'> <div class='progress-bar' id='premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width:0px'> <span class='sr-only'>70% Complete</span> </div> </div> </div> <div class='col-sm-6 grade-col'> <p>Note générale :</p> </div> <div class='col-sm-6 grade-col'> <div class='progress'> <div class='progress-bar' id='global-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width:0px'> <span class='sr-only'>70% Complete</span> </div> </div> </div></div> </div> </div> <p class='card-footer'> <small class='text-muted'>2 avis</small> </p>"
-                            $("#salary-bar").css("width", "50%");
-                            $("#time-bar").css("width", entreprise.temps * 5 + "%");
-                            $("#interest-bar").css("width", entreprise.interet * 5 + "%");
-                            $("#atmosphere-bar").css("width", entreprise.ambiance * 5 + "%");
-                            $("#premises-bar").css("width", entreprise.locaux * 5 + "%");
-                            $("#global-bar").css("width", entreprise.total * 5 + "%");
-                        }, 200);
-
-                    });
-                } else {
-                    console.log("Statut de la réponse: %d (%s)", req.status, req.statusText);
-                    document.getElementById("entreprises").innerHTML = "<div class='alert alert-danger'> Erreur lors de la connexion à la base de données !<br><a id='dbErrorLink' onclick='requestCompanies();'>Cliquez ici pour réessayer</a></div>";
-                }
-            }
-
-        });
-    } else {
-        console.log("Statut de la réponse: %d (%s)", req.status, req.statusText);
-        document.getElementById("entreprises").innerHTML = "<div class='alert alert-danger'> Erreur lors de la connexion à la base de données !<br><a id='dbErrorLink' onclick='requestCompanies();'>Cliquez ici pour réessayer</a></div>";
-    }
 }
 
 /* function requestDetail(){

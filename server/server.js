@@ -30,7 +30,6 @@ app.get('/companiesList', function (req, res) {
     console.log("Connecté à la base de données située à l'adresse " + url);
     var db = client.db('sanslanguedeboite');
 
-
     db.collection('entreprises').find({}).toArray(function (findErr, result) {
       if (findErr) throw findErr;
       client.close();

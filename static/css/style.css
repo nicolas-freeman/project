@@ -190,6 +190,12 @@ vertical-align: middle;
     width: 240px;
     margin : 15px 0px 0 15px;
     max-height: 270px;
+    -moz-transition: width .5s;
+    -ms-transition: width .5s;
+    -o-transition: width .5s;
+    -webkit-transition: width .5s;
+    transition: width .5s;
+    overflow: hidden;
 }
 
 .company:hover{
@@ -201,6 +207,14 @@ vertical-align: middle;
     margin: 15px 0px 0px 0px;
     padding: 20px 20px 20px 20px;
     box-shadow: 0 4px 9px 0 rgba(0,0,0,0.1);
+}
+
+.progress{
+    margin: 5px 5px 0px 0px;
+}
+
+.grade-col{
+    height:30px;
 }
 
 /* LOADER

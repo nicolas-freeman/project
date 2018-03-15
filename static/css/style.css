@@ -221,6 +221,11 @@ vertical-align: middle;
     height:30px;
 }
 
+
+.green-svg {
+    fill: #00C29A;
+}
+
 .col-sm-6.grade-col{
 }
 

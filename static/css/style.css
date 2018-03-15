@@ -152,6 +152,10 @@ margin: 20px 20px 0px 20px;
 vertical-align: middle;
 }
 
+.card-body{
+height: 99px;
+}
+
 .card-img-top{
     width: 90px;
     height: 90px;
@@ -160,7 +164,7 @@ vertical-align: middle;
 
 .card-title{
     display: inline-block;
-    margin: 0px 0px 0px 10px;
+    margin-left:10px;
 }
 
 .card-text{
@@ -188,6 +192,7 @@ vertical-align: middle;
 .company{
     display:inline-block;
     width: 240px;
+    height: 248px;
     margin : 15px 0px 0 15px;
     max-height: 270px;
     -moz-transition: width .5s;
@@ -196,6 +201,8 @@ vertical-align: middle;
     -webkit-transition: width .5s;
     transition: width .5s;
     overflow: hidden;
+    line-height:12px;
+    word-wrap: initial;
 }
 
 .company:hover{
@@ -218,7 +225,14 @@ vertical-align: middle;
 }
 
 .grade-col{
-    height:30px;
+    height:29px;
+    margin-top:2.5px;
+    margin-bottom:2.5px;
+    vertical-align: middle;
+}
+.grade-col > p{
+    margin-bottom:0px;
+    margin-top: 5px;
 }
 
 
@@ -226,7 +240,8 @@ vertical-align: middle;
     fill: #00C29A;
 }
 
-.col-sm-6.grade-col{
+.grade-col > p{
+    
 }
 
 /* LOADER

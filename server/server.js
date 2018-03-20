@@ -1,5 +1,12 @@
 const express = require('express');
 const app = express();
+var bodyParser = require('body-parser')
+app.use(bodyParser.json());       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
+app.use(express.json());       // to support JSON-encoded bodies
+app.use(express.urlencoded()); // to support URL-encoded bodies
 
 //app.get('/', function (req, res) {
 //  res.send('Hello World!')
@@ -38,6 +45,25 @@ app.get('/companiesList', function (req, res) {
     });
 
   });
+});
+
+// Envoi d'un avis
+app.post("/submitFeedback", function (req, res) {
+  console.log("POST request received.");
+  console.log("req.body : " + req.body);
+  MongoClient.connect(url, function (err, client) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+    console.log("Connecté à la base de données située à l'adresse " + url);
+    var db = client.db('sanslanguedeboite');
+    db.collection("entreprises").insertOne(req.body, function (err, res) {
+      if (err) throw err;
+      console.log("J'ai bien ajouté un avis");
+    });
+    res.send("OK");
+  });
+
 });
 
 /* Requête du détail d'une entreprise

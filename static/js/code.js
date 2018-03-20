@@ -269,6 +269,7 @@ if (window.location.href.indexOf('avis.html') > 0) {
 // Envoi du formulaire d'avis
 function submitFeedback() {
     console.log("submitting feedback...");
+
     const req = new XMLHttpRequest();
 
     req.onreadystatechange = function (event) {
@@ -281,24 +282,25 @@ function submitFeedback() {
                 console.log("Statut de la réponse: %d (%s)", this.status, this.statusText);
             }
         }
+
     };
 
-
-
-var formData = new FormData();
-formData.append("name", document.getElementById("feedback-company-name").value);
-formData.append("vertical", document.getElementById("feedback-company-vertical").value);
-formData.append("salary", document.getElementById("feedback-salary").value);
-formData.append("time", document.getElementById("feedback-time").value);
-formData.append("interest", document.getElementById("feedback-interest").value);
-formData.append("atmosphere", document.getElementById("feedback-atmosphere").value);
-formData.append("premises", document.getElementById("feedback-premises").value);
-formData.append("total", document.getElementById("feedback-total").value);
-formData.append("user", user.email);
-
-req.open('POST', './submitfeedback', true);
-xhttp.send(formData);
-
+    var content = {}
+    content.name=document.getElementById("feedback-company-name").value;
+    content.vertical = document.getElementById("feedback-company-vertical").value;
+    content.salary = parseInt(document.getElementById("feedback-salary").value);
+    content.time = parseInt(document.getElementById("feedback-time").value);
+    content.interest = parseInt(document.getElementById("feedback-interest").value);
+    content.atmosphere = parseInt(document.getElementById("feedback-atmosphere").value);
+    content.premises = parseInt(document.getElementById("feedback-premises").value);
+    content.total = parseInt(document.getElementById("feedback-total").value);
+    content.email = user.email;
+    console.log("posting "+ content);
+    console.log("JSON = "+JSON.stringify(content));
+    req.open('POST', '/submitFeedback', true);
+    req.setRequestHeader("Content-type", "application/json");
+    var data = JSON.stringify(content);
+    req.send(data);
 }
 
 //Requête de la liste des entreprises

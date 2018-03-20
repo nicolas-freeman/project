@@ -230,7 +230,7 @@ function navBarSearch() {
 
 
 if (window.location.href.indexOf('avis.html') > 0) {
-    var slider = document.getElementById("P");
+    var slider = document.getElementById("feedback-interest");
     var output = document.getElementById("DP");
     output.innerHTML = slider.value;
     slider.oninput = function () {
@@ -238,7 +238,7 @@ if (window.location.href.indexOf('avis.html') > 0) {
     }
 }
 if (window.location.href.indexOf('avis.html') > 0) {
-    var slidert = document.getElementById("T");
+    var slidert = document.getElementById("feedback-atmosphere");
     var outputt = document.getElementById("DT");
     outputt.innerHTML = slidert.value;
     slidert.oninput = function () {
@@ -246,7 +246,7 @@ if (window.location.href.indexOf('avis.html') > 0) {
     }
 }
 if (window.location.href.indexOf('avis.html') > 0) {
-    var sliderq = document.getElementById("Q");
+    var sliderq = document.getElementById("feedback-premises");
     var outputq = document.getElementById("DQ");
     outputq.innerHTML = sliderq.value;
     sliderq.oninput = function () {
@@ -254,7 +254,7 @@ if (window.location.href.indexOf('avis.html') > 0) {
     }
 }
 if (window.location.href.indexOf('avis.html') > 0) {
-    var sliderc = document.getElementById("C");
+    var sliderc = document.getElementById("feedback-total");
     var outputc = document.getElementById("DC");
     outputc.innerHTML = sliderq.value;
     sliderc.oninput = function () {
@@ -266,9 +266,44 @@ if (window.location.href.indexOf('avis.html') > 0) {
 
 // REQUÊTES
 
+// Envoi du formulaire d'avis
+function submitFeedback() {
+    console.log("submitting feedback...");
+    const req = new XMLHttpRequest();
+
+    req.onreadystatechange = function (event) {
+        // XMLHttpRequest.DONE === 4
+        if (this.readyState === XMLHttpRequest.DONE) {
+            if (this.status === 200) {
+                console.log("Réponse reçue: %s", this.responseText);
+                // Request finished. Do processing here.
+            } else {
+                console.log("Statut de la réponse: %d (%s)", this.status, this.statusText);
+            }
+        }
+    };
+
+
+
+var formData = new FormData();
+formData.append("name", document.getElementById("feedback-company-name").value);
+formData.append("vertical", document.getElementById("feedback-company-vertical").value);
+formData.append("salary", document.getElementById("feedback-salary").value);
+formData.append("time", document.getElementById("feedback-time").value);
+formData.append("interest", document.getElementById("feedback-interest").value);
+formData.append("atmosphere", document.getElementById("feedback-atmosphere").value);
+formData.append("premises", document.getElementById("feedback-premises").value);
+formData.append("total", document.getElementById("feedback-total").value);
+formData.append("user", user.email);
+
+req.open('POST', './submitfeedback', true);
+xhttp.send(formData);
+
+}
+
 //Requête de la liste des entreprises
 function requestCompanies() {
-    // Ici, la requête sera émise de façon synchrone.
+    // Ici, la requête sera émise de façon asynchrone.
     console.log("sending request...");
     const req = new XMLHttpRequest();
 
@@ -281,12 +316,12 @@ function requestCompanies() {
                 var parsed = JSON.parse(req.responseText);
                 console.log("parsed = " + parsed);
                 console.log("parsed1 = " + parsed[0]);
-                console.log("parsedName = " + parsed.nom);
+                console.log("parsedName = " + parsed.name);
                 var totalToAdd;
                 parsed.forEach(entreprise => {
                     console.log("element :" + entreprise);
-                    window[entreprise.nom] = entreprise;
-                    var elementToAdd = "<div class='card company' id='" + entreprise.nom + "'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/" + entreprise.nom.toLowerCase() + ".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>" + entreprise.nom + "</h5></div><div class='card-body'><p class='card-text'>" + entreprise.secteur + "</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>";
+                    window[entreprise.name] = entreprise;
+                    var elementToAdd = "<div class='card company' id='" + entreprise.name + "'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/" + entreprise.name.toLowerCase() + ".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>" + entreprise.name + "</h5></div><div class='card-body'><p class='card-text'>" + entreprise.vertical + "</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>";
                     console.log("elementToAdd =" + elementToAdd);
                     totalToAdd = (totalToAdd == undefined) ? elementToAdd : totalToAdd + elementToAdd;
                     console.log("totalToAdd =" + totalToAdd);
@@ -297,55 +332,55 @@ function requestCompanies() {
                     if ($("#" + e.currentTarget.id).css("margin-right") == "15px") { // Si la card est déjà agrandie, on la remet dans son état initial (petit)
                         $("#" + e.currentTarget.id).css("margin-right", "0px");
                         $("#" + e.currentTarget.id).css("width", "240px");
-                        e.currentTarget.innerHTML = "<div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/" + window[e.currentTarget.id].nom.toLowerCase() + ".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>" + window[e.currentTarget.id].nom + "</h5></div><div class='card-body'><p class='card-text'>" + window[e.currentTarget.id].secteur + "</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p>";
+                        e.currentTarget.innerHTML = "<div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/" + window[e.currentTarget.id].name.toLowerCase() + ".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>" + window[e.currentTarget.id].name + "</h5></div><div class='card-body'><p class='card-text'>" + window[e.currentTarget.id].vertical + "</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p>";
                     } else { // Si la card n'est pas agrandie, on fait une requête pour avoir les infos sur l'entreprise puis on agrandit la card
                         console.log("User clicked on " + e.currentTarget.id);
-                        $("#" + window[e.currentTarget.id].nom).css("margin-right", "15px");
-                        $("#" + window[e.currentTarget.id].nom).css("height", "235px;");
-                        $("#" + window[e.currentTarget.id].nom).css("width", "99%");
+                        $("#" + window[e.currentTarget.id].name).css("margin-right", "15px");
+                        $("#" + window[e.currentTarget.id].name).css("height", "235px;");
+                        $("#" + window[e.currentTarget.id].name).css("width", "99%");
                         setTimeout(function () {
-                            e.currentTarget.innerHTML = "<div class='row' style='padding: 0px 40px 0px 15px;'> <div class='col-5 col-md-4 col-xl-3'> <div class='card-top text-nowrap'> <img class='card-img-top' src='//logo.clearbit.com/" + window[e.currentTarget.id].nom.toLowerCase() + ".com' alt='Card image cap' onerror='imgError(this);'> <h5 class='card-title'>" + window[e.currentTarget.id].nom + "</h5> </div> <div class='card-body'> <p class='card-text'>" + window[e.currentTarget.id].secteur + "</p> </div> </div> <div class='col-7 col-md-8 col-xl-9 grades' style='margin:10px 0px 10px 0px;'> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Indemnité mensuelle brute</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col'></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Durée moyenne d'une journée de travail</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col'></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Intérêt des missions proposées</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 00%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col interest-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Ambiance</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col atmosphere-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Locaux</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col premises-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Note générale</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar global-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col global-grade'><span>0/20</span></div> </div> </div> </div> </div> <p class='card-footer'> <small class='text-muted'>2 avis</small> </p>"
-                            $("#"+e.currentTarget.id).find(".salary-bar").css("width", "50%");
-                            $("#"+e.currentTarget.id).find(".time-bar").css("width", "50%");
-                            $("#"+e.currentTarget.id).find(".card-title").css("margin-left", "5.5px");
+                            e.currentTarget.innerHTML = "<div class='row' style='padding: 0px 40px 0px 15px;'> <div class='col-5 col-md-4 col-xl-3'> <div class='card-top text-nowrap'> <img class='card-img-top' src='//logo.clearbit.com/" + window[e.currentTarget.id].name.toLowerCase() + ".com' alt='Card image cap' onerror='imgError(this);'> <h5 class='card-title'>" + window[e.currentTarget.id].name + "</h5> </div> <div class='card-body'> <p class='card-text'>" + window[e.currentTarget.id].vertical + "</p> </div> </div> <div class='col-7 col-md-8 col-xl-9 grades' style='margin:10px 0px 10px 0px;'> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Indemnité mensuelle brute</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col'></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Durée moyenne d'une journée de travail</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col'></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Intérêt des missions proposées</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 00%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col interest-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Ambiance</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col atmosphere-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Locaux</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col premises-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Note générale</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar total-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col total-grade'><span>0/20</span></div> </div> </div> </div> </div> <p class='card-footer'> <small class='text-muted'>2 avis</small> </p>"
+                            $("#" + e.currentTarget.id).find(".salary-bar").css("width", "50%");
+                            $("#" + e.currentTarget.id).find(".time-bar").css("width", "50%");
+                            $("#" + e.currentTarget.id).find(".card-title").css("margin-left", "5.5px");
 
-                            $("#"+e.currentTarget.id).find(".interest-bar").css("width", window[e.currentTarget.id].interet * 5 + "%");
-                            $("#"+e.currentTarget.id).find(".interest-grade").text(window[e.currentTarget.id].interet+"/20");
-                            if (window[e.currentTarget.id].interet <7) {
-                                $("#"+e.currentTarget.id).find(".interest-bar").css("background-color", "red");
-                            } else if (window[e.currentTarget.id].interet >14) {
-                                $("#"+e.currentTarget.id).find(".interest-bar").css("background-color", "green");
+                            $("#" + e.currentTarget.id).find(".interest-bar").css("width", window[e.currentTarget.id].interest * 5 + "%");
+                            $("#" + e.currentTarget.id).find(".interest-grade").text(window[e.currentTarget.id].interest + "/20");
+                            if (window[e.currentTarget.id].interest < 7) {
+                                $("#" + e.currentTarget.id).find(".interest-bar").css("background-color", "red");
+                            } else if (window[e.currentTarget.id].interest > 14) {
+                                $("#" + e.currentTarget.id).find(".interest-bar").css("background-color", "green");
                             } else {
-                                $("#"+e.currentTarget.id).find(".interest-bar").css("background-color", "orange");
+                                $("#" + e.currentTarget.id).find(".interest-bar").css("background-color", "orange");
                             }
-                            $("#"+e.currentTarget.id).find(".atmosphere-bar").css("width", window[e.currentTarget.id].ambiance * 5 + "%");
-                            $("#"+e.currentTarget.id).find(".atmosphere-grade").text(window[e.currentTarget.id].ambiance+"/20");
-                            if (window[e.currentTarget.id].ambiance <7) {
-                                $("#"+e.currentTarget.id).find(".atmosphere-bar").css("background-color", "red");
-                            } else if (window[e.currentTarget.id].ambiance >14) {
-                                $("#"+e.currentTarget.id).find(".atmosphere-bar").css("background-color", "green");
+                            $("#" + e.currentTarget.id).find(".atmosphere-bar").css("width", window[e.currentTarget.id].atmosphere * 5 + "%");
+                            $("#" + e.currentTarget.id).find(".atmosphere-grade").text(window[e.currentTarget.id].atmosphere + "/20");
+                            if (window[e.currentTarget.id].atmosphere < 7) {
+                                $("#" + e.currentTarget.id).find(".atmosphere-bar").css("background-color", "red");
+                            } else if (window[e.currentTarget.id].atmosphere > 14) {
+                                $("#" + e.currentTarget.id).find(".atmosphere-bar").css("background-color", "green");
                             } else {
-                                $("#"+e.currentTarget.id).find(".atmosphere-bar").css("background-color", "orange");
-                            }
-
-                            $("#"+e.currentTarget.id).find(".premises-bar").css("width", window[e.currentTarget.id].locaux * 5 + "%");
-                            $("#"+e.currentTarget.id).find(".premises-grade").text(window[e.currentTarget.id].locaux+"/20");
-                            if (window[e.currentTarget.id].locaux <7) {
-                                $("#"+e.currentTarget.id).find(".premises-bar").css("background-color", "red");
-                            } else if (window[e.currentTarget.id].locaux >14) {
-                                $("#"+e.currentTarget.id).find(".premises-bar").css("background-color", "green");
-                            } else {
-                                $("#"+e.currentTarget.id).find(".premises-bar").css("background-color", "orange");
+                                $("#" + e.currentTarget.id).find(".atmosphere-bar").css("background-color", "orange");
                             }
 
-                            $("#"+e.currentTarget.id).find(".global-bar").css("width", window[e.currentTarget.id].total * 5 + "%");
-                            $("#"+e.currentTarget.id).find(".global-grade").text(window[e.currentTarget.id].total+"/20");
-                            if (window[e.currentTarget.id].total <7) {
-                                $("#"+e.currentTarget.id).find(".global-bar").css("background-color", "red");
-                            } else if (window[e.currentTarget.id].total >14) {
-                                $("#"+e.currentTarget.id).find(".global-bar").css("background-color", "green");
+                            $("#" + e.currentTarget.id).find(".premises-bar").css("width", window[e.currentTarget.id].premises * 5 + "%");
+                            $("#" + e.currentTarget.id).find(".premises-grade").text(window[e.currentTarget.id].premises + "/20");
+                            if (window[e.currentTarget.id].premises < 7) {
+                                $("#" + e.currentTarget.id).find(".premises-bar").css("background-color", "red");
+                            } else if (window[e.currentTarget.id].premises > 14) {
+                                $("#" + e.currentTarget.id).find(".premises-bar").css("background-color", "green");
                             } else {
-                                $("#"+e.currentTarget.id).find(".global-bar").css("background-color", "orange");
+                                $("#" + e.currentTarget.id).find(".premises-bar").css("background-color", "orange");
+                            }
+
+                            $("#" + e.currentTarget.id).find(".total-bar").css("width", window[e.currentTarget.id].total * 5 + "%");
+                            $("#" + e.currentTarget.id).find(".total-grade").text(window[e.currentTarget.id].total + "/20");
+                            if (window[e.currentTarget.id].total < 7) {
+                                $("#" + e.currentTarget.id).find(".total-bar").css("background-color", "red");
+                            } else if (window[e.currentTarget.id].total > 14) {
+                                $("#" + e.currentTarget.id).find(".total-bar").css("background-color", "green");
+                            } else {
+                                $("#" + e.currentTarget.id).find(".total-bar").css("background-color", "orange");
                             }
 
                         }, 300);
@@ -373,11 +408,11 @@ function requestCompanies() {
         var parsed = JSON.parse(req.responseText);
         console.log("parsed = "+parsed);
         console.log("parsed1 = "+parsed[0]);
-        console.log("parsedName = "+parsed.nom);
+        console.log("parsedName = "+parsed.name);
         var totalToAdd;
         parsed.forEach(entreprise => {
             console.log("element :"+entreprise);
-            var elementToAdd = "<div class='card company'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/"+ entreprise.nom.toLowerCase() +".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>"+entreprise.nom+"</h5></div><div class='card-body'><p class='card-text'>"+entreprise.secteur+"</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>"
+            var elementToAdd = "<div class='card company'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/"+ entreprise.name.toLowerCase() +".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>"+entreprise.name+"</h5></div><div class='card-body'><p class='card-text'>"+entreprise.vertical+"</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>"
             console.log ("elementToAdd =" + elementToAdd);
              totalToAdd= (totalToAdd==undefined) ? elementToAdd : totalToAdd + elementToAdd; 
             console.log ("totalToAdd =" + totalToAdd);

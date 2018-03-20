@@ -83,126 +83,124 @@
         </div>
         <div class="row">
             <div class="col-md-7">
-                <div class="row">
-                    <p class="titreAvis">
-                        <span class="nmbr">1</span>
-                        <b>Informations de base</b>
-                    </p>
-                </div>
-                <form class="bodyforms">
+                <form class="bodyforms needs-validation">
+                    <div class="row">
+                        <p class="titreAvis">
+                            <span class="nmbr">1</span>
+                            <b>Informations de base</b>
+                        </p>
+                    </div>
                     <div class="row">
                         <div class="col-sm-4">
                             <label for="Entreprise" class="col-form-label">Entreprise</label>
                         </div>
-                        <div class="col-sm-8" required="true">
-                            <input type="test" class="form-control" placeholder="Exemple : BNP Paribas Real Estate">
+                        <div class="col-sm-8">
+                            <input id="feedback-company-name" class="form-control" placeholder="Exemple : BNP Paribas Real Estate" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4">
                             <label for="Entreprise" class="col-form-label">Secteur</label>
                         </div>
-                        <div class="col-sm-8" required="true">
-                            <input type="test" class="form-control" placeholder="Exemple : Immobilier">
+                        <div class="col-sm-8">
+                            <input id="feedback-company-vertical" class="form-control" placeholder="Exemple : Immobilier" required>
                         </div>
                     </div>
-                </form>
-                <div class="row"></div>
+                    <div class="row"></div>
 
 
-                <div class="row">
-                    <p class="titreAvis">
-                        <span class="nmbr">2</span>
-                        <b>Votre expérience</b>
-                    </p>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label for="salary">Indemnité mensuelle brute</label>
+                    <div class="row">
+                        <p class="titreAvis">
+                            <span class="nmbr">2</span>
+                            <b>Votre expérience</b>
+                        </p>
                     </div>
-                    <div class="col-sm-8">
-                        <input type="number" name="salary" class="form-control number" value="" maxlength="5" placeholder="Salaire mensuel brut en euros (€)">
-                    </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label for="dailyhrs">Durée moyenne d'une journée de travail</label>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="salary">Indemnité mensuelle brute</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input id="feedback-salary" type="number" name="salary" class="form-control number" value="" maxlength="5" placeholder="Salaire mensuel brut en euros (€)" required>
+                        </div>
                     </div>
-                    <div class="col-sm-8">
-                        <select name="dailyhrs" class="custom-select required">
-                            <option value="">Nombre d'heures</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15 </option>
-                            <option value="16">16</option>
-                            <option value="17+">17+</option>
-                        </select>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="dailyhrs">Durée moyenne d'une journée de travail</label>
+                        </div>
+                        <div class="col-sm-8">
+                            <select id="feedback-time" name="dailyhrs" class="custom-select required" required>
+                                <option value="">Nombre d'heures</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="13">13</option>
+                                <option value="14">14</option>
+                                <option value="15">15 </option>
+                                <option value="16">16</option>
+                                <option value="17+">17+</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
-                <table>
-                    <tr>
-                        <td class="tdone">Intérêt des missions proposées</td>
-                        <td>
-                            <input type="range" min="1" max="20" value="10" class="slider" id="P">
-                        </td>
-                        <td class="tdthree">
-                            <p class="slidertext">
-                                <span id="DP"></span> sur 20</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdone">Ambiance</td>
-                        <td class="tdtwo">
-                            <input type="range" min="1" max="20" value="10" class="slider" id="T">
-                        </td>
-                        <td class="tdthree">
-                            <p class="slidertext">
-                                <span id="DT"></span> sur 20</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdone">Locaux</td>
-                        <td class="tdtwo">
-                            <input type="range" min="1" max="20" value="10" class="slider" id="Q">
-                        </td>
-                        <td class="tdthree">
-                            <p class="slidertext">
-                                <span id="DQ"></span> sur 20</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdone">Note générale</td>
-                        <td class="tdtwo">
-                            <input type="range" min="1" max="20" value="10" class="slider" id="C">
-                        </td>
-                        <td class="tdthree">
-                            <p class="slidertext">
-                                <span id="DC"></span> sur 20</p>
-                        </td>
-                    </tr>
-                </table>
+                    <table>
+                        <tr>
+                            <td class="tdone">Intérêt des missions proposées</td>
+                            <td>
+                                <input id="feedback-interest" type="range" min="1" max="20" value="10" class="slider">
+                            </td>
+                            <td class="tdthree">
+                                <p class="slidertext">
+                                    <span id="DP"></span> sur 20</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdone">Ambiance</td>
+                            <td class="tdtwo">
+                                <input id="feedback-atmosphere" type="range" min="1" max="20" value="10" class="slider">
+                            </td>
+                            <td class="tdthree">
+                                <p class="slidertext">
+                                    <span id="DT"></span> sur 20</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdone">Locaux</td>
+                            <td class="tdtwo">
+                                <input id="feedback-premises" type="range" min="1" max="20" value="10" class="slider">
+                            </td>
+                            <td class="tdthree">
+                                <p class="slidertext">
+                                    <span id="DQ"></span> sur 20</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdone">Note générale</td>
+                            <td class="tdtwo">
+                                <input id="feedback-total" type="range" min="1" max="20" value="10" class="slider">
+                            </td>
+                            <td class="tdthree">
+                                <p class="slidertext">
+                                    <span id="DC"></span> sur 20</p>
+                            </td>
+                        </tr>
+                    </table>
 
-                <div id="submitbutton">
-<!--                   <input type="submit" value="Soumettre mon avis !" id="customizebutton"> -->
-                    <button type="button" class="btn btn-primary btn-block" data-toggle="button" aria-pressed="false" autocomplete="off" id="submitFeedbackButton">
+                    <!--                   <input type="submit" value="Soumettre mon avis !" id="customizebutton"> -->
+                    <button type="submit" class="btn btn-primary btn-block" aria-pressed="false" autocomplete="off" id="submitFeedbackButton">
                         Soumettre mon avis !
                     </button>
-                </div>
+                </form>
             </div>
 
             <div class="col-md-1">
@@ -233,6 +231,35 @@
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script type="text/javascript" src="js/code.js"></script>
 <script>startApp();</script>
+
+<!--
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            console.log("JavaScript for disabling form submissions if there are invalid fields running...");
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            console.log("forms =" + forms);
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                console.log("form.classList =" + form.classList);
+                form.addEventListener("submit", function (event) {
+                    console.log("Submitted something!");
+                    if (form.checkValidity() === false) {
+                        console.log("form.checkValidity() === false");
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+-->
+
 </body>
 
 </html>

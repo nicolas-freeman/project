@@ -554,7 +554,7 @@ td{
 }
 */
 
-#submitbutton {
+#submitFeedbackButton {
     margin-top: 20px;
 }
 
@@ -584,6 +584,10 @@ td{
     border-color: #FAFAFA;
 }
 
+.form-error-message{
+    color:red;
+    background-color:red;
+}
 
 
 /* PAGE A PROPOS

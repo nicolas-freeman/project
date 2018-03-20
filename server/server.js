@@ -40,7 +40,7 @@ app.get('/companiesList', function (req, res) {
   });
 });
 
-// Requête du détail d'une entreprise
+/* Requête du détail d'une entreprise
 app.get('/companyDetail/:company', function (req, res) {
   console.log("J'ai reçu une requête de détail pour l'entreprise " + req.params.company);
   MongoClient.connect(url, function (err, client) {
@@ -59,6 +59,8 @@ app.get('/companyDetail/:company', function (req, res) {
 
   });
 });
+*/
+
 
 app.get('*', function (req, res) {
   console.log("req.query.recherche =" + req.query.recherche);

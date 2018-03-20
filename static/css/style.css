@@ -323,14 +323,13 @@ height: 99px;
 
 #customBtn:hover {
     cursor: pointer;
-    background-color: rgb(12, 97, 33);
+    background-color: rgb(0, 155, 123);
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 span.label {
     font-family: serif;
     font-weight: normal;
-    
 }
 
 .icon {
@@ -481,6 +480,10 @@ span.label {
     cursor: pointer;
 }
 
+.slider:active {
+    opacity: 0.9;
+}
+
 .slidertext{
     color: #00C29A;
     font-weight: bold;
@@ -493,6 +496,7 @@ table {
 
 th, td {
     border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 
 td {
@@ -536,15 +540,48 @@ td{
 
 /* BOUTON SOUMETTRE */
 
+/*
 #submitbutton {
     padding-left: 220px;
 }
+
 
 #customizebutton {
     background-color: #00C29A;
     font-size: 20px;
     border-radius: 8px;
     cursor: pointer;
+}
+*/
+
+#submitbutton {
+    margin-top: 20px;
+}
+
+#submitFeedbackButton,
+#submitFeedbackButton:hover,
+#submitFeedbackButton:active,
+#submitFeedbackButton:active:focus,
+#submitFeedbackButton:visited,
+#submitFeedbackButton[disabled],
+#submitFeedbackButton[disabled]:hover,
+#submitFeedbackButton:focus {
+    background-color: #00C29A; 
+    border-color: #FAFAFA;
+
+}
+
+#submitFeedbackButton:focus{
+    box-shadow : 0 0 0 0.2rem rgba(0, 194, 154, .5);
+}
+
+#submitFeedbackButton:focus:hover{
+    box-shadow : 0 0 0 0.2rem rgba(0, 155, 123, .5);
+}
+
+#submitFeedbackButton:hover{
+    background-color: #009b7b;
+    border-color: #FAFAFA;
 }
 
 

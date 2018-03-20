@@ -157,37 +157,59 @@
                 <table>
                     <tr>
                         <td class="tdone">Intérêt des missions proposées</td>
-                        <td><input type="range" min="1" max="20" value="10" class="slider" id="P"></td>
-                        <td class="tdthree"><p class="slidertext"><span id="DP"></span> sur 20</p></td>
+                        <td>
+                            <input type="range" min="1" max="20" value="10" class="slider" id="P">
+                        </td>
+                        <td class="tdthree">
+                            <p class="slidertext">
+                                <span id="DP"></span> sur 20</p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="tdone">Ambiance</td>
-                        <td class="tdtwo"><input type="range" min="1" max="20" value="10" class="slider" id="T"></td>
-                        <td class="tdthree"><p class="slidertext"><span id="DT"></span> sur 20</p></td>
+                        <td class="tdtwo">
+                            <input type="range" min="1" max="20" value="10" class="slider" id="T">
+                        </td>
+                        <td class="tdthree">
+                            <p class="slidertext">
+                                <span id="DT"></span> sur 20</p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="tdone">Locaux</td>
-                        <td class="tdtwo"><input type="range" min="1" max="20" value="10" class="slider" id="Q"></td>
-                        <td class="tdthree"><p class="slidertext"><span id="DQ"></span> sur 20</p></td>
+                        <td class="tdtwo">
+                            <input type="range" min="1" max="20" value="10" class="slider" id="Q">
+                        </td>
+                        <td class="tdthree">
+                            <p class="slidertext">
+                                <span id="DQ"></span> sur 20</p>
+                        </td>
                     </tr>
                     <tr>
                         <td class="tdone">Note générale</td>
-                        <td class="tdtwo"><input type="range" min="1" max="20" value="10" class="slider" id="C"></td>
-                        <td class="tdthree"><p class="slidertext"><span id="DC"></span> sur 20</p></td>
+                        <td class="tdtwo">
+                            <input type="range" min="1" max="20" value="10" class="slider" id="C">
+                        </td>
+                        <td class="tdthree">
+                            <p class="slidertext">
+                                <span id="DC"></span> sur 20</p>
+                        </td>
                     </tr>
                 </table>
-               
+
                 <div id="submitbutton">
-                    <input type="submit" value="Soumettre mon avis !" id="customizebutton">
+<!--                   <input type="submit" value="Soumettre mon avis !" id="customizebutton"> -->
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="button" aria-pressed="false" autocomplete="off" id="submitFeedbackButton">
+                        Soumettre mon avis !
+                    </button>
                 </div>
             </div>
-            
+
             <div class="col-md-1">
 
             </div>
             <div class="col-md-4" style="text-align:justify;">
-                <br> 
-                Votre évaluation est anonyme ! Balancez tout ce que vous avez sur le coeur ! Si votre employeur est une
+                <br> Votre évaluation est anonyme ! Balancez tout ce que vous avez sur le coeur ! Si votre employeur est une
                 ordure, dites-le et ne mâchez pas vos mots.
             </div>
         </div>

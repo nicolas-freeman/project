@@ -7,6 +7,10 @@
 
 }
 
+* {
+    font-family: 'Hind Guntur', sans-serif;
+}
+
 body {
     padding-top: 0rem;
     padding-bottom: 3rem;

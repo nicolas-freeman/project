@@ -14,7 +14,7 @@
     <script type="text/javascript" src="js/code.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto:light,regular,medium,thin,italic,mediumitalic,bold" rel="stylesheet"
         type="text/css">
-    
+
     <script src="https://apis.google.com/js/api:client.js"></script>
 </head>
 
@@ -23,7 +23,8 @@
     <!--Barre de navigation-->
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html"><img id ="logo" src="./images/tongueOnlyGreen.png"/>Sans langue de boîte</a>
+        <a class="navbar-brand" href="index.html">
+            <img id="logo" src="./images/tongueOnlyGreen.png" />Sans langue de boîte</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
             aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,8 +42,8 @@
                 </li>
             </ul>
             <form class="form-inline my-1 flex-nowrap">
-                <input id ="navBarInput" class="form-control mr-2" type="search" aria-label="Rechercher" name="recherche">
-                <button id ="navBarSearchButton" class="btn btn-outline-success my-2" type="submit" onclick="navBarSearch();">Rechercher</button>
+                <input id="navBarInput" class="form-control mr-2" type="search" aria-label="Rechercher" name="recherche">
+                <button id="navBarSearchButton" class="btn btn-outline-success my-2" type="submit" onclick="navBarSearch();">Rechercher</button>
             </form>
             <form class="form-inline my-1 ml-1"></form>
             <a id="log" role="button" class="btn btn-outline-secondary my-1 mx-1" href="./login.html">Connexion</a>
@@ -92,6 +93,14 @@
         <!-- /card-container -->
     </div>
     <!-- /container -->
+    <!-- FOOTER -->
+    <footer class="footer" style="color:rgba(255,255,255,.5)">
+        <p class="float-right">
+            <a href="#">Haut de page</a>
+        </p>
+        <p>&copy; 2018 Sans langue de boîte
+        </p>
+    </footer>
     <script>startApp();</script>
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"

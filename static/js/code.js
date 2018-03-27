@@ -11,30 +11,16 @@ var output = 0;
 $("#navLoginCard").toggle();
 $("#navLoginCard").removeClass("invisible");
 
-function checkIfLoggedIn() {
-    if (sessionStorage.getItem('user') == null && window.location.href.indexOf('login.html') < 0) { // Si non connecté et pas sur la page de connexion
-        // Redirection vers la page de connexion
-        window.location.href = 'login.html';
-    } else if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() == "essec.edu") { // Si connecté avec un compte ESSEC
-        // On ne fait rien
-    } else if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() !== "essec.edu" && window.location.href.indexOf('login.html') < 0) { // Si connecté avec un compte non ESSEC et pas sur la page de connexion
-        // Redirection vers la page de connexion
-        window.location.href = 'login.html';
-    } else if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() !== "essec.edu") { // Si connecté avec un compte non ESSEC
-        $("#notESSECAlert").addClass("collapse.show"); // On affiche l'alerte demandant la connexion avec un compte ESSEC
-        $("#notESSECAlert").removeClass("collapse"); // On affiche l'alerte demandant la connexion avec un compte ESSEC
-    }
-    else { // Sinon
-    }
-}
+
+checkIfLoggedIn();
+updateLogin();
+
 
 if (window.location.href.search("recherche=") > 0) {
     sessionStorage.setItem("searchValue", window.location.href.substr(window.location.href.search("recherche=") + 10, window.location.href.length)) // Tout ce qui est après "?recherche=" est enregistré dans searchValue 
     window.location.href = 'entreprises.html';  //Redirection vers la page entreprises
 }
 
-
-checkIfLoggedIn();
 
 function init() {
     gapi.load('auth2', function () { // Ready. });
@@ -83,35 +69,9 @@ $("#nav-profile-img").click(function () {
 });
 
 // Une fois la page chargée...
-window.onload = function () {
+// window.onload = nomdefonction();
 
-    if (sessionStorage.getItem('user') == null) { // Si non connecté
-        var log = document.getElementById("log");
-        log.innerHTML = log.innerHTML.replace("Déconnexion", "Connexion"); // On modifie le texte du bouton 
-        log.href = "login.html"; // On modifie le lien du bouton
-        if (sessionStorage.logOut == "true" && window.location.href.indexOf('login.html') >= 1) { // Si on vient de se déconnecter et sur la page de login
-            $("#loggedOutAlert").addClass("collapse.show"); // On affiche l'alerte de déconnexion
-            $("#loggedOutAlert").removeClass("collapse"); // On affiche l'alerte de déconnexion
-            sessionStorage.setItem('logOut', false); // "On ne vient plus de se déconnecter"
-        }
-    }
-    else { // Sinon
-        document.getElementById('profile-img').src = user.photoURL; // On remplace l'image de profil de la page
-        document.getElementById('name').innerText = "Connecté en tant que " + user.name;
-        $("#logoutButton").addClass("collapse.show"); // On affiche le bouton de déconnexion
-        $("#logoutButton").removeClass("collapse"); // On affiche le bouton de déconnexion
-        if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() !== "essec.edu") { // Si connecté avec un compte non ESSEC
-            $("#notESSECAlert").addClass("collapse.show"); // On affiche l'alerte demandant la connexion avec un compte ESSEC
-            $("#notESSECAlert").removeClass("collapse"); // On affiche l'alerte demandant la connexion avec un compte ESSEC
-        }
-        var log = document.getElementById("log");
-        log.innerHTML = log.innerHTML.replace("Connexion", "Déconnexion"); // On modifie le texte du bouton
-        log.href = "login.html"; // On modifie le lien du bouton | To update
-        var link = document.getElementById('nav-profile-img');
-        console.log(link);
-        document.getElementById('nav-profile-img').src = user.photoURL; // On remplace l'image de profil de la barre de navigation
-    }
-}
+
 
 // REPAIR BROKEN IMAGES
 
@@ -126,6 +86,7 @@ function imgError(image) {
 
 var googleUser = {};
 var startApp = function () {
+    console.log("executing startApp...");
     gapi.load('auth2', function () {
         // Retrieve the singleton for the GoogleAuth library and set up the client.
         auth2 = gapi.auth2.init({
@@ -139,15 +100,14 @@ var startApp = function () {
 };
 
 function onSignin(element) {
-    console.log(element.id);
+    console.log("executing onSignin...");
     auth2.attachClickHandler(element, {},
-        function (googleUser) {
+        function signedIn(googleUser) {
+            console.log("signedIn");
             $("#loggedOutAlert").removeClass("collapse.show"); // On cache l'alerte de déconnexion si elle était affichée
             $("#loggedOutAlert").addClass("collapse"); // On cache l'alerte de déconnexion si elle était affichée
             document.getElementById('name').innerText = "Connecté en tant que " +
                 googleUser.getBasicProfile().getName();
-            console.log("onSignIn");
-
             // Récupération des infos de l'utilisateur
             var profile = googleUser.getBasicProfile();
             console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -189,10 +149,55 @@ function onSignin(element) {
 
 // FONCTIONS
 
+function checkIfLoggedIn() {
+    if (sessionStorage.getItem('user') == null && window.location.href.indexOf('login.html') < 0) { // Si non connecté et pas sur la page de connexion
+        // Redirection vers la page de connexion
+        window.location.href = 'login.html';
+    } else if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() == "essec.edu") { // Si connecté avec un compte ESSEC
+        // On ne fait rien
+    } else if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() !== "essec.edu" && window.location.href.indexOf('login.html') < 0) { // Si connecté avec un compte non ESSEC et pas sur la page de connexion
+        // Redirection vers la page de connexion
+        window.location.href = 'login.html';
+    } else if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() !== "essec.edu") { // Si connecté avec un compte non ESSEC
+        $("#notESSECAlert").addClass("collapse.show"); // On affiche l'alerte demandant la connexion avec un compte ESSEC
+        $("#notESSECAlert").removeClass("collapse"); // On affiche l'alerte demandant la connexion avec un compte ESSEC
+    }
+    else { // Sinon
+    }
+}
+
+function updateLogin() {
+
+    if (sessionStorage.getItem('user') == null) { // Si non connecté
+        var log = document.getElementById("log");
+        log.innerHTML = log.innerHTML.replace("Déconnexion", "Connexion"); // On modifie le texte du bouton 
+        log.href = "login.html"; // On modifie le lien du bouton
+        if (sessionStorage.logOut == "true" && window.location.href.indexOf('login.html') >= 1) { // Si on vient de se déconnecter et sur la page de login
+            $("#loggedOutAlert").addClass("collapse.show"); // On affiche l'alerte de déconnexion
+            $("#loggedOutAlert").removeClass("collapse"); // On affiche l'alerte de déconnexion
+            sessionStorage.setItem('logOut', false); // "On ne vient plus de se déconnecter"
+        }
+    }
+    else { // Si connecté
+        document.getElementById('nav-profile-img').src = user.photoURL; // On remplace l'image de profil de la barre de navigation
+        document.getElementById('profile-img').src = user.photoURL; // On remplace l'image de profil de la page
+        document.getElementById('name').innerText = "Connecté en tant que " + user.name;
+        $("#logoutButton").addClass("collapse.show"); // On affiche le bouton de déconnexion
+        $("#logoutButton").removeClass("collapse"); // On affiche le bouton de déconnexion
+        var log = document.getElementById("log");
+        log.innerHTML = log.innerHTML.replace("Connexion", "Déconnexion"); // On modifie le texte du bouton
+        log.href = "login.html"; // On modifie le lien du bouton
+        if (sessionStorage.getItem('user') !== null && user.email.split("@").pop() !== "essec.edu") { // Si connecté avec un compte non ESSEC
+            $("#notESSECAlert").addClass("collapse.show"); // On affiche l'alerte demandant la connexion avec un compte ESSEC
+            $("#notESSECAlert").removeClass("collapse"); // On affiche l'alerte demandant la connexion avec un compte ESSEC
+        }
+    }
+}
+
 function precisionRound(number, precision) {
     var factor = Math.pow(10, precision);
     return Math.round(number * factor) / factor;
-  }
+}
 
 function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
@@ -281,7 +286,7 @@ function submitFeedback() {
         // XMLHttpRequest.DONE === 4
         if (this.readyState === XMLHttpRequest.DONE) {
             if (this.status === 200) {
-                console.log("Réponse reçue: %s", this.responseText);
+                // console.log("Réponse reçue: %s", this.responseText);
                 // Request finished. Do processing here.
             } else {
                 console.log("Statut de la réponse: %d (%s)", this.status, this.statusText);
@@ -300,8 +305,8 @@ function submitFeedback() {
     content.premises = parseInt(document.getElementById("feedback-premises").value);
     content.total = parseInt(document.getElementById("feedback-total").value);
     content.email = user.email;
-    console.log("posting " + content);
-    console.log("JSON = " + JSON.stringify(content));
+    // console.log("posting " + content);
+    // console.log("JSON = " + JSON.stringify(content));
     req.open('POST', '/submitFeedback', true);
     req.setRequestHeader("Content-type", "application/json");
     var data = JSON.stringify(content);
@@ -318,21 +323,21 @@ function requestCompanies() {
         // XMLHttpRequest.DONE === 4
         if (this.readyState === XMLHttpRequest.DONE) {
             if (req.status === 200) {
-                console.log("Réponse reçue: %s", req.responseText);
+                // console.log("Réponse reçue: %s", req.responseText);
                 //       sessionStorage.setItem("entreprises", req.responseText);
                 var parsed = JSON.parse(req.responseText);
-            
+
                 var totalToAdd;
                 var companiesList = [];
 
                 parsed.forEach(avis => {
-                    if (window[removeDiacritics(avis.name.toLowerCase().replace(" ", ""))] == null){
+                    if (window[removeDiacritics(avis.name.toLowerCase().replace(" ", ""))] == null) {
                         window[removeDiacritics(avis.name.toLowerCase().replace(" ", ""))] = avis;
-                        window[removeDiacritics(avis.name.toLowerCase().replace(" ", ""))].count=1;
+                        window[removeDiacritics(avis.name.toLowerCase().replace(" ", ""))].count = 1;
                         companiesList.push(removeDiacritics(avis.name.toLowerCase().replace(" ", "")));
                     }
                     else {
-                        window[removeDiacritics(avis.name.toLowerCase().replace(" ", ""))].count ++;
+                        window[removeDiacritics(avis.name.toLowerCase().replace(" ", ""))].count++;
                         window[removeDiacritics(avis.name.toLowerCase().replace(" ", ""))].salary += avis.salary;
                         window[removeDiacritics(avis.name.toLowerCase().replace(" ", ""))].time += avis.time;
                         window[removeDiacritics(avis.name.toLowerCase().replace(" ", ""))].interest += avis.interest;
@@ -343,17 +348,17 @@ function requestCompanies() {
                 });
 
                 companiesList.forEach(entreprise => {
-                    console.log("element :" + entreprise);
+                    // console.log("element :" + entreprise);
                     window[entreprise].salary /= window[entreprise].count;
                     window[entreprise].time /= window[entreprise].count;
                     window[entreprise].interest /= window[entreprise].count;
                     window[entreprise].atmosphere /= window[entreprise].count;
                     window[entreprise].premises /= window[entreprise].count;
                     window[entreprise].total /= window[entreprise].count;
-                    var elementToAdd = "<div class='card company' id='" + removeDiacritics(window[entreprise].name.toLowerCase().replace(" ", "")) + "'><div class='card-top'><img class='card-img-top' src='//logo.clearbit.com/" + removeDiacritics(window[entreprise].name.toLowerCase().replace(" ", "")) + ".com' alt='Card image cap' onerror='imgError(this);'><div class='card-title'><h5>" + window[entreprise].name + "</h5></div></div><div class='card-body'><p class='card-text'>" + window[entreprise].vertical + "</p></div><p class='card-footer'><small class='text-muted'>"+window[entreprise].count+" avis</small></p></div>";
-                    console.log("elementToAdd =" + elementToAdd);
+                    var elementToAdd = "<div class='card company' id='" + removeDiacritics(window[entreprise].name.toLowerCase().replace(" ", "")) + "'><div class='card-top'><img class='card-img-top' src='//logo.clearbit.com/" + removeDiacritics(window[entreprise].name.toLowerCase().replace(" ", "")) + ".com' alt='Card image cap' onerror='imgError(this);'><div class='card-title'><h5>" + window[entreprise].name + "</h5></div></div><div class='card-body'><p class='card-text'>" + window[entreprise].vertical + "</p></div><p class='card-footer'><small class='text-muted'>" + window[entreprise].count + " avis</small></p></div>";
+                    // console.log("elementToAdd =" + elementToAdd);
                     totalToAdd = (totalToAdd == undefined) ? elementToAdd : totalToAdd + elementToAdd;
-                    console.log("totalToAdd =" + totalToAdd);
+                    // console.log("totalToAdd =" + totalToAdd);
                 });
 
                 document.getElementById("entreprises").innerHTML = totalToAdd;
@@ -370,36 +375,36 @@ function requestCompanies() {
                     if ($("#" + e.currentTarget.id).css("margin-right") == "15px") { // Si la card est déjà agrandie, on la remet dans son état initial (petit)
                         $("#" + e.currentTarget.id).css("margin-right", "0px");
                         $("#" + e.currentTarget.id).css("width", "240px");
-                        e.currentTarget.innerHTML = "<div class='card-top'><img class='card-img-top' src='//logo.clearbit.com/" + removeDiacritics(window[e.currentTarget.id].name.toLowerCase().replace(" ", "")) + ".com' alt='Card image cap' onerror='imgError(this);'><div class='card-title'><h5>" + window[e.currentTarget.id].name + "</h5></div></div><div class='card-body'><p class='card-text'>" + window[e.currentTarget.id].vertical + "</p></div><p class='card-footer'><small class='text-muted'>"+window[e.currentTarget.id].count+" avis</small></p>";
+                        e.currentTarget.innerHTML = "<div class='card-top'><img class='card-img-top' src='//logo.clearbit.com/" + removeDiacritics(window[e.currentTarget.id].name.toLowerCase().replace(" ", "")) + ".com' alt='Card image cap' onerror='imgError(this);'><div class='card-title'><h5>" + window[e.currentTarget.id].name + "</h5></div></div><div class='card-body'><p class='card-text'>" + window[e.currentTarget.id].vertical + "</p></div><p class='card-footer'><small class='text-muted'>" + window[e.currentTarget.id].count + " avis</small></p>";
                     } else { // Si la card n'est pas agrandie, on fait une requête pour avoir les infos sur l'entreprise puis on agrandit la card
                         console.log("User clicked on " + e.currentTarget.id);
                         $("#" + e.currentTarget.id).css("margin-right", "15px");
                         $("#" + e.currentTarget.id).css("height", "235px;");
                         $("#" + e.currentTarget.id).css("width", "99%");
                         setTimeout(function () {
-                            e.currentTarget.innerHTML = "<div class='row' style='padding: 0px 40px 0px 15px;'> <div class='col-5 col-md-4 col-xl-3'> <div class='card-top'> <img class='card-img-top' src='//logo.clearbit.com/" + removeDiacritics(window[e.currentTarget.id].name.toLowerCase().replace(" ", "")) + ".com' alt='Card image cap' onerror='imgError(this);'> <div class='card-title'><h5>" + window[e.currentTarget.id].name + "</h5></div> </div> <div class='card-body'> <p class='card-text'>" + window[e.currentTarget.id].vertical + "</p> </div> </div> <div class='col-7 col-md-8 col-xl-9 grades' style='margin:10px 0px 10px 0px;'> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Indemnité mensuelle brute</p> </div> <div class='col-sm-4 grade-col'><div class='progress'> <div class='progress-bar salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div></div> <div class='col-2 col-lg-1 grade-col'><p><div class='salary'></div></p></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Durée moyenne d'une journée de travail</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col'><p><div class='time'></div></p></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Intérêt des missions proposées</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 00%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col interest-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Ambiance</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col atmosphere-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Locaux</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col premises-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Note générale</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar total-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col total-grade'><span>0/20</span></div> </div> </div> </div> </div> <p class='card-footer'> <small class='text-muted'>"+window[e.currentTarget.id].count+" avis</small> </p>"
+                            e.currentTarget.innerHTML = "<div class='row' style='padding: 0px 40px 0px 15px;'> <div class='col-5 col-md-4 col-xl-3'> <div class='card-top'> <img class='card-img-top' src='//logo.clearbit.com/" + removeDiacritics(window[e.currentTarget.id].name.toLowerCase().replace(" ", "")) + ".com' alt='Card image cap' onerror='imgError(this);'> <div class='card-title'><h5>" + window[e.currentTarget.id].name + "</h5></div> </div> <div class='card-body'> <p class='card-text'>" + window[e.currentTarget.id].vertical + "</p> </div> </div> <div class='col-7 col-md-8 col-xl-9 grades' style='margin:10px 0px 10px 0px;'> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Indemnité mensuelle brute</p> </div> <div class='col-sm-4 grade-col'><div class='progress'> <div class='progress-bar salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div></div> <div class='col-2 col-lg-1 grade-col'><p><div class='salary'></div></p></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Durée moyenne d'une journée de travail</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col'><p><div class='time'></div></p></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Intérêt des missions proposées</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 00%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col interest-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Ambiance</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col atmosphere-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Locaux</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col premises-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Note générale</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar total-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col total-grade'><span>0/20</span></div> </div> </div> </div> </div> <p class='card-footer'> <small class='text-muted'>" + window[e.currentTarget.id].count + " avis</small> </p>"
 
                             $("#" + e.currentTarget.id).find(".card-title").css("margin-left", "5.5px");
 
                             // Indemnité mensuelle brute
-                            $("#" + e.currentTarget.id).find(".salary").text(precisionRound(window[e.currentTarget.id].salary,0) + "€");
+                            $("#" + e.currentTarget.id).find(".salary").text(precisionRound(window[e.currentTarget.id].salary, 0) + "€");
                             $("#" + e.currentTarget.id).find(".salary-bar").css("width", window[e.currentTarget.id].salary / 50 + "%");
                             if ((window[e.currentTarget.id].salary / 250) < 7) {
                                 $("#" + e.currentTarget.id).find(".salary-bar").css("background-color", "red");
-                            } else if  ((window[e.currentTarget.id].salary / 250) > 14) {
+                            } else if ((window[e.currentTarget.id].salary / 250) > 14) {
                                 $("#" + e.currentTarget.id).find(".salary-bar").css("background-color", "green");
                             } else {
                                 $("#" + e.currentTarget.id).find(".salary-bar").css("background-color", "orange");
                             }
 
                             // Durée moyenne d'une journée de travail
-                            $("#" + e.currentTarget.id).find(".time").text(window[e.currentTarget.id].time == 17 ? precisionRound(window[e.currentTarget.id].time,0)+"+h" : precisionRound(window[e.currentTarget.id].time,0)+"h");
-                            $("#" + e.currentTarget.id).find(".time-bar").css("width",window[e.currentTarget.id].time/17*100+"%");
+                            $("#" + e.currentTarget.id).find(".time").text(window[e.currentTarget.id].time == 17 ? precisionRound(window[e.currentTarget.id].time, 0) + "+h" : precisionRound(window[e.currentTarget.id].time, 0) + "h");
+                            $("#" + e.currentTarget.id).find(".time-bar").css("width", window[e.currentTarget.id].time / 17 * 100 + "%");
                             $("#" + e.currentTarget.id).find(".time-bar").css("background-color", "gray");
 
                             // Intérêt des missions proposées
                             $("#" + e.currentTarget.id).find(".interest-bar").css("width", window[e.currentTarget.id].interest * 5 + "%");
-                            $("#" + e.currentTarget.id).find(".interest-grade").html("<p>"+precisionRound(window[e.currentTarget.id].interest,1) + "/20 </p>");
+                            $("#" + e.currentTarget.id).find(".interest-grade").html("<p>" + precisionRound(window[e.currentTarget.id].interest, 1) + "/20 </p>");
                             if (window[e.currentTarget.id].interest < 7) {
                                 $("#" + e.currentTarget.id).find(".interest-bar").css("background-color", "red");
                             } else if (window[e.currentTarget.id].interest > 14) {
@@ -410,7 +415,7 @@ function requestCompanies() {
 
                             // Ambiance
                             $("#" + e.currentTarget.id).find(".atmosphere-bar").css("width", window[e.currentTarget.id].atmosphere * 5 + "%");
-                            $("#" + e.currentTarget.id).find(".atmosphere-grade").html("<p>"+ precisionRound(window[e.currentTarget.id].atmosphere,1) + "/20 </p>");
+                            $("#" + e.currentTarget.id).find(".atmosphere-grade").html("<p>" + precisionRound(window[e.currentTarget.id].atmosphere, 1) + "/20 </p>");
                             if (window[e.currentTarget.id].atmosphere < 7) {
                                 $("#" + e.currentTarget.id).find(".atmosphere-bar").css("background-color", "red");
                             } else if (window[e.currentTarget.id].atmosphere > 14) {
@@ -421,7 +426,7 @@ function requestCompanies() {
 
                             // Locaux
                             $("#" + e.currentTarget.id).find(".premises-bar").css("width", window[e.currentTarget.id].premises * 5 + "%");
-                            $("#" + e.currentTarget.id).find(".premises-grade").html("<p>"+precisionRound(window[e.currentTarget.id].premises,1) + "/20 </p>");
+                            $("#" + e.currentTarget.id).find(".premises-grade").html("<p>" + precisionRound(window[e.currentTarget.id].premises, 1) + "/20 </p>");
                             if (window[e.currentTarget.id].premises < 7) {
                                 $("#" + e.currentTarget.id).find(".premises-bar").css("background-color", "red");
                             } else if (window[e.currentTarget.id].premises > 14) {
@@ -432,7 +437,7 @@ function requestCompanies() {
 
                             // Note générale
                             $("#" + e.currentTarget.id).find(".total-bar").css("width", window[e.currentTarget.id].total * 5 + "%");
-                            $("#" + e.currentTarget.id).find(".total-grade").html("<p>"+precisionRound(window[e.currentTarget.id].total,1) + "/20 </p>");
+                            $("#" + e.currentTarget.id).find(".total-grade").html("<p>" + precisionRound(window[e.currentTarget.id].total, 1) + "/20 </p>");
                             if (window[e.currentTarget.id].total < 7) {
                                 $("#" + e.currentTarget.id).find(".total-bar").css("background-color", "red");
                             } else if (window[e.currentTarget.id].total > 14) {
@@ -450,7 +455,7 @@ function requestCompanies() {
             }
         }
     };
-    req.open('GET', './companiesList', false);
+    req.open('GET', './companiesList', true);
     req.send(null);
 }
 

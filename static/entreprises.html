@@ -25,64 +25,65 @@
     <!--Vérification de connexion
     <script>checkIfLoggedIn();</script>-->
 
-    <!--Barre de navigation-->
+    <div class="page">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">
-            <img id="logo" src="./images/tongueOnlyGreen.png" />Sans langue de boîte</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="./entreprises.html">Entreprises</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./avis.html">Déposer un avis</a>
-                </li>
-                <li class="nav-item">
-                    <a style="white-space: nowrap;" class="nav-link" href="./a-propos.html">A propos</a>
-                </li>
-            </ul>
-            <form class="form-inline my-1 flex-nowrap">
-                <input id="navBarInput" class="form-control mr-2" type="search" aria-label="Rechercher" name="recherche">
-                <button id="navBarSearchButton" class="btn btn-outline-success my-2" type="submit" onclick="navBarSearch();">Rechercher</button>
-            </form>
-            <form class="form-inline my-1 ml-1"></form>
-            <a id="log" role="button" class="btn btn-outline-secondary my-1 mx-1" href="./login.html">Connexion</a>
-            <!--Connexion ou Déconnexion en barre de navigation selon le statut de l'utilisateur-->
-            <!--C<a href="./login.html"></a>-->
-            <img class="rounded-circle ml-1" id="nav-profile-img" src="./images/profile.png" width="40" height="40">
-            <!--C</a>-->
-            <div class="card card-container invisible" id="navLoginCard">
-                <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-                <img id="profile-img" class="profile-img-card" src="./images/profile.png" />
-                <p id="profile-name" class="profile-name-card"></p>
-                <!--<div id="name"></div>-->
-                <div id="gSignInWrapper">
-                    <div id="customBtn" class="customGPlusSignIn">
-                        <div class="container">
-                            <div class="row flex-nowrap">
-                                <div class="col-fixed-42">
-                                    <span class="icon"></span>
-                                </div>
-                                <div class="col">
-                                    <span id="name" class="buttonText">Connexion avec un compte ESSEC</span>
+        <!--Barre de navigation-->
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">
+                <img id="logo" src="./images/tongueOnlyGreen.png" />Sans langue de boîte</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./entreprises.html">Entreprises</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./avis.html">Déposer un avis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="white-space: nowrap;" class="nav-link" href="./a-propos.html">A propos</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-1 flex-nowrap">
+                    <input id="navBarInput" class="form-control mr-2" type="search" aria-label="Rechercher" name="recherche">
+                    <button id="navBarSearchButton" class="btn btn-outline-success my-2" type="submit" onclick="navBarSearch();">Rechercher</button>
+                </form>
+                <form class="form-inline my-1 ml-1"></form>
+                <a id="log" role="button" class="btn btn-outline-secondary my-1 mx-1" href="./login.html">Connexion</a>
+                <!--Connexion ou Déconnexion en barre de navigation selon le statut de l'utilisateur-->
+                <!--C<a href="./login.html"></a>-->
+                <img class="rounded-circle ml-1" id="nav-profile-img" src="./images/profile.png" width="40" height="40">
+                <!--C</a>-->
+                <div class="card card-container invisible" id="navLoginCard">
+                    <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+                    <img id="profile-img" class="profile-img-card" src="./images/profile.png" />
+                    <p id="profile-name" class="profile-name-card"></p>
+                    <!--<div id="name"></div>-->
+                    <div id="gSignInWrapper">
+                        <div id="customBtn" class="customGPlusSignIn">
+                            <div class="container">
+                                <div class="row flex-nowrap">
+                                    <div class="col-fixed-42">
+                                        <span class="icon"></span>
+                                    </div>
+                                    <div class="col">
+                                        <span id="name" class="buttonText">Connexion avec un compte ESSEC</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <a id="logoutButton" role="button" class="btn btn-outline-secondary my-1 mr-2 collapse" href="#" onclick="signOut();">Déconnexion</a>
                 </div>
-                <a id="logoutButton" role="button" class="btn btn-outline-secondary my-1 mr-2 collapse" href="#" onclick="signOut();">Déconnexion</a>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <!--Contenu de la page-->
+        <!--Contenu de la page-->
 
-    <div class="page">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3">
@@ -956,15 +957,16 @@
                 </div>
             </div>
         </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p class="float-right">
+                <a href="#">Haut de page</a>
+            </p>
+            <p>&copy; 2018 Sans langue de boîte
+            </p>
+        </footer>
     </div>
-    <!-- FOOTER -->
-    <footer class="footer">
-        <p class="float-right">
-            <a href="#">Haut de page</a>
-        </p>
-        <p>&copy; 2018 Sans langue de boîte
-        </p>
-    </footer>
     <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
     <script type="text/javascript" src="js/code.js"></script>
     <script>window.onload = requestCompanies();</script>

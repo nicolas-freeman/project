@@ -2,18 +2,26 @@
 /* STYLE GLOBAL
 -------------------------------------------------- */
 
+/* FONTS */
+
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+@import url('https://fonts.googleapis.com/css?family=Chivo');
+
 /* Padding below the footer and lighter body text */
+
 html, body{
+    margin: 0;
+    padding: 0;
     height: 100%;
 }
 
-page{
+.page{
     min-height: 100%;
-    height: 100%;
+    position: relative;
 }
 
 * {
-    font-family: 'Hind Guntur', sans-serif;
+    font-family: 'Chivo', 'Work Sans', sans-serif;
 }
 
 body {
@@ -26,7 +34,11 @@ body {
 }
 
 footer {
-margin: 20px 20px 0px 20px;
+width: 96%;
+position: absolute;
+bottom: 0;
+left: 0;
+margin: 20px 2% 0px 2%;
 }
 
 .bordure {
@@ -50,6 +62,10 @@ img {
 #logo{
     height: 40px;
     margin-right: 16px;
+}
+
+nav{
+    font-size: 17px;
 }
 
 .navbar{
@@ -125,7 +141,7 @@ a:hover{
 ------------------------- */
   
 .featurette-divider {
-    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+    margin: 5rem 0 0 0; /* Space out the Bootstrap <hr> more */
 }
   
 /* Thin out the marketing headings */

@@ -13,7 +13,6 @@ $("#navLoginCard").removeClass("invisible");
 
 
 checkIfLoggedIn();
-updateLogin();
 
 
 if (window.location.href.search("recherche=") > 0) {
@@ -70,7 +69,6 @@ $("#nav-profile-img").click(function () {
 
 // Une fois la page chargée...
 // window.onload = nomdefonction();
-
 
 
 // REPAIR BROKEN IMAGES
@@ -204,7 +202,7 @@ function signOut() {
     auth2.signOut().then(function () {
         console.log('User signed out.');
     });
-    sessionStorage.removeItem('user')
+    sessionStorage.removeItem('user');
     sessionStorage.setItem('logOut', true);
     // Redirection vers la page de connexion
     window.location.href = 'login.html';

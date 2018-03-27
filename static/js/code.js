@@ -347,11 +347,27 @@ function requestCompanies() {
                         $("#" + window[e.currentTarget.id].name).css("height", "235px;");
                         $("#" + window[e.currentTarget.id].name).css("width", "99%");
                         setTimeout(function () {
-                            e.currentTarget.innerHTML = "<div class='row' style='padding: 0px 40px 0px 15px;'> <div class='col-5 col-md-4 col-xl-3'> <div class='card-top text-nowrap'> <img class='card-img-top' src='//logo.clearbit.com/" + removeDiacritics(window[e.currentTarget.id].name.toLowerCase().replace(" ", "")) + ".com' alt='Card image cap' onerror='imgError(this);'> <h5 class='card-title'>" + window[e.currentTarget.id].name + "</h5> </div> <div class='card-body'> <p class='card-text'>" + window[e.currentTarget.id].vertical + "</p> </div> </div> <div class='col-7 col-md-8 col-xl-9 grades' style='margin:10px 0px 10px 0px;'> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Indemnité mensuelle brute</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col'></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Durée moyenne d'une journée de travail</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col'></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Intérêt des missions proposées</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 00%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col interest-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Ambiance</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col atmosphere-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Locaux</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col premises-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Note générale</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar total-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col total-grade'><span>0/20</span></div> </div> </div> </div> </div> <p class='card-footer'> <small class='text-muted'>2 avis</small> </p>"
-                            $("#" + e.currentTarget.id).find(".salary-bar").css("width", "50%");
-                            $("#" + e.currentTarget.id).find(".time-bar").css("width", "50%");
+                            e.currentTarget.innerHTML = "<div class='row' style='padding: 0px 40px 0px 15px;'> <div class='col-5 col-md-4 col-xl-3'> <div class='card-top text-nowrap'> <img class='card-img-top' src='//logo.clearbit.com/" + removeDiacritics(window[e.currentTarget.id].name.toLowerCase().replace(" ", "")) + ".com' alt='Card image cap' onerror='imgError(this);'> <h5 class='card-title'>" + window[e.currentTarget.id].name + "</h5> </div> <div class='card-body'> <p class='card-text'>" + window[e.currentTarget.id].vertical + "</p> </div> </div> <div class='col-7 col-md-8 col-xl-9 grades' style='margin:10px 0px 10px 0px;'> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Indemnité mensuelle brute</p> </div> <div class='col-sm-4 grade-col'><div class='progress'> <div class='progress-bar salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div></div> <div class='col-2 col-lg-1 grade-col'><div class='salary'></div></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Durée moyenne d'une journée de travail</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col'><div class='time'></div></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Intérêt des missions proposées</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 00%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col interest-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Ambiance</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col atmosphere-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Locaux</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col premises-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Note générale</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar total-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col total-grade'><span>0/20</span></div> </div> </div> </div> </div> <p class='card-footer'> <small class='text-muted'>2 avis</small> </p>"
+
                             $("#" + e.currentTarget.id).find(".card-title").css("margin-left", "5.5px");
 
+                            // Indemnité mensuelle brute
+                            $("#" + e.currentTarget.id).find(".salary").text(window[e.currentTarget.id].salary + "€");
+                            $("#" + e.currentTarget.id).find(".salary-bar").css("width", window[e.currentTarget.id].salary / 50 + "%");
+                            if ((window[e.currentTarget.id].salary / 250) < 7) {
+                                $("#" + e.currentTarget.id).find(".salary-bar").css("background-color", "red");
+                            } else if  ((window[e.currentTarget.id].salary / 250) > 14) {
+                                $("#" + e.currentTarget.id).find(".salary-bar").css("background-color", "green");
+                            } else {
+                                $("#" + e.currentTarget.id).find(".salary-bar").css("background-color", "orange");
+                            }
+
+                            // Durée moyenne d'une journée de travail
+                            $("#" + e.currentTarget.id).find(".time").text(window[e.currentTarget.id].time == 17 ? window[e.currentTarget.id].time+"+h" : window[e.currentTarget.id].time+"h");
+                            $("#" + e.currentTarget.id).find(".time-bar").css("width",window[e.currentTarget.id].time/17*100+"%");
+                            $("#" + e.currentTarget.id).find(".time-bar").css("background-color", "gray");
+
+                            // Intérêt des missions proposées
                             $("#" + e.currentTarget.id).find(".interest-bar").css("width", window[e.currentTarget.id].interest * 5 + "%");
                             $("#" + e.currentTarget.id).find(".interest-grade").text(window[e.currentTarget.id].interest + "/20");
                             if (window[e.currentTarget.id].interest < 7) {
@@ -361,6 +377,8 @@ function requestCompanies() {
                             } else {
                                 $("#" + e.currentTarget.id).find(".interest-bar").css("background-color", "orange");
                             }
+
+                            // Ambiance
                             $("#" + e.currentTarget.id).find(".atmosphere-bar").css("width", window[e.currentTarget.id].atmosphere * 5 + "%");
                             $("#" + e.currentTarget.id).find(".atmosphere-grade").text(window[e.currentTarget.id].atmosphere + "/20");
                             if (window[e.currentTarget.id].atmosphere < 7) {
@@ -371,6 +389,7 @@ function requestCompanies() {
                                 $("#" + e.currentTarget.id).find(".atmosphere-bar").css("background-color", "orange");
                             }
 
+                            // Locaux
                             $("#" + e.currentTarget.id).find(".premises-bar").css("width", window[e.currentTarget.id].premises * 5 + "%");
                             $("#" + e.currentTarget.id).find(".premises-grade").text(window[e.currentTarget.id].premises + "/20");
                             if (window[e.currentTarget.id].premises < 7) {
@@ -381,6 +400,7 @@ function requestCompanies() {
                                 $("#" + e.currentTarget.id).find(".premises-bar").css("background-color", "orange");
                             }
 
+                            // Note générale
                             $("#" + e.currentTarget.id).find(".total-bar").css("width", window[e.currentTarget.id].total * 5 + "%");
                             $("#" + e.currentTarget.id).find(".total-grade").text(window[e.currentTarget.id].total + "/20");
                             if (window[e.currentTarget.id].total < 7) {

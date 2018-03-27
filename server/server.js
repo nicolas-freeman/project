@@ -61,6 +61,7 @@ app.post("/submitFeedback", function (req, res) {
       if (err) throw err;
       console.log("J'ai bien ajouté un avis");
     });
+    res.status(200);
     res.send("OK");
   });
 

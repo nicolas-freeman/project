@@ -50,6 +50,11 @@ if (window.location.href.indexOf('entreprises.html') > 0) {
     initSearch();
 }
 
+if ((window.location.href.indexOf('avis.html') > 0) && (window.location.href.indexOf('salary=') > 0)) {
+    $("#feedbackSuccessAlert").addClass("collapse.show"); // On affiche l'alerte de succès de feedback si elle n'était pas affichée
+    $("#feedbackSuccessAlert").removeClass("collapse"); // On affiche l'alerte de succès de feedback si elle n'était pas affichée
+}
+
 // BARRE DE NAVIGATION
 
 // Si on clique en dehors du navLoginCard, on cache le navLoginCard
@@ -285,9 +290,7 @@ function submitFeedback() {
         if (this.readyState === XMLHttpRequest.DONE) {
             if (this.status === 200) {
                 // console.log("Réponse reçue: %s", this.responseText);
-                // Request finished. Do processing here.
             } else {
-                console.log("Statut de la réponse: %d (%s)", this.status, this.statusText);
             }
         }
 

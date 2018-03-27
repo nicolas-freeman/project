@@ -118,7 +118,10 @@ a:hover{
     opacity: 50%;
     height: 100vh;
 }
-  
+
+#myCarousel, .carousel-inner{
+    height:85vh;
+}
   
 /* MARKETING CONTENT
 -------------------------------------------------- */

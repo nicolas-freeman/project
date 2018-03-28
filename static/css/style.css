@@ -100,6 +100,8 @@ a:hover{
 .carousel-caption {
     z-index: 10;
     bottom: 3rem;
+    color:white;
+    text-shadow: 0px 0 grey, 0 1px grey, 1px 0 grey, 0 0 grey;
 }
   
 /* Declare heights because of positioning of img element */
@@ -131,6 +133,11 @@ a:hover{
 #myCarousel, .carousel-inner{
     height:85vh;
     margin-bottom:0%;
+}
+
+.carousel-btn{
+    border: none;
+    color: white;
 }
   
 /* MARKETING CONTENT
@@ -301,7 +308,7 @@ h5{
 
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
+    border-top: 16px solid #00C29A;; /* Blue */
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -612,28 +619,28 @@ td{
     margin-top: 20px;
 }
 
-#submitFeedbackButton,
-#submitFeedbackButton:hover,
-#submitFeedbackButton:active,
-#submitFeedbackButton:active:focus,
-#submitFeedbackButton:visited,
-#submitFeedbackButton[disabled],
-#submitFeedbackButton[disabled]:hover,
-#submitFeedbackButton:focus {
+.green-btn,
+.green-btn:hover,
+.green-btn:active,
+.green-btn:active:focus,
+.green-btn:visited,
+.green-btn[disabled],
+.green-btn[disabled]:hover,
+.green-btn:focus {
     background-color: #00C29A; 
     border-color: #FAFAFA;
 
 }
 
-#submitFeedbackButton:focus{
+.green-btn:focus{
     box-shadow : 0 0 0 0.2rem rgba(0, 194, 154, .5);
 }
 
-#submitFeedbackButton:focus:hover{
+.green-btn:focus:hover{
     box-shadow : 0 0 0 0.2rem rgba(0, 155, 123, .5);
 }
 
-#submitFeedbackButton:hover{
+.green-btn:hover{
     background-color: #009b7b;
     border-color: #FAFAFA;
 }

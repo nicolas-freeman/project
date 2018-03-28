@@ -50,6 +50,8 @@
     transition: all 0.218s;
     text-align: center;
     vertical-align: middle;
+    text-overflow: hidden;
+    overflow:hidden;
 }
 
 
@@ -117,10 +119,17 @@ span.label {
     /*    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33)); */
 }
 
+@media only screen and (min-width: 300px) {
+    .card-container.card {
+        width: 500px;
+        }
+}
+
 .card-container.card {
-    max-width: 95vw;
+    max-width: 90vw;
     min-width: 200px;
     padding: 3% 3%; */
+   
 }
 
 
@@ -128,10 +137,10 @@ span.label {
  * Card component
  */
 .card {
+    margin: 8% auto 8% auto;
     background-color: #F7F7F7;
     /* just in case there no content*/
     padding: 2% 2% 2%;
-    margin: 8% 0% 8% 0%;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;

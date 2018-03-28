@@ -196,14 +196,21 @@ a:hover{
 /* PAGE ENTREPRISES
 -------------------------------------------------- */
 
-.card-top{
-margin: 20px 20px 0px 20px;
+.card-top-small{
 vertical-align: middle;
-width: 198px;
+padding:15px 0 0 15px;
+min-width:190px;
+}
+
+.card-top-big{
+vertical-align: middle;
+padding-top: 15px;
+min-width:200px;
 }
 
 .card-body{
-height: 99px;
+    padding:0;
+    margin-top:15px;
 }
 
 .card-img-top{
@@ -217,7 +224,7 @@ height: 99px;
     margin-left:10px;
     margin-bottom:0;
     height:90px;
-    width: 98px;
+    width: 90px;
     line-height: 90px;
 }
 
@@ -228,7 +235,7 @@ h5{
 }
 
 .card-text{
-    height: 48px;
+    color:grey;
 }
 .card-columns{
     margin-top: 15px;
@@ -238,31 +245,73 @@ h5{
     margin: 0px 0px 0px 0px;
     border-top: solid 1px#ececec;
     background-color: white;
+    width:100%;
+    position:relative;
+    bottom:0;
+    height: 30px;
 }
+
+.company-small >.card-footer{
+    bottom:-35px;
+}
+
 .card-columns{
     height: auto;
+}
+
+.company > .row{
+    padding: 0px 40px 0px 15px;
+}
+
+.company-big > .card-title {
+    margin-left: 5.5px;
+}
+
+.grades {
+margin:10px 0px 10px 0px;
 }
 
 #entreprises{
     overflow:hidden;
     padding-bottom: 40px;
     justify-content: flex-start;
+    padding-left:0;
+    padding-right:15px;
 }
 
 .company{
     display:inline-block;
-    width: 240px;
-    height: 248px;
     margin : 15px 0px 0 15px;
-    max-height: 270px;
     -moz-transition: width .5s;
     -ms-transition: width .5s;
-    -o-transition: width .5s;
+    -o-transition: width .5ss;
     -webkit-transition: width .5s;
     transition: width .5s;
     overflow: hidden;
-    line-height:12px;
     word-wrap: initial;
+    line-height:16px;
+}
+
+.company-small{
+    width: 240px;
+    height: 203px;
+    margin-right: 0px; 
+    max-height: 270px;
+   /* line-height:12px; */
+}
+
+  
+@media (max-width: 699px) {
+    .company-small{
+        width: 95%;
+    }
+}
+
+
+.company-big{
+    margin-right: 15px; 
+    width: 95%;
+    height: auto;
 }
 
 .company:hover{
@@ -284,8 +333,11 @@ h5{
     background-color: orange;
 }
 
-.grade-col{
+.company-big > .grade-col{
     height:29px;
+}
+
+.grade-col{
     margin-top:2.5px;
     vertical-align: middle;
 }
@@ -294,6 +346,9 @@ h5{
     margin-top: 5px;
 }
 
+.score-col{
+    padding-left:0;
+}
 
 .green-svg {
     fill: #00C29A;

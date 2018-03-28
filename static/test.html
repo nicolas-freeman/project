@@ -2,22 +2,22 @@
 <html>
 
 <head>
-    <link rel="icon" href="favicon.png" />
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="google-signin-client_id" content="86515575791-2qr4ukigk6qrjcotvqp5u04l60k67k4b.apps.googleusercontent.com">
+    <link rel='icon' href='favicon.png' />
+    <link rel='stylesheet' href='css/bootstrap.min.css'>
+    <link rel='stylesheet' href='css/style.css'>
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans' rel='stylesheet'>
+    <meta charset='UTF-8'>
+    <meta name='google-signin-client_id' content='86515575791-2qr4ukigk6qrjcotvqp5u04l60k67k4b.apps.googleusercontent.com'>
     <title>Sans langue de boîte</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Roboto:light,regular,medium,thin,italic,mediumitalic,bold" rel="stylesheet"
-        type="text/css">
-    <script src="https://apis.google.com/js/api:client.js"></script>
+    <script src='https://code.jquery.com/jquery-3.2.1.slim.min.js' integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN'
+        crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q'
+        crossorigin='anonymous'></script>
+    <script type='text/javascript' src='js/bootstrap.min.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:light,regular,medium,thin,italic,mediumitalic,bold' rel='stylesheet'
+        type='text/css'>
+    <script src='https://apis.google.com/js/api:client.js'></script>
 </head>
 
 <body>
@@ -27,182 +27,224 @@
 
     <!--Barre de navigation-->
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">
-            <img id="logo" src="./images/tongueOnlyGreen.png" />Sans langue de boîte</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+    <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+        <a class='navbar-brand' href='index.html'>
+            <img id='logo' src='./images/tongueOnlyGreen.png' />Sans langue de boîte</a>
+        <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarText' aria-controls='navbarText'
+            aria-expanded='false' aria-label='Toggle navigation'>
+            <span class='navbar-toggler-icon'></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="./entreprises.html">Entreprises</a>
+        <div class='collapse navbar-collapse' id='navbarText'>
+            <ul class='navbar-nav mr-auto'>
+                <li class='nav-item'>
+                    <a class='nav-link' href='./entreprises.html'>Entreprises</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="./avis.html">Déposer un avis</a>
+                <li class='nav-item'>
+                    <a class='nav-link' href='./avis.html'>Déposer un avis</a>
                 </li>
-                <li class="nav-item">
-                    <a style="white-space: nowrap;" class="nav-link" href="./a-propos.html">A propos</a>
+                <li class='nav-item'>
+                    <a style='white-space: nowrap;' class='nav-link' href='./a-propos.html'>A propos</a>
                 </li>
             </ul>
-            <form class="form-inline my-1 flex-nowrap">
-                <input class="form-control mr-2" type="search" aria-label="Rechercher">
-                <button id="navBarSearchButton" class="btn btn-outline-success my-2" type="button" onclick="navBarSearch();">Rechercher</button>
+            <form class='form-inline my-1 flex-nowrap'>
+                <input class='form-control mr-2' type='search' aria-label='Rechercher'>
+                <button id='navBarSearchButton' class='btn btn-outline-success my-2' type='button' onclick='navBarSearch();'>Rechercher</button>
             </form>
-            <form class="form-inline my-1 ml-1"></form>
-            <a id="log" role="button" class="btn btn-outline-secondary my-1 mx-1" href="./login.html">Connexion</a>
+            <form class='form-inline my-1 ml-1'></form>
+            <a id='log' role='button' class='btn btn-outline-secondary my-1 mx-1' href='./login.html'>Connexion</a>
             <!--Connexion ou Déconnexion en barre de navigation selon le statut de l'utilisateur-->
-            <!--C<a href="./login.html"></a>-->
-            <img class="rounded-circle ml-1" id="nav-profile-img" src="./images/profile.png" width="40" height="40">
+            <!--C<a href='./login.html'></a>-->
+            <img class='rounded-circle ml-1' id='nav-profile-img' src='./images/profile.png' width='40' height='40'>
             <!--C</a>-->
-            <div class="card card-container invisible" id="navLoginCard">
-                <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-                <img id="profile-img" class="profile-img-card" src="./images/profile.png" />
-                <p id="profile-name" class="profile-name-card"></p>
-                <!--<div id="name"></div>-->
-                <div id="gSignInWrapper">
-                    <div id="customBtn" class="customGPlusSignIn">
-                        <div class="container">
-                            <div class="row flex-nowrap">
-                                <div class="col-fixed-42">
-                                    <span class="icon"></span>
+            <div class='card card-container invisible' id='navLoginCard'>
+                <!-- <img class='profile-img-card' src='//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120' alt='' /> -->
+                <img id='profile-img' class='profile-img-card' src='./images/profile.png' />
+                <p id='profile-name' class='profile-name-card'></p>
+                <!--<div id='name'></div>-->
+                <div id='gSignInWrapper'>
+                    <div id='customBtn' class='customGPlusSignIn'>
+                        <div class='container'>
+                            <div class='row flex-nowrap'>
+                                <div class='col-fixed-42'>
+                                    <span class='icon'></span>
                                 </div>
-                                <div class="col">
-                                    <span id="name" class="buttonText">Connexion avec un compte ESSEC</span>
+                                <div class='col'>
+                                    <span id='name' class='buttonText'>Connexion avec un compte ESSEC</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <a id="logoutButton" role="button" class="btn btn-outline-secondary my-1 mr-2 collapse" href="#" onclick="signOut();">Déconnexion</a>
+                <a id='logoutButton' role='button' class='btn btn-outline-secondary my-1 mr-2 collapse' href='#' onclick='signOut();'>Déconnexion</a>
             </div>
         </div>
     </nav>
 
     <!--Contenu de la page-->
-    <button type="button" onclick="requestCompanies();" style="height: 200px; width: 1000px;">REQUEST</button>
-    <br/> REPONSE :
-    <div id="entreprises">
 
-    </div>
-    <div class="container"></div>
+    <div class='container'>
+        <div id='entreprises' class='col-sm-9 flex-wrap'>
 
-    <div class="card company" id="Danone1">
-        <div class="card-top text-nowrap">
-            <img class="card-img-top" src="//logo.clearbit.com/danone.com" alt="Card image cap" onerror="imgError(this);">
-            <h5 class="card-title">Danone</h5>
-        </div>
-        <div class="card-body">
-            <p class="card-text">Agroalimentaire</p>
-        </div>
-        <p class="card-footer">
-            <small class="text-muted">2 avis</small>
-        </p>
-    </div>
 
-    <div class='card company' id='Danone2' style='margin-right: 15px; width: 99%;'>
-        <div class='row'>
-            <div class='col-5 col-md-4 col-lg-3'>
-                <div class='card-top text-nowrap'>
-                    <img class='card-img-top' src='//logo.clearbit.com/danone.com' alt='Card image cap' onerror='imgError(this);'>
-                    <h5 class='card-title'>Danone</h5>
+            <div class='card company company-small' id='danone'>
+                <div class='row'>
+                    <div class='col'>
+                        <div class='row card-top-small'>
+                            <img class='card-img-top' src='//logo.clearbit.com/danone.com' alt='Card image cap' onerror='imgError(this);'>
+                            <div class='card-title'>
+                                <h5>Danone</h5>
+                            </div>
+                        </div>
+                        <div class='row card-body'>
+                            <p class='card-text'>Agroalimentaire</p>
+                        </div>
+                    </div>
                 </div>
-                <div class='card-body'>
-                    <p class='card-text'>Agroalimentaire</p>
-                </div>
+                <p class='card-footer'>
+                    <small class='text-muted'>8 avis</small>
+                </p>
             </div>
-            <div class='col-7 col-md-8 col-lg-9' style='margin:10px 0px 10px 0px;'>
+
+            <div class='card company company-small' id='danone'>
                 <div class='row'>
-                    <div class='col-sm-4 grade-col'>
-                        <p>Indemnité mensuelle brute :</p>
-                    </div>
-                    <div class='col-sm-4 grade-col'>
-                        <div class='progress'>
-                            <div class='progress-bar' id='salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'>
-                                <span class='sr-only'>0% Complete</span>
+                    <div class='col-12'>
+                        <div class='row card-top-small'>
+                            <img class='card-img-top' src='//logo.clearbit.com/danone.com' alt='Card image cap' onerror='imgError(this);'>
+                            <div class='card-title'>
+                                <h5>Danone</h5>
                             </div>
                         </div>
-                    </div>
-                    <div class='col-sm-4 grade-col'></div>
-                </div>
-                <div class='row'>
-                    <div class='col-sm-4 grade-col'>
-                        <p>Durée moyenne d'une journée de travail :</p>
-                    </div>
-                    <div class='col-sm-4 grade-col'>
-                        <div class='progress'>
-                            <div class='progress-bar' id='time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'>
-                                <span class='sr-only'>0% Complete</span>
-                            </div>
+                        <div class='card-body'>
+                            <p class='card-text'>Agroalimentaire</p>
                         </div>
                     </div>
-                    <div class='col-sm-4 grade-col'></div>
                 </div>
-                <div class='row'>
-                    <div class='col-sm-4 grade-col'>
-                        <p>Intérêt des missions proposées :</p>
-                    </div>
-                    <div class='col-sm-4 grade-col'>
-                        <div class='progress'>
-                            <div class='progress-bar' id='interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 00%;'>
-                                <span class='sr-only'>0% Complete</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-sm-4 grade-col'>0/20</div>
-                </div>
-                <div class='row'>
-                    <div class='col-sm-4 grade-col'>
-                        <p>Ambiance :</p>
-                    </div>
-                    <div class='col-sm-4 grade-col'>
-                        <div class='progress'>
-                            <div class='progress-bar' id='atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100'
-                                style='width: 0%;'>
-                                <span class='sr-only'>0% Complete</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-sm-4 grade-col'>0/20</div>
-                </div>
-                <div class='row'>
-                    <div class='col-sm-4 grade-col'>
-                        <p>Locaux :</p>
-                    </div>
-                    <div class='col-sm-4 grade-col'>
-                        <div class='progress'>
-                            <div class='progress-bar' id='premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'>
-                                <span class='sr-only'>0% Complete</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-sm-4 grade-col'>0/20</div>
-                </div>
-                <div class='row'>
-                    <div class='col-sm-4 grade-col'>
-                        <p>Note générale :</p>
-                    </div>
-                    <div class='col-sm-4 grade-col'>
-                        <div class='progress'>
-                            <div class='progress-bar' id='global-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'>
-                                <span class='sr-only'>0% Complete</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class='col-sm-4 grade-col'>0/20</div>
-                </div>
+                <p class='card-footer'>
+                    <small class='text-muted'>8 avis</small>
+                </p>
             </div>
+
+
+            <div class='card company company-big' id='danone'>
+                <div class='row'>
+                    <div class='col-12 col-lg-5 col-xl-3'>
+                        <div class='card-top-big'>
+                            <img class='card-img-top' src='//logo.clearbit.com/danone.com' alt='Card image cap' onerror='imgError(this);'>
+                            <div class='card-title'>
+                                <h5>Danone</h5>
+                            </div>
+                        </div>
+                        <div class='card-body'>
+                            <p class='card-text'>Agroalimentaire</p>
+                        </div>
+                    </div>
+                    <div class='col-12 col-lg-6 col-xl-9 grades'>
+                        <div class='row'>
+                            <div class='col-12 col-md-7 grade-col'>
+                                <p>Indemnité mensuelle brute</p>
+                            </div>
+                            <div class='col-9 col-lg-4 grade-col'>
+                                <div class='progress'>
+                                    <div class='progress-bar salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 47%; background-color: orange;'>
+                                        <span class='sr-only'>0% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-3 col-lg-1 grade-col score-col'>
+                                <p></p>
+                                <div class='salary'>2350€</div>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-12 col-lg-7 grade-col'>
+                                <p>Durée moyenne d'une journée de travail</p>
+                            </div>
+                            <div class='col-9 col-lg-4 grade-col'>
+                                <div class='progress'>
+                                    <div class='progress-bar time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 44.1176%; background-color: gray;'>
+                                        <span class='sr-only'>0% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-3 col-lg-1 grade-col score-col'>
+                                <p></p>
+                                <div class='time'>8h</div>
+                                <p></p>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-12 col-lg-7 grade-col'>
+                                <p>Intérêt des missions proposées</p>
+                            </div>
+                            <div class='col-9 col-lg-4 grade-col'>
+                                <div class='progress'>
+                                    <div class='progress-bar interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 55%; background-color: orange;'>
+                                        <span class='sr-only'>0% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-3 col-lg-1 grade-col interest-grade score-col'>
+                                <p>11/20 </p>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-12 col-lg-7 grade-col'>
+                                <p>Ambiance</p>
+                            </div>
+                            <div class='col-9 col-lg-4 grade-col'>
+                                <div class='progress'>
+                                    <div class='progress-bar atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 43.75%; background-color: orange;'>
+                                        <span class='sr-only'>0% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-3 col-lg-1 grade-col atmosphere-grade score-col'>
+                                <p>8.8/20 </p>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-12 col-lg-7 grade-col'>
+                                <p>Locaux</p>
+                            </div>
+                            <div class='col-9 col-lg-4 grade-col'>
+                                <div class='progress'>
+                                    <div class='progress-bar premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 43.125%; background-color: orange;'>
+                                        <span class='sr-only'>0% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-3 col-lg-1 grade-col premises-grade score-col'>
+                                <p>8.6/20 </p>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-12 col-lg-7 grade-col'>
+                                <p>Note générale</p>
+                            </div>
+                            <div class='col-9 col-lg-4 grade-col'>
+                                <div class='progress'>
+                                    <div class='progress-bar total-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 66.25%; background-color: orange;'>
+                                        <span class='sr-only'>0% Complete</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='col-3 col-lg-1 grade-col total-grade score-col'>
+                                <p>13.3/20 </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class='card-footer'>
+                    <small class='text-muted'>8 avis</small>
+                </p>
+            </div>
+
         </div>
-    </div>
-    <p class='card-footer'>
-        <small class='text-muted'>2 avis</small>
-    </p>
-    </div>
     </div>
     <!-- /.container -->
-    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-    <script type="text/javascript" src="js/code.js"></script>
+    <script src='https://apis.google.com/js/platform.js?onload=init' async defer></script>
+    <script type='text/javascript' src='js/code.js'></script>
     <script>startApp();</script>
 </body>
 

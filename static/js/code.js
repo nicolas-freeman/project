@@ -356,7 +356,24 @@ function requestCompanies() {
                     window[entreprise].atmosphere /= window[entreprise].count;
                     window[entreprise].premises /= window[entreprise].count;
                     window[entreprise].total /= window[entreprise].count;
-                    var elementToAdd = "<div class='card company' id='" + removeDiacritics(window[entreprise].name.toLowerCase().replace(" ", "")) + "'><div class='card-top'><img class='card-img-top' src='//logo.clearbit.com/" + removeDiacritics(window[entreprise].name.toLowerCase().replace(" ", "")) + ".com' alt='Card image cap' onerror='imgError(this);'><div class='card-title'><h5>" + window[entreprise].name + "</h5></div></div><div class='card-body'><p class='card-text'>" + window[entreprise].vertical + "</p></div><p class='card-footer'><small class='text-muted'>" + window[entreprise].count + " avis</small></p></div>";
+                    var elementToAdd = `<div class='card company company-small' id='`+removeDiacritics(window[entreprise].name.toLowerCase().replace(" ", ""))+`'>
+                    <div class='row'>
+                        <div class='col-12'>
+                            <div class='row card-top-small'>
+                                <img class='card-img-top' src='//logo.clearbit.com/`+ removeDiacritics(window[entreprise].name.toLowerCase().replace(" ", "")) + `.com' alt='Card image cap' onerror='imgError(this);'>
+                                <div class='card-title'>
+                                    <h5>`+ window[entreprise].name + `</h5>
+                                </div>
+                            </div>
+                            <div class='card-body'>
+                                <p class='card-text'>`+ window[entreprise].vertical + `</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class='card-footer'>
+                        <small class='text-muted'>`+ window[entreprise].count + ` avis</small>
+                    </p>
+                </div>`;
                     // console.log("elementToAdd =" + elementToAdd);
                     totalToAdd = (totalToAdd == undefined) ? elementToAdd : totalToAdd + elementToAdd;
                     // console.log("totalToAdd =" + totalToAdd);
@@ -373,81 +390,207 @@ function requestCompanies() {
 
                 // Ajout du listener sur chaque entreprise, qui demande le détail lors du clic
                 $(".company").click(function (e) {
-                    if ($("#" + e.currentTarget.id).css("margin-right") == "15px") { // Si la card est déjà agrandie, on la remet dans son état initial (petit)
-                        $("#" + e.currentTarget.id).css("margin-right", "0px");
-                        $("#" + e.currentTarget.id).css("width", "240px");
-                        e.currentTarget.innerHTML = "<div class='card-top'><img class='card-img-top' src='//logo.clearbit.com/" + removeDiacritics(window[e.currentTarget.id].name.toLowerCase().replace(" ", "")) + ".com' alt='Card image cap' onerror='imgError(this);'><div class='card-title'><h5>" + window[e.currentTarget.id].name + "</h5></div></div><div class='card-body'><p class='card-text'>" + window[e.currentTarget.id].vertical + "</p></div><p class='card-footer'><small class='text-muted'>" + window[e.currentTarget.id].count + " avis</small></p>";
-                    } else { // Si la card n'est pas agrandie, on fait une requête pour avoir les infos sur l'entreprise puis on agrandit la card
-                        console.log("User clicked on " + e.currentTarget.id);
-                        $("#" + e.currentTarget.id).css("margin-right", "15px");
-                        $("#" + e.currentTarget.id).css("height", "235px;");
-                        $("#" + e.currentTarget.id).css("width", "99%");
-                        setTimeout(function () {
-                            e.currentTarget.innerHTML = "<div class='row' style='padding: 0px 40px 0px 15px;'> <div class='col-5 col-md-4 col-xl-3'> <div class='card-top'> <img class='card-img-top' src='//logo.clearbit.com/" + removeDiacritics(window[e.currentTarget.id].name.toLowerCase().replace(" ", "")) + ".com' alt='Card image cap' onerror='imgError(this);'> <div class='card-title'><h5>" + window[e.currentTarget.id].name + "</h5></div> </div> <div class='card-body'> <p class='card-text'>" + window[e.currentTarget.id].vertical + "</p> </div> </div> <div class='col-7 col-md-8 col-xl-9 grades' style='margin:10px 0px 10px 0px;'> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Indemnité mensuelle brute</p> </div> <div class='col-sm-4 grade-col'><div class='progress'> <div class='progress-bar salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div></div> <div class='col-2 col-lg-1 grade-col'><p><div class='salary'></div></p></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Durée moyenne d'une journée de travail</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col'><p><div class='time'></div></p></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Intérêt des missions proposées</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 00%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col interest-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Ambiance</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col atmosphere-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Locaux</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col premises-grade'><span>0/20</span></div> </div> <div class='row'> <div class='col-6 col-lg-7 grade-col'> <p>Note générale</p> </div> <div class='col-sm-4 grade-col'> <div class='progress'> <div class='progress-bar total-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%;'> <span class='sr-only'>0% Complete</span> </div> </div> </div> <div class='col-2 col-lg-1 grade-col total-grade'><span>0/20</span></div> </div> </div> </div> </div> <p class='card-footer'> <small class='text-muted'>" + window[e.currentTarget.id].count + " avis</small> </p>"
+                    console.log("User clicked on " + e.currentTarget.id);
+                    if (e.currentTarget.classList.contains("company-big")) { // Si la card est déjà agrandie, on la remet dans son état initial (petit)
+                        e.currentTarget.classList.toggle("company-big");
+                        e.currentTarget.classList.toggle("company-small");
+                        e.currentTarget.innerHTML = `
+            <div class='row'>
+                <div class='col-12'>
+                    <div class='row card-top-small'>
+                        <img class='card-img-top' src='//logo.clearbit.com/`+ removeDiacritics(window[e.currentTarget.id].name.toLowerCase().replace(" ", "")) + `.com' alt='Card image cap' onerror='imgError(this);'>
+                        <div class='card-title'>
+                            <h5>`+ window[e.currentTarget.id].name + `</h5>
+                        </div>
+                    </div>
+                    <div class='card-body'>
+                        <p class='card-text'>`+ window[e.currentTarget.id].vertical + `</p>
+                    </div>
+                </div>
+            </div>
+            <p class='card-footer'>
+                <small class='text-muted'>`+ window[e.currentTarget.id].count + ` avis</small>
+            </p>`;
+                    } else { // Si la card n'est pas agrandie,  on agrandit la card
+                        e.currentTarget.classList.toggle("company-big");
+                        e.currentTarget.classList.toggle("company-small");
+                        e.currentTarget.innerHTML = `
+                            <div class='row'>
+                                <div class='col-12 col-lg-5 col-xl-3'>
+                                    <div class='card-top-big'>
+                                        <img class='card-img-top' src='//logo.clearbit.com/`+ removeDiacritics(window[e.currentTarget.id].name.toLowerCase().replace(" ", "")) + `.com' alt='Card image cap' onerror='imgError(this);'>
+                                        <div class='card-title'>
+                                            <h5>`+ window[e.currentTarget.id].name + `</h5>
+                                        </div>
+                                    </div>
+                                    <div class='card-body'>
+                                        <p class='card-text'>`+ window[e.currentTarget.id].vertical + `</p>
+                                    </div>
+                                </div>
+                                <div class='col-12 col-lg-6 col-xl-9 grades'>
+                                    <div class='row'>
+                                        <div class='col-12 col-md-7 grade-col'>
+                                            <p>Indemnité mensuelle brute</p>
+                                        </div>
+                                        <div class='col-9 col-lg-4 grade-col'>
+                                            <div class='progress'>
+                                                <div class='progress-bar salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%; background-color: orange;'>
+                                                    <span class='sr-only'>0% Complete</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='col-3 col-lg-1 grade-col score-col'>
+                                            <p></p>
+                                            <div class='salary'>0€</div>
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col-12 col-lg-7 grade-col'>
+                                            <p>Durée moyenne d'une journée de travail</p>
+                                        </div>
+                                        <div class='col-9 col-lg-4 grade-col'>
+                                            <div class='progress'>
+                                                <div class='progress-bar time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%; background-color: gray;'>
+                                                    <span class='sr-only'>0% Complete</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='col-3 col-lg-1 grade-col score-col'>
+                                            <p></p>
+                                            <div class='time'>0h</div>
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col-12 col-lg-7 grade-col'>
+                                            <p>Intérêt des missions proposées</p>
+                                        </div>
+                                        <div class='col-9 col-lg-4 grade-col'>
+                                            <div class='progress'>
+                                                <div class='progress-bar interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%; background-color: orange;'>
+                                                    <span class='sr-only'>0% Complete</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='col-3 col-lg-1 grade-col interest-grade score-col'>
+                                            <p>0/20 </p>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col-12 col-lg-7 grade-col'>
+                                            <p>Ambiance</p>
+                                        </div>
+                                        <div class='col-9 col-lg-4 grade-col'>
+                                            <div class='progress'>
+                                                <div class='progress-bar atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%; background-color: orange;'>
+                                                    <span class='sr-only'>0% Complete</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='col-3 col-lg-1 grade-col atmosphere-grade score-col'>
+                                            <p>0/20 </p>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col-12 col-lg-7 grade-col'>
+                                            <p>Locaux</p>
+                                        </div>
+                                        <div class='col-9 col-lg-4 grade-col'>
+                                            <div class='progress'>
+                                                <div class='progress-bar premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%; background-color: orange;'>
+                                                    <span class='sr-only'>0% Complete</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='col-3 col-lg-1 grade-col premises-grade score-col'>
+                                            <p>0/20 </p>
+                                        </div>
+                                    </div>
+                                    <div class='row'>
+                                        <div class='col-12 col-lg-7 grade-col'>
+                                            <p>Note générale</p>
+                                        </div>
+                                        <div class='col-9 col-lg-4 grade-col'>
+                                            <div class='progress'>
+                                                <div class='progress-bar total-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%; background-color: orange;'>
+                                                    <span class='sr-only'>0% Complete</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class='col-3 col-lg-1 grade-col total-grade score-col'>
+                                            <p>0/20 </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class='card-footer'>
+                                <small class='text-muted'>`+ window[e.currentTarget.id].count + ` avis</small>
+                            </p>
+                        `;
 
-                            $("#" + e.currentTarget.id).find(".card-title").css("margin-left", "5.5px");
 
-                            // Indemnité mensuelle brute
-                            $("#" + e.currentTarget.id).find(".salary").text(precisionRound(window[e.currentTarget.id].salary, 0) + "€");
-                            $("#" + e.currentTarget.id).find(".salary-bar").css("width", window[e.currentTarget.id].salary / 50 + "%");
-                            if ((window[e.currentTarget.id].salary / 250) < 7) {
-                                $("#" + e.currentTarget.id).find(".salary-bar").css("background-color", "red");
-                            } else if ((window[e.currentTarget.id].salary / 250) > 14) {
-                                $("#" + e.currentTarget.id).find(".salary-bar").css("background-color", "green");
-                            } else {
-                                $("#" + e.currentTarget.id).find(".salary-bar").css("background-color", "orange");
-                            }
+                        $("#" + e.currentTarget.id).find(".card-title").css("margin-left", "5.5px");
 
-                            // Durée moyenne d'une journée de travail
-                            $("#" + e.currentTarget.id).find(".time").text(window[e.currentTarget.id].time == 17 ? precisionRound(window[e.currentTarget.id].time, 0) + "+h" : precisionRound(window[e.currentTarget.id].time, 0) + "h");
-                            $("#" + e.currentTarget.id).find(".time-bar").css("width", window[e.currentTarget.id].time / 17 * 100 + "%");
-                            $("#" + e.currentTarget.id).find(".time-bar").css("background-color", "gray");
+                        // Indemnité mensuelle brute
+                        $("#" + e.currentTarget.id).find(".salary").text(precisionRound(window[e.currentTarget.id].salary, 0) + "€");
+                        $("#" + e.currentTarget.id).find(".salary-bar").css("width", window[e.currentTarget.id].salary / 50 + "%");
+                        if ((window[e.currentTarget.id].salary / 250) < 7) {
+                            $("#" + e.currentTarget.id).find(".salary-bar").css("background-color", "red");
+                        } else if ((window[e.currentTarget.id].salary / 250) > 14) {
+                            $("#" + e.currentTarget.id).find(".salary-bar").css("background-color", "green");
+                        } else {
+                            $("#" + e.currentTarget.id).find(".salary-bar").css("background-color", "orange");
+                        }
 
-                            // Intérêt des missions proposées
-                            $("#" + e.currentTarget.id).find(".interest-bar").css("width", window[e.currentTarget.id].interest * 5 + "%");
-                            $("#" + e.currentTarget.id).find(".interest-grade").html("<p>" + precisionRound(window[e.currentTarget.id].interest, 1) + "/20 </p>");
-                            if (window[e.currentTarget.id].interest < 7) {
-                                $("#" + e.currentTarget.id).find(".interest-bar").css("background-color", "red");
-                            } else if (window[e.currentTarget.id].interest > 14) {
-                                $("#" + e.currentTarget.id).find(".interest-bar").css("background-color", "green");
-                            } else {
-                                $("#" + e.currentTarget.id).find(".interest-bar").css("background-color", "orange");
-                            }
+                        // Durée moyenne d'une journée de travail
+                        $("#" + e.currentTarget.id).find(".time").text(window[e.currentTarget.id].time == 17 ? precisionRound(window[e.currentTarget.id].time, 0) + "+h" : precisionRound(window[e.currentTarget.id].time, 0) + "h");
+                        $("#" + e.currentTarget.id).find(".time-bar").css("width", window[e.currentTarget.id].time / 17 * 100 + "%");
+                        $("#" + e.currentTarget.id).find(".time-bar").css("background-color", "gray");
 
-                            // Ambiance
-                            $("#" + e.currentTarget.id).find(".atmosphere-bar").css("width", window[e.currentTarget.id].atmosphere * 5 + "%");
-                            $("#" + e.currentTarget.id).find(".atmosphere-grade").html("<p>" + precisionRound(window[e.currentTarget.id].atmosphere, 1) + "/20 </p>");
-                            if (window[e.currentTarget.id].atmosphere < 7) {
-                                $("#" + e.currentTarget.id).find(".atmosphere-bar").css("background-color", "red");
-                            } else if (window[e.currentTarget.id].atmosphere > 14) {
-                                $("#" + e.currentTarget.id).find(".atmosphere-bar").css("background-color", "green");
-                            } else {
-                                $("#" + e.currentTarget.id).find(".atmosphere-bar").css("background-color", "orange");
-                            }
+                        // Intérêt des missions proposées
+                        $("#" + e.currentTarget.id).find(".interest-bar").css("width", window[e.currentTarget.id].interest * 5 + "%");
+                        $("#" + e.currentTarget.id).find(".interest-grade").html("<p>" + precisionRound(window[e.currentTarget.id].interest, 1) + "/20 </p>");
+                        if (window[e.currentTarget.id].interest < 7) {
+                            $("#" + e.currentTarget.id).find(".interest-bar").css("background-color", "red");
+                        } else if (window[e.currentTarget.id].interest > 14) {
+                            $("#" + e.currentTarget.id).find(".interest-bar").css("background-color", "green");
+                        } else {
+                            $("#" + e.currentTarget.id).find(".interest-bar").css("background-color", "orange");
+                        }
 
-                            // Locaux
-                            $("#" + e.currentTarget.id).find(".premises-bar").css("width", window[e.currentTarget.id].premises * 5 + "%");
-                            $("#" + e.currentTarget.id).find(".premises-grade").html("<p>" + precisionRound(window[e.currentTarget.id].premises, 1) + "/20 </p>");
-                            if (window[e.currentTarget.id].premises < 7) {
-                                $("#" + e.currentTarget.id).find(".premises-bar").css("background-color", "red");
-                            } else if (window[e.currentTarget.id].premises > 14) {
-                                $("#" + e.currentTarget.id).find(".premises-bar").css("background-color", "green");
-                            } else {
-                                $("#" + e.currentTarget.id).find(".premises-bar").css("background-color", "orange");
-                            }
+                        // Ambiance
+                        $("#" + e.currentTarget.id).find(".atmosphere-bar").css("width", window[e.currentTarget.id].atmosphere * 5 + "%");
+                        $("#" + e.currentTarget.id).find(".atmosphere-grade").html("<p>" + precisionRound(window[e.currentTarget.id].atmosphere, 1) + "/20 </p>");
+                        if (window[e.currentTarget.id].atmosphere < 7) {
+                            $("#" + e.currentTarget.id).find(".atmosphere-bar").css("background-color", "red");
+                        } else if (window[e.currentTarget.id].atmosphere > 14) {
+                            $("#" + e.currentTarget.id).find(".atmosphere-bar").css("background-color", "green");
+                        } else {
+                            $("#" + e.currentTarget.id).find(".atmosphere-bar").css("background-color", "orange");
+                        }
 
-                            // Note générale
-                            $("#" + e.currentTarget.id).find(".total-bar").css("width", window[e.currentTarget.id].total * 5 + "%");
-                            $("#" + e.currentTarget.id).find(".total-grade").html("<p>" + precisionRound(window[e.currentTarget.id].total, 1) + "/20 </p>");
-                            if (window[e.currentTarget.id].total < 7) {
-                                $("#" + e.currentTarget.id).find(".total-bar").css("background-color", "red");
-                            } else if (window[e.currentTarget.id].total > 14) {
-                                $("#" + e.currentTarget.id).find(".total-bar").css("background-color", "green");
-                            } else {
-                                $("#" + e.currentTarget.id).find(".total-bar").css("background-color", "orange");
-                            }
+                        // Locaux
+                        $("#" + e.currentTarget.id).find(".premises-bar").css("width", window[e.currentTarget.id].premises * 5 + "%");
+                        $("#" + e.currentTarget.id).find(".premises-grade").html("<p>" + precisionRound(window[e.currentTarget.id].premises, 1) + "/20 </p>");
+                        if (window[e.currentTarget.id].premises < 7) {
+                            $("#" + e.currentTarget.id).find(".premises-bar").css("background-color", "red");
+                        } else if (window[e.currentTarget.id].premises > 14) {
+                            $("#" + e.currentTarget.id).find(".premises-bar").css("background-color", "green");
+                        } else {
+                            $("#" + e.currentTarget.id).find(".premises-bar").css("background-color", "orange");
+                        }
 
-                        }, 300);
+                        // Note générale
+                        $("#" + e.currentTarget.id).find(".total-bar").css("width", window[e.currentTarget.id].total * 5 + "%");
+                        $("#" + e.currentTarget.id).find(".total-grade").html("<p>" + precisionRound(window[e.currentTarget.id].total, 1) + "/20 </p>");
+                        if (window[e.currentTarget.id].total < 7) {
+                            $("#" + e.currentTarget.id).find(".total-bar").css("background-color", "red");
+                        } else if (window[e.currentTarget.id].total > 14) {
+                            $("#" + e.currentTarget.id).find(".total-bar").css("background-color", "green");
+                        } else {
+                            $("#" + e.currentTarget.id).find(".total-bar").css("background-color", "orange");
+                        }
                     }
                 });
             } else {
@@ -460,35 +603,7 @@ function requestCompanies() {
     req.send(null);
 }
 
-/* function requestDetail(){
-     // Ici, la requête sera émise de façon synchrone.
-     const req = new XMLHttpRequest();
-     req.open('GET', './companyDetail', false);
-     req.send(this.id);
-     console.log ("this.id ="+this.id);
-     if (req.status === 200) {
-         console.log("Réponse reçue: %s", req.responseText);
- //       sessionStorage.setItem("entreprises", req.responseText);
-        var parsed = JSON.parse(req.responseText);
-        console.log("parsed = "+parsed);
-        console.log("parsed1 = "+parsed[0]);
-        console.log("parsedName = "+parsed.name);
-        var totalToAdd;
-        parsed.forEach(entreprise => {
-            console.log("element :"+entreprise);
-            var elementToAdd = "<div class='card company'><div class='card-top text-nowrap'><img class='card-img-top' src='//logo.clearbit.com/"+ removeDiacritics(entreprise.name.toLowerCase().replace(" ","")) +".com' alt='Card image cap' onerror='imgError(this);'><h5 class='card-title'>"+entreprise.name+"</h5></div><div class='card-body'><p class='card-text'>"+entreprise.vertical+"</p></div><p class='card-footer'><small class='text-muted'>2 avis</small></p></div>"
-            console.log ("elementToAdd =" + elementToAdd);
-             totalToAdd= (totalToAdd==undefined) ? elementToAdd : totalToAdd + elementToAdd; 
-            console.log ("totalToAdd =" + totalToAdd);
-         });
-        document.getElementById("entreprises").innerHTML=totalToAdd;
-     } else {
-         console.log("Statut de la réponse: %d (%s)", req.status, req.statusText);
-         document.getElementById("entreprises").innerHTML="<div class='alert alert-danger'> Erreur lors de la connexion à la base de données !<br><a id='dbErrorLink' onclick='requestCompanies();'>Cliquez ici pour réessayer</a></div>";
-     }
-} */
-
-// REMOVE ACCENTS
+// POUR ENLEVER LES ACCENTS :
 
 /*
    Licensed under the Apache License, Version 2.0 (the "License");

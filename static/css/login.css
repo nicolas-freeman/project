@@ -50,6 +50,8 @@
     transition: all 0.218s;
     text-align: center;
     vertical-align: middle;
+    text-overflow: hidden;
+    overflow:hidden;
 }
 
 
@@ -95,7 +97,7 @@ span.label {
 
 #logoutButton{
     margin: 0px 0px 0px 0px;
-    width: 388px;
+    width: 100%;
 }
 
 #logoutButton:hover {
@@ -110,18 +112,24 @@ span.label {
  * General styles
  */
  body, html {
-    height: 100%;
     background-repeat: no-repeat;
     background-image: url("/images/campfire.jpg");
     background-position: center center;
-    background-size: 100%;
+    background-size: cover;
     /*    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33)); */
 }
 
+@media only screen and (min-width: 300px) {
+    .card-container.card {
+        width: 500px;
+        }
+}
+
 .card-container.card {
-    min-width: 420px;
-    max-width: 470px;
-    padding: 40px 40px;
+    max-width: 90vw;
+    min-width: 200px;
+    padding: 3% 3%; */
+   
 }
 
 
@@ -129,11 +137,10 @@ span.label {
  * Card component
  */
 .card {
+    margin: 8% auto 8% auto;
     background-color: #F7F7F7;
     /* just in case there no content*/
-    padding: 20px 25px 30px;
-    margin: 0 auto 25px;
-    margin-top: 50px;
+    padding: 2% 2% 2%;
     /* shadows and rounded borders */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;

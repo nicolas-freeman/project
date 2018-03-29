@@ -101,25 +101,44 @@ a:hover{
 .carousel-caption {
     z-index: 10;
     bottom: 3rem;
+    color:white;
+    text-shadow: 0px 0 grey, 0 1px grey, 1px 0 grey, 0 0 grey;
 }
   
 /* Declare heights because of positioning of img element */
 .carousel-item {
-    height: 32rem;
-    background-color: #777;
+    height: calc(100vh - 66px);
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    background-size:cover;
+    text-align:center;
+      
 }
 .carousel-item > img {
-    position: absolute;
-    top: 0;
-    left: 0;
+    margin: 0 auto;
     min-width: 100%;
-    height: 32rem;
+    height: calc(100vh - 66px);
     opacity: 50%;
     height: 100vh;
+    min-height: 100%;
+    min-width: 100%;
+        /* IE 8 */
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        /* IE 5-7 */
+        filter: alpha(opacity=0);
+        /* modern browsers */
+        opacity: 0;
 }
 
 #myCarousel, .carousel-inner{
-    height:85vh;
+    height: calc(100vh - 66px);
+    margin-bottom:0%;
+}
+
+.carousel-btn{
+    border: none;
+    color: white;
 }
   
 /* MARKETING CONTENT
@@ -178,14 +197,21 @@ a:hover{
 /* PAGE ENTREPRISES
 -------------------------------------------------- */
 
-.card-top{
-margin: 20px 20px 0px 20px;
+.card-top-small{
 vertical-align: middle;
-width: 198px;
+padding:15px 0 0 15px;
+min-width:190px;
+}
+
+.card-top-big{
+vertical-align: middle;
+padding-top: 15px;
+min-width:200px;
 }
 
 .card-body{
-height: 99px;
+    padding:0;
+    margin-top:15px;
 }
 
 .card-img-top{
@@ -199,7 +225,7 @@ height: 99px;
     margin-left:10px;
     margin-bottom:0;
     height:90px;
-    width: 98px;
+    width: 90px;
     line-height: 90px;
 }
 
@@ -210,7 +236,7 @@ h5{
 }
 
 .card-text{
-    height: 48px;
+    color:grey;
 }
 .card-columns{
     margin-top: 15px;
@@ -220,31 +246,73 @@ h5{
     margin: 0px 0px 0px 0px;
     border-top: solid 1px#ececec;
     background-color: white;
+    width:100%;
+    position:relative;
+    bottom:0;
+    height: 30px;
 }
+
+.company-small >.card-footer{
+    bottom:-35px;
+}
+
 .card-columns{
     height: auto;
+}
+
+.company > .row{
+    padding: 0px 40px 0px 15px;
+}
+
+.company-big > .card-title {
+    margin-left: 5.5px;
+}
+
+.grades {
+margin:10px 0px 10px 0px;
 }
 
 #entreprises{
     overflow:hidden;
     padding-bottom: 40px;
     justify-content: flex-start;
+    padding-left:0;
+    padding-right:15px;
 }
 
 .company{
     display:inline-block;
-    width: 240px;
-    height: 248px;
     margin : 15px 0px 0 15px;
-    max-height: 270px;
     -moz-transition: width .5s;
     -ms-transition: width .5s;
-    -o-transition: width .5s;
+    -o-transition: width .5ss;
     -webkit-transition: width .5s;
     transition: width .5s;
     overflow: hidden;
-    line-height:12px;
     word-wrap: initial;
+    line-height:16px;
+}
+
+.company-small{
+    width: 240px;
+    height: 203px;
+    margin-right: 0px; 
+    max-height: 270px;
+   /* line-height:12px; */
+}
+
+  
+@media (max-width: 699px) {
+    .company-small{
+        width: 95%;
+    }
+}
+
+
+.company-big{
+    margin-right: 15px; 
+    width: 95%;
+    height: auto;
 }
 
 .company:hover{
@@ -266,8 +334,11 @@ h5{
     background-color: orange;
 }
 
-.grade-col{
+.company-big > .grade-col{
     height:29px;
+}
+
+.grade-col{
     margin-top:2.5px;
     vertical-align: middle;
 }
@@ -276,6 +347,9 @@ h5{
     margin-top: 5px;
 }
 
+.score-col{
+    padding-left:0;
+}
 
 .green-svg {
     fill: #00C29A;
@@ -290,7 +364,7 @@ h5{
 
 .loader {
     border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
+    border-top: 16px solid #00C29A;; /* Blue */
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -606,28 +680,28 @@ td{
     margin-top: 20px;
 }
 
-#submitFeedbackButton,
-#submitFeedbackButton:hover,
-#submitFeedbackButton:active,
-#submitFeedbackButton:active:focus,
-#submitFeedbackButton:visited,
-#submitFeedbackButton[disabled],
-#submitFeedbackButton[disabled]:hover,
-#submitFeedbackButton:focus {
+.green-btn,
+.green-btn:hover,
+.green-btn:active,
+.green-btn:active:focus,
+.green-btn:visited,
+.green-btn[disabled],
+.green-btn[disabled]:hover,
+.green-btn:focus {
     background-color: #00C29A; 
     border-color: #FAFAFA;
 
 }
 
-#submitFeedbackButton:focus{
+.green-btn:focus{
     box-shadow : 0 0 0 0.2rem rgba(0, 194, 154, .5);
 }
 
-#submitFeedbackButton:focus:hover{
+.green-btn:focus:hover{
     box-shadow : 0 0 0 0.2rem rgba(0, 155, 123, .5);
 }
 
-#submitFeedbackButton:hover{
+.green-btn:hover{
     background-color: #009b7b;
     border-color: #FAFAFA;
 }
@@ -647,5 +721,9 @@ padding-left: 20px;
     width: 140px;
     height: 140px;
     margin-bottom: 10px;
+    margin:auto;
 }
 
+.text-center{
+    display:inline-block;
+}

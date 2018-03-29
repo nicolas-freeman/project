@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="google-signin-client_id" content="86515575791-2qr4ukigk6qrjcotvqp5u04l60k67k4b.apps.googleusercontent.com">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <title>Sans langue de boîte</title>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -90,43 +91,43 @@
                 <li data-target="#myCarousel" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img class="first-slide" src="./images/road.jpg" alt="First slide">
+                <div class="carousel-item active" style="background-image: url('./images/road.jpg')">
+                    <img class="img-fluid first-slide" src="./images/road.jpg" alt="First slide">
                     <div class="container">
-                        <div class="carousel-caption d-none d-md-block text-left">
+                        <div class="carousel-caption text-left">
                             <h1>A la recherche du stage parfait ?</h1>
                             <p>Consultez les avis de vos camarades sur leurs précédents stages et choisissez une entreprise
                                 qui vous correspond. </p>
                             <p>
-                                <a class="btn btn-lg btn-primary" href="./entreprises.html" role="button">Découvrir les avis</a>
+                                <a class="btn btn-lg btn-primary green-btn carousel-btn" href="./entreprises.html" role="button">Découvrir les avis</a>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="second-slide" src="./images/grade2.jpg" alt="Second slide">
+                <div class="carousel-item" style="background-image: url('./images/grade2.jpg')">
+                    <img class="img-fluid second-slide" alt="Second slide">
                     <div class="container">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption">
                             <h1>Evaluez votre entreprise</h1>
                             <p>Vous venez d’effectuer un stage ? Vos tâches quotidiennes étaient-elles en adéquation avec votre
                                 formation ? En laissant votre avis, vous permettez à vos camarades de mieux choisir leur
                                 prochain stage. </p>
                             <p>
-                                <a class="btn btn-lg btn-primary" href="./avis.html" role="button">Laisser un avis</a>
+                                <a class="btn btn-lg btn-primary green-btn carousel-btn" href="./avis.html" role="button">Laisser un avis</a>
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img class="third-slide" src="./images/fistbump.jpg" alt="Third slide">
+                <div class="carousel-item" style="background-image: url('./images/fistbump.jpg')">
+                    <img class="img-fluid third-slide" alt="Third slide">
                     <div class="container">
-                        <div class="carousel-caption d-none d-md-block text-right">
+                        <div class="carousel-caption text-right">
                             <h1>Rencontrez l'équipe</h1>
                             <p>Créé par des ESSEC et pour des ESSEC,
                                 <em>Sans langue de boîte</em> est le premier site
                                 <b>fiable</b> de retour d'expériences</p>
                             <p>
-                                <a class="btn btn-lg btn-primary" href="./a-propos.html" role="button">En savoir plus</a>
+                                <a class="btn btn-lg btn-primary green-btn carousel-btn" href="./a-propos.html" role="button">En savoir plus</a>
                             </p>
                         </div>
                     </div>
@@ -210,11 +211,8 @@
         <!-- /.container -->
 
         <!-- FOOTER -->
-        <footer class="footer">
-            <p class="float-right">
-                <a href="#">Haut de page</a>
-            </p>
-            <p>&copy; 2018 Sans langue de boîte
+        <footer class="footer" style="color:white;">
+            <p style="margin-bottom:0;">&copy; 2018 Sans langue de boîte
             </p>
         </footer>
 

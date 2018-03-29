@@ -389,7 +389,7 @@ margin:10px 0px 10px 0px;
 
 #navLoginCard{
     position: absolute;
-    right: 20px;
+    right: 1%;
     top: 40px;
     z-index: 99;
 }
@@ -499,9 +499,9 @@ span.label {
 -------------------------------------------------- */
 
 #loginCard.card, #navLoginCard.card {
-    min-width: 420px;
+    min-width: 300px;
     max-width: 470px;
-    padding: 40px 40px;
+    padding: 2% 2%;
 }
 
 

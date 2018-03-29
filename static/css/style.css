@@ -28,6 +28,7 @@ body {
     padding-top: 0rem;
     color: #5a5a5a;
     background-color: #fafafa;
+    width:auto;
     min-height:100%;
 }
 
@@ -620,19 +621,24 @@ td {
 }
 
 .tdone {
-    width: 190px;
+    width: 170px;
+    min-width: 70px;
 }
 
 .tdtwo {
-    width: 190px;
+    width: 200px;
 }
 .tdthree {
+ width: 90px;
+ padding-left: 10px;
  padding-top: 12px;
- padding-left: 50px;
+ margin-right: 0;
 }
 
 #row1 {
     border-bottom: 1px solid grey;
+    padding-left: 20px;
+    
 }
 
 .nmbr {
@@ -705,7 +711,9 @@ td{
     background-color:red;
 }
 
-
+.row.a{
+padding-left: 20px;
+}
 /* PAGE A PROPOS
 -------------------------------------------------- */
 

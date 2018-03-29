@@ -273,11 +273,11 @@ margin:10px 0px 10px 0px;
 }
 
 #entreprises{
-    overflow:hidden;
     padding-bottom: 40px;
     justify-content: flex-start;
     padding-left:0;
     padding-right:15px;
+    min-height: 160px;
 }
 
 .company{
@@ -369,9 +369,10 @@ margin:10px 0px 10px 0px;
     width: 120px;
     height: 120px;
     animation: spin 2s linear infinite;
-    position: relative;
+    /*position: relative;
     left: 45%;
-    top: 45%;
+    top: 45%;*/
+    margin: 20% auto;
 }
 
 @keyframes spin {

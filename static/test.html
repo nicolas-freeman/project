@@ -82,168 +82,21 @@
     </nav>
 
     <!--Contenu de la page-->
-
-    <div class='container'>
-        <div id='entreprises' class='col-sm-9 flex-wrap'>
-
-
-            <div class='card company company-small' id='danone'>
-                <div class='row'>
-                    <div class='col'>
-                        <div class='row card-top-small'>
-                            <img class='card-img-top' src='//logo.clearbit.com/danone.com' alt='Card image cap' onerror='imgError(this);'>
-                            <div class='card-title'>
-                                <h5>Danone</h5>
-                            </div>
-                        </div>
-                        <div class='row card-body'>
-                            <p class='card-text'>Agroalimentaire</p>
-                        </div>
-                    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                <h2 class="mt-3">Critères de recherche</h2>
+                <div id="filters" class="card">
+                    <input id="myInput" class="form-control mr-2" type="search" aria-label="Rechercher" placeholder="Rechercher une entreprise...">
                 </div>
-                <p class='card-footer'>
-                    <small class='text-muted'>8 avis</small>
-                </p>
             </div>
-
-            <div class='card company company-small' id='danone'>
-                <div class='row'>
-                    <div class='col-12'>
-                        <div class='row card-top-small'>
-                            <img class='card-img-top' src='//logo.clearbit.com/danone.com' alt='Card image cap' onerror='imgError(this);'>
-                            <div class='card-title'>
-                                <h5>Danone</h5>
-                            </div>
-                        </div>
-                        <div class='card-body'>
-                            <p class='card-text'>Agroalimentaire</p>
-                        </div>
-                    </div>
-                </div>
-                <p class='card-footer'>
-                    <small class='text-muted'>8 avis</small>
-                </p>
+            <div id="entreprises" class="col-sm-9 flex-wrap">
+                <div class='loader'></div>
             </div>
-
-
-            <div class='card company company-big' id='danone'>
-                <div class='row'>
-                    <div class='col-12 col-lg-5 col-xl-3'>
-                        <div class='card-top-big'>
-                            <img class='card-img-top' src='//logo.clearbit.com/danone.com' alt='Card image cap' onerror='imgError(this);'>
-                            <div class='card-title'>
-                                <h5>Danone</h5>
-                            </div>
-                        </div>
-                        <div class='card-body'>
-                            <p class='card-text'>Agroalimentaire</p>
-                        </div>
-                    </div>
-                    <div class='col-12 col-lg-6 col-xl-9 grades'>
-                        <div class='row'>
-                            <div class='col-12 col-md-7 grade-col'>
-                                <p>Indemnité mensuelle brute</p>
-                            </div>
-                            <div class='col-9 col-lg-4 grade-col'>
-                                <div class='progress'>
-                                    <div class='progress-bar salary-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 47%; background-color: orange;'>
-                                        <span class='sr-only'>0% Complete</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='col-3 col-lg-1 grade-col score-col'>
-                                <p></p>
-                                <div class='salary'>2350€</div>
-                                <p></p>
-                            </div>
-                        </div>
-                        <div class='row'>
-                            <div class='col-12 col-lg-7 grade-col'>
-                                <p>Durée moyenne d'une journée de travail</p>
-                            </div>
-                            <div class='col-9 col-lg-4 grade-col'>
-                                <div class='progress'>
-                                    <div class='progress-bar time-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 44.1176%; background-color: gray;'>
-                                        <span class='sr-only'>0% Complete</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='col-3 col-lg-1 grade-col score-col'>
-                                <p></p>
-                                <div class='time'>8h</div>
-                                <p></p>
-                            </div>
-                        </div>
-                        <div class='row'>
-                            <div class='col-12 col-lg-7 grade-col'>
-                                <p>Intérêt des missions proposées</p>
-                            </div>
-                            <div class='col-9 col-lg-4 grade-col'>
-                                <div class='progress'>
-                                    <div class='progress-bar interest-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 55%; background-color: orange;'>
-                                        <span class='sr-only'>0% Complete</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='col-3 col-lg-1 grade-col interest-grade score-col'>
-                                <p>11/20 </p>
-                            </div>
-                        </div>
-                        <div class='row'>
-                            <div class='col-12 col-lg-7 grade-col'>
-                                <p>Ambiance</p>
-                            </div>
-                            <div class='col-9 col-lg-4 grade-col'>
-                                <div class='progress'>
-                                    <div class='progress-bar atmosphere-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 43.75%; background-color: orange;'>
-                                        <span class='sr-only'>0% Complete</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='col-3 col-lg-1 grade-col atmosphere-grade score-col'>
-                                <p>8.8/20 </p>
-                            </div>
-                        </div>
-                        <div class='row'>
-                            <div class='col-12 col-lg-7 grade-col'>
-                                <p>Locaux</p>
-                            </div>
-                            <div class='col-9 col-lg-4 grade-col'>
-                                <div class='progress'>
-                                    <div class='progress-bar premises-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 43.125%; background-color: orange;'>
-                                        <span class='sr-only'>0% Complete</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='col-3 col-lg-1 grade-col premises-grade score-col'>
-                                <p>8.6/20 </p>
-                            </div>
-                        </div>
-                        <div class='row'>
-                            <div class='col-12 col-lg-7 grade-col'>
-                                <p>Note générale</p>
-                            </div>
-                            <div class='col-9 col-lg-4 grade-col'>
-                                <div class='progress'>
-                                    <div class='progress-bar total-bar' role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 66.25%; background-color: orange;'>
-                                        <span class='sr-only'>0% Complete</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='col-3 col-lg-1 grade-col total-grade score-col'>
-                                <p>13.3/20 </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <p class='card-footer'>
-                    <small class='text-muted'>8 avis</small>
-                </p>
-            </div>
-
         </div>
     </div>
-    <!-- /.container -->
+
+
     <script src='https://apis.google.com/js/platform.js?onload=init' async defer></script>
     <script type='text/javascript' src='js/code.js'></script>
     <script>startApp();</script>

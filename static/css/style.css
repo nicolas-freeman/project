@@ -275,7 +275,7 @@ margin:10px 0px 10px 0px;
 #entreprises{
     padding-bottom: 40px;
     justify-content: flex-start;
-    padding-left:0;
+    padding-left:15px;
     padding-right:15px;
     min-height: 160px;
 }
@@ -557,7 +557,7 @@ span.label {
 
 .alert{
     text-align: center;
-    margin-top: 20px
+    margin: 20px auto auto auto;
 }
 
 /* PAGE AVIS */
